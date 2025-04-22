@@ -67,13 +67,12 @@ class ResultsDatabase:
             return self.data.get(search_id)
         return self.data
     
-    def find_best_price(self, cpt_code, max_distance=None):
+    def find_best_price(self, cpt_code):
         """
         Find the best price for a specific CPT code
         
         Args:
             cpt_code (str): CPT code to look for
-            max_distance (float, optional): Maximum distance in miles
             
         Returns:
             dict: Best price information
@@ -84,19 +83,6 @@ class ResultsDatabase:
         for search_id, search_data in self.data.items():
             for url, url_data in search_data['results'].items():
                 if cpt_code in url_data:
-                    # Check if this result has a distance
-                    has_distance = ('hospital_info' in url_data and 
-                                    'distance' in url_data['hospital_info'])
-                    
-                    # Skip if we have a max_distance but no distance info
-                    if max_distance is not None and not has_distance:
-                        continue
-                        
-                    # Skip if distance is greater than max_distance
-                    if (has_distance and max_distance is not None and 
-                        url_data['hospital_info']['distance'] > max_distance):
-                        continue
-                        
                     # Check if this is the best price
                     price = url_data[cpt_code]['min_price']
                     if price < best_price:

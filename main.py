@@ -47,17 +47,19 @@ def import_modules():
     from crawler.page_parser import PageParser
     from data.cost_extractor import CostExtractor
     from data.database import ResultsDatabase
-    from utils.distance import DistanceCalculator
     from utils.hospital_finder import HospitalFinder
     from utils.logger import Logger
+
+# Update the parse_args function
 
 def parse_args():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(description='Healthcare Cost Finder')
     
     parser.add_argument('--cpt', nargs='+', required=True, help='CPT codes to search for')
-    parser.add_argument('--location', required=True, help='Patient location (address)')
-    parser.add_argument('--radius', type=float, default=25.0, help='Search radius in miles')
+    parser.add_argument('--city', required=True, help='US city name')
+    parser.add_argument('--state', help='State abbreviation (e.g., CA, NY)')
+    parser.add_argument('--limit', type=int, default=25, help='Maximum number of hospitals to search')
     parser.add_argument('--max-depth', type=int, default=3, help='Maximum crawl depth')
     parser.add_argument('--max-pages', type=int, default=100, help='Maximum pages to crawl')
     parser.add_argument('--delay', type=float, default=1.0, help='Delay between requests in seconds')
@@ -68,6 +70,7 @@ def parse_args():
     
     return parser.parse_args()
 
+# Update the main function to use city instead of location
 def main():
     """Main entry point"""
     # Check and install required packages first
@@ -78,23 +81,38 @@ def main():
     
     args = parse_args()
     
-    # Initialize logger
-    logger = Logger(log_dir=args.log_dir)
+    # Format location for display
+    location = args.city
+    if args.state:
+        location = f"{args.city}, {args.state}"
     
     # We require CPT codes to be provided directly
     cpt_codes = args.cpt
     print(f"Searching for {len(cpt_codes)} CPT codes: {', '.join(cpt_codes)}")
     
+    # Initialize logger with CPT codes and location
+    logger = Logger(log_dir=args.log_dir, cpt_codes=cpt_codes, location=location)
+    
     # Create the hospital finder
     hospital_finder = HospitalFinder()
-    print(f"Finding hospitals within {args.radius} miles of {args.location}...")
-    seed_urls = hospital_finder.get_hospital_seed_urls(args.location, args.radius)
+    
+    print(f"Finding up to {args.limit} hospitals in {location}...")
+    seed_urls = hospital_finder.get_hospital_seed_urls(args.city, args.state, limit=args.limit)
     
     if not seed_urls:
-        print("No hospital websites found nearby. Please try a different location or increase the radius.")
+        print("No hospital websites found in this city. Please try a different city.")
         sys.exit(1)
+    
+    # Log the list of hospitals that will be checked
+    hospitals_list = []
+    for url, hospital in seed_urls.items():
+        if hospital not in hospitals_list:
+            hospitals_list.append(hospital)
+    
+    # Log unique hospitals
+    logger.log_hospitals_list(hospitals_list)
         
-    print(f"Found {len(seed_urls)} seed URLs from {len(set(hospital['name'] for hospital in seed_urls.values()))} nearby hospitals")
+    print(f"Found {len(seed_urls)} seed URLs from {len(hospitals_list)} hospitals in {location}")
     
     # Create the page parser with healthcare keywords
     healthcare_keywords = [
@@ -123,34 +141,35 @@ def main():
     results = crawler.crawl(page_parser, cost_extractor)
     print(f"Crawling complete - found cost information on {len(results)} pages")
     
-    # Calculate distances to hospitals
-    distance_calculator = DistanceCalculator()
-    for url, data in results.items():
-        if 'hospital_info' in data and data['hospital_info'].get('address'):
-            distance = distance_calculator.calculate_distance(
-                args.location, data['hospital_info']['address']
-            )
-            if distance:
-                data['hospital_info']['distance'] = round(distance, 2)
+    # No need for distance calculations - we're only working within a single city
+    # All hospitals are assumed to be in the specified city
     
     # Store results in database
     db = ResultsDatabase(args.output)
-    search_id = db.store_results(results, args.location, cpt_codes)
+    search_id = db.store_results(results, location, cpt_codes)
     print(f"Results saved with search ID: {search_id}")
     
+    # Log search completion
+    logger.log_search_complete(len(results), search_id)
+    
     # Print best prices for each CPT code
+    best_prices = {}
     print("\nBest prices found:")
     for cpt_code in cpt_codes:
         best = db.find_best_price(cpt_code)
+        best_prices[cpt_code] = best
         if best:
             hospital_name = best['hospital_info'].get('name', 'Unknown Hospital')
-            distance = best['hospital_info'].get('distance', 'Unknown')
-            print(f"CPT {cpt_code}: ${best['price']:.2f} at {hospital_name} "
-                  f"(Distance: {distance} miles)")
+            print(f"CPT {cpt_code}: ${best['price']:.2f} at {hospital_name}")
         else:
             print(f"CPT {cpt_code}: No prices found")
     
-    print(f"\nDetailed logs saved in {args.log_dir}/")
+    # Log best prices
+    logger.log_best_prices(best_prices)
+    
+    # Get the search directory for output
+    search_dir = logger.get_search_dir()
+    print(f"\nDetailed logs saved in {search_dir}/")
 
 if __name__ == "__main__":
     main()
