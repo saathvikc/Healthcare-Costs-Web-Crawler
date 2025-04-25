@@ -25,6 +25,7 @@ ENV/
 .vscode/
 *.swp
 *.swo
+.DS_Store
 
 # Distribution / packaging
 dist/
