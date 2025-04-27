@@ -1,116 +1,251 @@
-from urllib.parse import urljoin, urlparse
+import requests
+import pandas as pd
 from bs4 import BeautifulSoup
+from typing import Dict, Any, Optional
 import re
+import io
+import json
+import csv
 
-class PageParser:
-    def __init__(self, keywords=None):
-        """
-        Initialize the page parser.
-        
-        Args:
-            keywords (list): Keywords to look for when deciding if a link is relevant
-        """
-        self.keywords = keywords or []
-        
-    def extract_links(self, soup, base_url):
-        """
-        Extract links from the page and filter for relevant ones.
-        
-        Args:
-            soup (BeautifulSoup): Parsed HTML content
-            base_url (str): URL of the current page for resolving relative links
-            
-        Returns:
-            list: List of absolute URLs found on the page
-        """
-        links = []
-        
-        # Find all links
-        for a_tag in soup.find_all('a', href=True):
-            href = a_tag['href']
-            
-            # Skip fragment links and javascript
-            if href.startswith('#') or href.startswith('javascript:'):
-                continue
-                
-            # Convert to absolute URL
-            absolute_url = urljoin(base_url, href)
-            
-            # Make sure it's HTTP or HTTPS
-            if not absolute_url.startswith(('http://', 'https://')):
-                continue
-                
-            # Check if we should stay on same domain
-            base_domain = urlparse(base_url).netloc
-            link_domain = urlparse(absolute_url).netloc
-            
-            # Add more sophisticated filtering here if needed
-            # For now, we accept links from the same domain and those that contain keywords
-            if (base_domain == link_domain or
-                any(keyword.lower() in absolute_url.lower() for keyword in self.keywords)):
-                links.append(absolute_url)
-                
-        return links
-        
-    def get_text_from_element(self, element):
-        """Extract clean text from an element."""
-        if element:
-            return ' '.join(element.get_text(separator=' ').split())
-        return ""
-        
-    def find_hospital_info(self, soup, url):
-        """
-        Try to find hospital information from the page.
-        
-        Args:
-            soup (BeautifulSoup): Parsed HTML content
-            url (str): URL of the current page
-            
-        Returns:
-            dict: Hospital information
-        """
-        hospital_info = {
-            'name': None,
-            'address': None,
-            'phone': None
+class CostInfoParser:
+    def __init__(self):
+        self.headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
         }
+    
+    def parse_cost_file(self, file_url: str, file_type: str, cpt_code: str) -> Optional[Dict[str, Any]]:
+        """
+        Parse structured files (CSV, Excel, JSON) for cost information.
         
-        # Try to find hospital name - often in title, heading, or meta tags
-        title_tag = soup.find('title')
-        if title_tag:
-            hospital_info['name'] = self.get_text_from_element(title_tag)
-        
-        # Try common schemas
-        org_schema = soup.find('div', {'itemtype': 'http://schema.org/Organization'})
-        if org_schema:
-            name_elem = org_schema.find('meta', {'itemprop': 'name'}) or org_schema.find('span', {'itemprop': 'name'})
-            if name_elem and 'content' in name_elem.attrs:
-                hospital_info['name'] = name_elem['content']
-            elif name_elem:
-                hospital_info['name'] = self.get_text_from_element(name_elem)
+        Args:
+            file_url: URL to the file
+            file_type: Type of file ('csv', 'xlsx', 'json', etc.)
+            cpt_code: CPT code to search for
+            
+        Returns:
+            Dictionary with cost information or None if not found
+        """
+        try:
+            response = requests.get(file_url, headers=self.headers, timeout=15)
+            if response.status_code != 200:
+                return None
                 
-            address_elem = org_schema.find('div', {'itemprop': 'address'})
-            if address_elem:
-                hospital_info['address'] = self.get_text_from_element(address_elem)
+            if file_type.lower() in ['csv']:
+                return self._parse_csv(response.content, cpt_code)
+            elif file_type.lower() in ['xlsx', 'xls']:
+                return self._parse_excel(response.content, cpt_code)
+            elif file_type.lower() == 'json':
+                return self._parse_json(response.content, cpt_code)
+            elif file_type.lower() == 'xml':
+                return self._parse_xml(response.content, cpt_code)
+            else:
+                return None
+        
+        except Exception as e:
+            print(f"Error parsing {file_url}: {e}")
+            return None
+    
+    def _parse_csv(self, content: bytes, cpt_code: str) -> Optional[Dict[str, Any]]:
+        """Parse CSV file for cost information"""
+        try:
+            # Try different encodings
+            for encoding in ['utf-8', 'latin-1', 'cp1252']:
+                try:
+                    df = pd.read_csv(io.BytesIO(content), encoding=encoding, error_bad_lines=False)
+                    break
+                except:
+                    continue
+            else:
+                # If all encodings fail, try to read it as a string and manually parse
+                csv_text = content.decode('utf-8', errors='ignore')
+                reader = csv.reader(csv_text.splitlines())
+                rows = list(reader)
                 
-            phone_elem = org_schema.find('span', {'itemprop': 'telephone'})
-            if phone_elem:
-                hospital_info['phone'] = self.get_text_from_element(phone_elem)
+                for row in rows:
+                    row_text = ' '.join(str(cell) for cell in row).lower()
+                    if cpt_code in row_text:
+                        cost_match = re.search(r'\$([\d,]+(\.\d{2})?)', row_text)
+                        if cost_match:
+                            return {
+                                "status": "found",
+                                "cost": cost_match.group(0),
+                                "type": "csv_manual"
+                            }
+                return None
+            
+            # Check if any column contains the CPT code
+            for col in df.columns:
+                if df[col].astype(str).str.contains(cpt_code).any():
+                    # Find the row with the CPT code
+                    matching_rows = df[df[col].astype(str).str.contains(cpt_code)]
+                    
+                    # Look for columns that might contain price information
+                    price_cols = [c for c in df.columns if any(term in str(c).lower() 
+                                 for term in ['price', 'cost', 'charge', 'fee', 'amount'])]
+                    
+                    if price_cols and not matching_rows.empty:
+                        for price_col in price_cols:
+                            price = matching_rows[price_col].iloc[0]
+                            if price and not pd.isna(price):
+                                return {
+                                    "status": "found",
+                                    "cost": f"${price}" if not str(price).startswith('$') else str(price),
+                                    "type": "csv"
+                                }
+            
+            # If we couldn't find it using column names, search through all data
+            for _, row in df.iterrows():
+                row_text = ' '.join(str(cell) for cell in row).lower()
+                if cpt_code in row_text:
+                    cost_match = re.search(r'\$([\d,]+(\.\d{2})?)', row_text)
+                    if cost_match:
+                        return {
+                            "status": "found",
+                            "cost": cost_match.group(0),
+                            "type": "csv_row_search"
+                        }
+            
+            return None
+            
+        except Exception as e:
+            print(f"Error parsing CSV: {e}")
+            return None
+    
+    def _parse_excel(self, content: bytes, cpt_code: str) -> Optional[Dict[str, Any]]:
+        """Parse Excel file for cost information"""
+        try:
+            df = pd.read_excel(io.BytesIO(content))
+            
+            # Similar logic as CSV parsing
+            for col in df.columns:
+                if df[col].astype(str).str.contains(cpt_code).any():
+                    matching_rows = df[df[col].astype(str).str.contains(cpt_code)]
+                    
+                    price_cols = [c for c in df.columns if any(term in str(c).lower() 
+                                 for term in ['price', 'cost', 'charge', 'fee', 'amount'])]
+                    
+                    if price_cols and not matching_rows.empty:
+                        for price_col in price_cols:
+                            price = matching_rows[price_col].iloc[0]
+                            if price and not pd.isna(price):
+                                return {
+                                    "status": "found",
+                                    "cost": f"${price}" if not str(price).startswith('$') else str(price),
+                                    "type": "excel"
+                                }
+            
+            # Search through all data if column method fails
+            for _, row in df.iterrows():
+                row_text = ' '.join(str(cell) for cell in row).lower()
+                if cpt_code in row_text:
+                    cost_match = re.search(r'\$([\d,]+(\.\d{2})?)', row_text)
+                    if cost_match:
+                        return {
+                            "status": "found",
+                            "cost": cost_match.group(0),
+                            "type": "excel_row_search"
+                        }
+                        
+            return None
+            
+        except Exception as e:
+            print(f"Error parsing Excel: {e}")
+            return None
+    
+    def _parse_json(self, content: bytes, cpt_code: str) -> Optional[Dict[str, Any]]:
+        """Parse JSON file for cost information"""
+        try:
+            data = json.loads(content)
+            
+            # Recursively search through JSON
+            result = self._search_json_for_cpt(data, cpt_code)
+            return result
+            
+        except Exception as e:
+            print(f"Error parsing JSON: {e}")
+            return None
+    
+    def _search_json_for_cpt(self, data, cpt_code: str) -> Optional[Dict[str, Any]]:
+        """Recursively search through JSON structure for CPT code and cost"""
+        if isinstance(data, dict):
+            # Check if this dictionary contains our CPT code
+            str_dict = str(data).lower()
+            if cpt_code in str_dict:
+                # Look for cost/price keys
+                price_keys = [k for k in data.keys() if any(term in str(k).lower() 
+                             for term in ['price', 'cost', 'charge', 'fee', 'amount'])]
+                
+                if price_keys:
+                    for key in price_keys:
+                        value = data[key]
+                        if isinstance(value, (int, float, str)):
+                            return {
+                                "status": "found",
+                                "cost": f"${value}" if not str(value).startswith('$') else str(value),
+                                "type": "json"
+                            }
+                
+                # If we found the CPT but not price, look for price pattern
+                cost_match = re.search(r'\$([\d,]+(\.\d{2})?)', str_dict)
+                if cost_match:
+                    return {
+                        "status": "found",
+                        "cost": cost_match.group(0),
+                        "type": "json_regex"
+                    }
+            
+            # Recursively search nested dictionaries
+            for key, value in data.items():
+                result = self._search_json_for_cpt(value, cpt_code)
+                if result:
+                    return result
+                    
+        elif isinstance(data, list):
+            # Search through list items
+            for item in data:
+                result = self._search_json_for_cpt(item, cpt_code)
+                if result:
+                    return result
         
-        # Try to find address using regex patterns
-        if not hospital_info['address']:
-            # Look for address patterns in text
-            address_pattern = r'\b\d+\s+[A-Za-z0-9\s,\.]+\b(Road|Rd|Street|St|Avenue|Ave|Boulevard|Blvd|Drive|Dr|Lane|Ln|Court|Ct|Way)\b'
-            text = soup.get_text()
-            address_match = re.search(address_pattern, text, re.IGNORECASE)
-            if address_match:
-                hospital_info['address'] = address_match.group(0)
-        
-        # Try to find phone using regex patterns
-        if not hospital_info['phone']:
-            phone_pattern = r'\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}'
-            phone_matches = re.findall(phone_pattern, soup.get_text())
-            if phone_matches:
-                hospital_info['phone'] = phone_matches[0]
-        
-        return hospital_info
+        return None
+    
+    def _parse_xml(self, content: bytes, cpt_code: str) -> Optional[Dict[str, Any]]:
+        """Parse XML file for cost information"""
+        try:
+            soup = BeautifulSoup(content, 'xml')
+            if soup is None:
+                soup = BeautifulSoup(content, 'lxml')
+                
+            # Convert to string and search
+            xml_text = str(soup).lower()
+            if cpt_code in xml_text:
+                # Find elements that might contain our CPT code
+                for tag in soup.find_all():
+                    if cpt_code in str(tag).lower():
+                        # Look for price elements nearby
+                        price_tags = tag.find_all(lambda t: any(term in t.name.lower() 
+                                     for term in ['price', 'cost', 'charge', 'fee', 'amount']))
+                        
+                        if price_tags:
+                            for price_tag in price_tags:
+                                return {
+                                    "status": "found",
+                                    "cost": price_tag.text,
+                                    "type": "xml"
+                                }
+                        
+                        # If no explicit price tags, look for price pattern
+                        tag_text = tag.get_text()
+                        cost_match = re.search(r'\$([\d,]+(\.\d{2})?)', tag_text)
+                        if cost_match:
+                            return {
+                                "status": "found",
+                                "cost": cost_match.group(0),
+                                "type": "xml_regex"
+                            }
+            
+            return None
+            
+        except Exception as e:
+            print(f"Error parsing XML: {e}")
+            return None
