@@ -9,6 +9,10 @@ import argparse
 import logging
 from datetime import datetime
 import os
+import re
+import random
+from urllib3.util.retry import Retry
+from requests.adapters import HTTPAdapter
 
 
 def setup_logging(log_file="hospital_finder.log"):
@@ -30,13 +34,34 @@ def save_results_to_file(results, output_file="price_results.txt"):
         f.write("=== HOSPITAL PROCEDURE PRICING RESULTS ===\n")
         f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
         
+        # Add search metrics section
+        if "metrics" in results:
+            metrics = results["metrics"]
+            f.write("=== SEARCH METRICS ===\n")
+            f.write(f"Total hospitals searched: {metrics['total_hospitals']}\n")
+            f.write(f"Hospitals with websites: {metrics['hospitals_with_websites']}\n")
+            f.write(f"Hospitals with prices found: {metrics['hospitals_with_prices']}\n")
+            f.write(f"Overall success rate: {metrics['overall_success_rate']}%\n")
+            f.write(f"Website search success rate: {metrics['website_success_rate']}%\n")
+            
+            if "price_min" in metrics:
+                f.write("\n=== PRICE STATISTICS ===\n")
+                f.write(f"Lowest price: ${metrics['price_min']:.2f}\n")
+                f.write(f"Highest price: ${metrics['price_max']:.2f}\n")
+                f.write(f"Average price: ${metrics['price_avg']:.2f}\n")
+                f.write(f"Median price: ${metrics['price_median']:.2f}\n")
+                f.write(f"Price range: ${metrics['price_range']:.2f}\n")
+                f.write(f"Price variance: ${metrics['price_variance']:.2f}\n")
+            f.write("\n")
+        
         if results["best_price"] is not None:
-            f.write(f"BEST PRICE FOUND: ${results['best_price']:.2f}\n")
+            f.write("=== BEST PRICE FOUND ===\n")
+            f.write(f"Price: ${results['best_price']:.2f}\n")
             f.write(f"Hospital: {results['hospital_name']}\n")
             f.write(f"Address: {results['hospital_address']}\n")
             f.write(f"Source: {results['source_url']}\n\n")
             
-            f.write("ALL PRICES FOUND:\n")
+            f.write("=== ALL PRICES FOUND ===\n")
             for idx, price_info in enumerate(results["all_prices"], 1):
                 f.write(f"{idx}. ${price_info['price']:.2f} - {price_info['hospital_name']}\n")
                 f.write(f"   Address: {price_info['hospital_address']}\n")
@@ -213,14 +238,12 @@ def crawl_hospital_website(url: str, max_depth: int = 3, max_pages: int = 100) -
         max_pages: Maximum number of pages to crawl (default: 100)
         
     Returns:
-        A list of dictionaries containing information about crawled pages:
-        - url: The page URL
-        - title: Page title
-        - text: Page text content (cleaned)
-        - depth: The depth level of the page
+        A list of dictionaries containing information about crawled pages
     """
     if not url:
         return []
+    
+    logger = logging.getLogger(__name__)
     
     # Normalize the starting URL
     if not url.startswith(('http://', 'https://')):
@@ -236,8 +259,25 @@ def crawl_hospital_website(url: str, max_depth: int = 3, max_pages: int = 100) -
         results = []
         page_count = 0
         
+        # Create a session with retry capability
+        session = requests.Session()
+        retries = Retry(
+            total=3,
+            backoff_factor=0.5,
+            status_forcelist=[429, 500, 502, 503, 504],
+            allowed_methods=["GET", "HEAD"]
+        )
+        session.mount("http://", HTTPAdapter(max_retries=retries))
+        session.mount("https://", HTTPAdapter(max_retries=retries))
+        
         headers = {
-            "User-Agent": "HospitalInfoCrawler/1.0"
+            "User-Agent": random.choice([
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"
+            ]),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.5"
         }
         
         while queue and page_count < max_pages:
@@ -248,18 +288,37 @@ def crawl_hospital_website(url: str, max_depth: int = 3, max_pages: int = 100) -
                 continue
             
             try:
-                # Add delay to be respectful
-                time.sleep(1)
+                # Add random delay to be respectful (0.5-2 seconds)
+                time.sleep(random.uniform(0.5, 2))
+                
+                # Skip non-HTML resources
+                if any(current_url.lower().endswith(ext) for ext in ['.pdf', '.jpg', '.jpeg', '.png', '.gif', '.doc', '.docx', '.ppt', '.pptx', '.xls', '.xlsx']):
+                    continue
+                
+                # Skip certain URL patterns
+                if re.search(r'(calendar|login|signin|signup|contact|feedback|search|404|403|500)', current_url, re.IGNORECASE):
+                    continue
                 
                 # Fetch page content
-                response = requests.get(current_url, headers=headers, timeout=10)
+                logger.debug(f"Fetching: {current_url}")
+                response = session.get(current_url, headers=headers, timeout=15)
                 response.raise_for_status()
+                
+                # Check if it's actually HTML
+                content_type = response.headers.get('Content-Type', '').lower()
+                if 'text/html' not in content_type:
+                    logger.debug(f"Skipping non-HTML content: {current_url} ({content_type})")
+                    continue
                 
                 # Parse HTML
                 soup = BeautifulSoup(response.text, 'html.parser')
                 
                 # Extract page information
                 title = soup.title.string.strip() if soup.title else "No title"
+                
+                # Remove script, style, and other non-content elements
+                for element in soup.find_all(['script', 'style', 'meta', 'noscript', 'header', 'footer']):
+                    element.decompose()
                 
                 # Extract text content and clean it
                 text_content = soup.get_text(separator=' ', strip=True)
@@ -275,7 +334,7 @@ def crawl_hospital_website(url: str, max_depth: int = 3, max_pages: int = 100) -
                 })
                 
                 page_count += 1
-                print(f"Crawled {page_count}/{max_pages} pages: {current_url}")
+                logger.info(f"Crawled {page_count}/{max_pages} pages: {current_url}")
                 
                 # Only continue to find links if we haven't reached max depth
                 if depth < max_depth:
@@ -299,14 +358,18 @@ def crawl_hospital_website(url: str, max_depth: int = 3, max_pages: int = 100) -
                             visited.add(full_url)
                             queue.append((full_url, depth + 1))
                 
+            except requests.exceptions.RequestException as e:
+                logger.warning(f"Request error for {current_url}: {e}")
+                continue
             except Exception as e:
-                print(f"Error crawling {current_url}: {e}")
+                logger.warning(f"Error crawling {current_url}: {e}")
                 continue
         
+        logger.info(f"Crawl completed. Visited {len(visited)} URLs, extracted content from {len(results)} pages")
         return results
         
     except Exception as e:
-        print(f"Error starting crawl of {url}: {e}")
+        logger.error(f"Error starting crawl of {url}: {e}")
         return []
 
 
@@ -321,34 +384,94 @@ def find_procedure_pricing(url: str, cpt_code: str, procedure_name: str = None, 
         max_depth: Maximum depth to crawl
         
     Returns:
-        A dictionary containing:
-        - found: Boolean indicating if pricing was found
-        - price: The price if found (or None)
-        - currency: Currency of the price (default: USD)
-        - source_url: URL where the pricing was found
-        - context: Text surrounding the price information
+        A dictionary containing pricing information
     """
+    logger = logging.getLogger(__name__)
+    
     if not url:
         return {"found": False, "price": None, "currency": "USD", "source_url": None, "context": None}
     
-    # Terms to look for that might indicate pricing information
+    # Enhanced terms to look for that might indicate pricing information
     price_page_keywords = [
         "price", "pricing", "cost", "charge", "fee", "rate", 
         "estimate", "financial", "bill", "payment", "transparency",
-        "patient charges", "service charges"
+        "patient charges", "service charges", "chargemaster",
+        "standard charges", "price list", "price transparency", "cost estimator"
     ]
     
+    # First, check if the website has a dedicated pricing or transparency page
+    # These are common URLs for hospital pricing pages
+    transparency_urls = [
+        "/pricing",
+        "/prices",
+        "/chargemaster",
+        "/charges",
+        "/price-transparency",
+        "/standard-charges",
+        "/patient-financial",
+        "/cost-estimator",
+        "/billing",
+        "/financial-assistance"
+    ]
+    
+    # Normalize the starting URL
+    if not url.startswith(('http://', 'https://')):
+        url = 'https://' + url
+        
+    base_url = f"{urlparse(url).scheme}://{urlparse(url).netloc}"
+    
+    # First try directly accessing common pricing URLs
+    for path in transparency_urls:
+        try:
+            direct_url = urljoin(base_url, path)
+            logger.info(f"Directly checking potential pricing page: {direct_url}")
+            
+            response = requests.get(direct_url, 
+                                   headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}, 
+                                   timeout=10)
+            
+            if response.status_code == 200:
+                soup = BeautifulSoup(response.text, 'html.parser')
+                
+                # Remove script, style, and other non-content elements
+                for element in soup.find_all(['script', 'style', 'meta', 'noscript']):
+                    element.decompose()
+                
+                text = soup.get_text(separator=' ', strip=True).lower()
+                
+                # Check if this page contains pricing info and the CPT code
+                if any(keyword in text for keyword in price_page_keywords):
+                    logger.info(f"Found potential pricing page: {direct_url}")
+                    page_info = {
+                        'url': direct_url,
+                        'title': soup.title.string if soup.title else "No title",
+                        'text': text,
+                        'depth': 0
+                    }
+                    
+                    # Check for pricing on this specific page
+                    price_info = _extract_price_from_page(page_info, cpt_code, procedure_name)
+                    if price_info["found"]:
+                        return price_info
+        except Exception as e:
+            logger.debug(f"Could not check {path}: {e}")
+    
+    # If direct URL checks fail, proceed with crawling
+    logger.info(f"Starting website crawl: {url}")
+    
     # Crawl the website focusing on pages likely to contain pricing
-    pages = crawl_hospital_website(url, max_depth=max_depth, max_pages=20)
+    pages = crawl_hospital_website(url, max_depth=max_depth, max_pages=30)  # Increased from 20 to 30
     relevant_pages = []
     
     # First pass: find pages likely to contain pricing information
     for page in pages:
         page_text = page['text'].lower()
         page_title = page['title'].lower()
+        page_url = page['url'].lower()
         
         # Check if page has pricing-related terms
-        is_pricing_page = any(keyword in page_text or keyword in page_title for keyword in price_page_keywords)
+        is_pricing_page = any(keyword in page_text or keyword in page_title or keyword in page_url 
+                              for keyword in price_page_keywords)
         
         # Check if page has the CPT code
         has_cpt_code = cpt_code in page_text
@@ -361,6 +484,12 @@ def find_procedure_pricing(url: str, cpt_code: str, procedure_name: str = None, 
         # Prioritize pages with pricing terms and either CPT code or procedure name
         if is_pricing_page and (has_cpt_code or has_procedure_name):
             relevant_pages.append(page)
+        # Also add pages that VERY likely contain pricing even without specific mention
+        elif ("price list" in page_text or "price transparency" in page_text or 
+              "chargemaster" in page_text or "standard charges" in page_text):
+            relevant_pages.append(page)
+    
+    logger.info(f"Found {len(relevant_pages)} pages that might contain pricing information")
     
     # Process relevant pages to extract pricing information
     for page in relevant_pages:
@@ -396,7 +525,6 @@ def _extract_price_from_page(page: Dict[str, Any], cpt_code: str, procedure_name
         Dictionary with price information
     """
     import re
-    from bs4 import BeautifulSoup
     
     # Initialize result
     result = {
@@ -407,42 +535,84 @@ def _extract_price_from_page(page: Dict[str, Any], cpt_code: str, procedure_name
         "context": None
     }
     
-    text = page['text']
+    text = page['text'].lower()
+    url = page['url'].lower()
     
-    # Create a window around CPT code mentions
+    # Check if this page is likely to contain pricing information
+    pricing_indicators = [
+        'price', 'cost', 'charge', 'fee', 'rate', 'pricing', 'estimate',
+        'transparency', 'financial'
+    ]
+    
+    is_pricing_page = any(indicator in text or indicator in url for indicator in pricing_indicators)
+    if not is_pricing_page:
+        return result
+    
+    # Prepare search terms
+    cpt_code_pattern = re.compile(r'\b' + re.escape(cpt_code) + r'\b')
+    
+    # Create broader windows than before
     cpt_positions = []
-    for match in re.finditer(cpt_code, text):
-        start_pos = max(0, match.start() - 200)
-        end_pos = min(len(text), match.end() + 200)
+    for match in cpt_code_pattern.finditer(text):
+        start_pos = max(0, match.start() - 500)  # Increased window size
+        end_pos = min(len(text), match.end() + 500)  # Increased window size
         window = text[start_pos:end_pos]
         cpt_positions.append((window, start_pos, end_pos))
     
     # If procedure name is provided, also look for windows around it
     if procedure_name:
-        for match in re.finditer(procedure_name, text, re.IGNORECASE):
-            start_pos = max(0, match.start() - 200)
-            end_pos = min(len(text), match.end() + 200)
+        proc_name_pattern = re.compile(r'\b' + re.escape(procedure_name.lower()) + r'\b')
+        for match in proc_name_pattern.finditer(text):
+            start_pos = max(0, match.start() - 500)  # Increased window size
+            end_pos = min(len(text), match.end() + 500)  # Increased window size
             window = text[start_pos:end_pos]
             cpt_positions.append((window, start_pos, end_pos))
     
-    # Look for price patterns in these windows
+    # Enhanced price pattern detection
     for window, _, _ in cpt_positions:
-        # Pattern for currency amounts
-        price_matches = re.findall(r'[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)', window)
+        # Pattern for currency amounts (multiple patterns to catch different formats)
+        patterns = [
+            r'[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',  # Basic price pattern
+            r'cost[\s:]*[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',  # Cost: $XXX
+            r'price[\s:]*[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',  # Price: $XXX
+            r'charge[\s:]*[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',  # Charge: $XXX
+            r'fee[\s:]*[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',     # Fee: $XXX
+            r'rate[\s:]*[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',    # Rate: $XXX
+        ]
         
-        # If we find prices, extract the first one
-        if price_matches:
-            # Clean up the price and convert to float
-            price_str = price_matches[0].replace(',', '')
-            try:
-                price = float(price_str)
-                result["found"] = True
-                result["price"] = price
-                result["context"] = window
-                return result
-            except ValueError:
-                # Not a valid price
-                pass
+        for pattern in patterns:
+            price_matches = re.findall(pattern, window)
+            
+            # If we find prices, extract and filter them
+            if price_matches:
+                valid_prices = []
+                for price_str in price_matches:
+                    # Clean up the price and convert to float
+                    price_str = price_str.replace(',', '')
+                    try:
+                        price = float(price_str)
+                        # Filter out unreasonable prices (too low or too high)
+                        if 10 <= price <= 50000:  # Most medical procedures cost between $10 and $50,000
+                            valid_prices.append((price, window))
+                    except ValueError:
+                        # Not a valid price
+                        pass
+                
+                # If we found valid prices, return the most reasonable one
+                if valid_prices:
+                    # Sort by price (choose middle price to avoid extremes)
+                    valid_prices.sort(key=lambda x: x[0])
+                    if len(valid_prices) > 2:
+                        # Choose the middle price
+                        chosen_price, context = valid_prices[len(valid_prices)//2]
+                    else:
+                        # For 1-2 prices, choose the first (lowest)
+                        chosen_price, context = valid_prices[0]
+                        
+                    result["found"] = True
+                    result["price"] = chosen_price
+                    result["context"] = context
+                    return result
     
     return result
 
@@ -519,33 +689,71 @@ def find_best_procedure_price(city: str, state: str, cpt_code: str, procedure_na
             "hospital_address": None,
             "source_url": None,
             "context": None,
-            "all_prices": []
+            "all_prices": [],
+            "metrics": {
+                "total_hospitals": 0,
+                "hospitals_with_websites": 0,
+                "hospitals_with_prices": 0,
+                "overall_success_rate": 0,
+                "website_success_rate": 0
+            }
         }
     
     all_prices = []
+    search_attempts = []
     
     logger.info(f"Searching for pricing of CPT {cpt_code} ({procedure_name or 'no name'}) in {city}, {state}")
     logger.info(f"Found {len(hospitals)} hospitals to search")
     
     for hospital in hospitals:
-        if hospital['website']:
+        search_result = {"hospital_name": hospital["name"], "success": False, "has_website": False}
+        
+        if hospital.get('website'):
+            search_result["has_website"] = True
             logger.info(f"Searching {hospital['name']}...")
-            pricing = find_procedure_pricing(hospital['website'], cpt_code, procedure_name, max_depth)
             
-            if pricing["found"]:
-                price_info = {
-                    "price": pricing["price"],
-                    "hospital_name": hospital["name"],
-                    "hospital_address": hospital["address"],
-                    "source_url": pricing["source_url"],
-                    "context": pricing["context"]
-                }
-                all_prices.append(price_info)
-                logger.info(f"✓ Found price: ${pricing['price']} at {hospital['name']}")
-            else:
-                logger.info(f"× No pricing found at {hospital['name']}")
-                if pricing.get("pdf_links"):
-                    logger.info(f"  Found potential PDF resources: {len(pricing['pdf_links'])}")
+            try:
+                pricing = find_procedure_pricing(hospital['website'], cpt_code, procedure_name, max_depth)
+                
+                if pricing["found"]:
+                    price_info = {
+                        "price": pricing["price"],
+                        "hospital_name": hospital["name"],
+                        "hospital_address": hospital["address"],
+                        "source_url": pricing["source_url"],
+                        "context": pricing["context"]
+                    }
+                    all_prices.append(price_info)
+                    search_result["success"] = True
+                    search_result["price"] = pricing["price"]
+                    logger.info(f"✓ Found price: ${pricing['price']} at {hospital['name']}")
+                else:
+                    logger.info(f"× No pricing found at {hospital['name']}")
+                    if pricing.get("pdf_links"):
+                        logger.info(f"  Found potential PDF resources: {len(pricing['pdf_links'])}")
+                        search_result["has_pdfs"] = True
+            
+            except Exception as e:
+                logger.error(f"Error searching {hospital['name']}: {e}")
+                search_result["error"] = str(e)
+        else:
+            logger.info(f"× Skipping {hospital['name']} - No website available")
+        
+        search_attempts.append(search_result)
+    
+    # Calculate search metrics
+    metrics = calculate_search_metrics(hospitals, all_prices)
+    
+    # Create detailed report for hospitals with unsuccessful searches
+    unsuccessful_hospitals = [
+        {
+            "name": attempt["hospital_name"], 
+            "has_website": attempt["has_website"],
+            "has_pdfs": attempt.get("has_pdfs", False),
+            "error": attempt.get("error", None)
+        } 
+        for attempt in search_attempts if not attempt["success"]
+    ]
     
     # Find the best price
     if all_prices:
@@ -557,7 +765,9 @@ def find_best_procedure_price(city: str, state: str, cpt_code: str, procedure_na
             "hospital_address": best_price_info["hospital_address"],
             "source_url": best_price_info["source_url"],
             "context": best_price_info["context"],
-            "all_prices": all_prices
+            "all_prices": all_prices,
+            "metrics": metrics,
+            "unsuccessful_hospitals": unsuccessful_hospitals
         }
     else:
         logger.warning("No prices found for any hospitals")
@@ -567,8 +777,50 @@ def find_best_procedure_price(city: str, state: str, cpt_code: str, procedure_na
             "hospital_address": None,
             "source_url": None,
             "context": None,
-            "all_prices": []
+            "all_prices": [],
+            "metrics": metrics,
+            "unsuccessful_hospitals": unsuccessful_hospitals
         }
+
+
+def calculate_search_metrics(hospitals: List[Dict[str, Any]], all_prices: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """
+    Calculate success metrics for the hospital price search.
+    
+    Args:
+        hospitals: List of hospitals searched
+        all_prices: List of prices found
+        
+    Returns:
+        Dictionary with search metrics
+    """
+    # Count hospitals with websites
+    hospitals_with_websites = sum(1 for hospital in hospitals if hospital.get('website'))
+    
+    # Count successful price discoveries
+    successful_hospitals = len(all_prices)
+    
+    # Calculate success rates
+    metrics = {
+        "total_hospitals": len(hospitals),
+        "hospitals_with_websites": hospitals_with_websites,
+        "hospitals_with_prices": successful_hospitals,
+        "overall_success_rate": round(successful_hospitals / len(hospitals) * 100, 1) if hospitals else 0,
+        "website_success_rate": round(successful_hospitals / hospitals_with_websites * 100, 1) if hospitals_with_websites else 0,
+        "price_ranges": {}
+    }
+    
+    # Calculate price statistics if any prices were found
+    if all_prices:
+        prices = [p["price"] for p in all_prices]
+        metrics["price_min"] = min(prices)
+        metrics["price_max"] = max(prices)
+        metrics["price_avg"] = sum(prices) / len(prices)
+        metrics["price_median"] = sorted(prices)[len(prices) // 2]
+        metrics["price_range"] = metrics["price_max"] - metrics["price_min"]
+        metrics["price_variance"] = round(sum((p - metrics["price_avg"])**2 for p in prices) / len(prices), 2)
+    
+    return metrics
 
 
 def setup_output_directories(city: str, state: str, cpt_code: str, output_dir: str = "results") -> Dict[str, str]:
@@ -645,15 +897,42 @@ def main():
             f.write(f"CPT Code: {args.cpt_code}\n")
             f.write(f"Procedure Name: {args.procedure_name or 'Not specified'}\n")
             f.write(f"Crawl Depth: {args.max_depth}\n")
+            
+            # Add metrics to the search info file
+            if "metrics" in best_price_info:
+                metrics = best_price_info["metrics"]
+                f.write("\nSearch Metrics:\n")
+                f.write(f"  Total hospitals: {metrics['total_hospitals']}\n")
+                f.write(f"  Success rate: {metrics['overall_success_rate']}%\n")
+                
+                if "price_min" in metrics and "price_max" in metrics:
+                    f.write(f"  Price range: ${metrics['price_min']:.2f} - ${metrics['price_max']:.2f}\n")
         
         # Save results to file
         save_results_to_file(best_price_info, output_paths["results_file"])
         
+        # Save detailed report about unsuccessful hospitals
+        with open(os.path.join(output_paths["folder_path"], "unsuccessful_hospitals.txt"), "w") as f:
+            f.write("=== HOSPITALS WHERE PRICE SEARCH FAILED ===\n\n")
+            if "unsuccessful_hospitals" in best_price_info and best_price_info["unsuccessful_hospitals"]:
+                for i, hospital in enumerate(best_price_info["unsuccessful_hospitals"], 1):
+                    f.write(f"{i}. {hospital['name']}\n")
+                    f.write(f"   Has website: {'Yes' if hospital['has_website'] else 'No'}\n")
+                    if hospital['has_website']:
+                        f.write(f"   Has PDF resources: {'Yes' if hospital['has_pdfs'] else 'No'}\n")
+                    if hospital.get('error'):
+                        f.write(f"   Error: {hospital['error']}\n")
+                    f.write("\n")
+            else:
+                f.write("No unsuccessful searches - all hospitals provided pricing information.\n")
+        
         if best_price_info["best_price"] is not None:
             logger.info(f"Best price found: ${best_price_info['best_price']:.2f} at {best_price_info['hospital_name']}")
+            logger.info(f"Success rate: {best_price_info['metrics']['overall_success_rate']}%")
             logger.info(f"Results saved to {output_paths['results_file']}")
         else:
             logger.info("No pricing information found for this procedure.")
+            logger.info(f"Overall success rate: 0%")
             logger.info(f"Empty results saved to {output_paths['results_file']}")
             
     except Exception as e:
