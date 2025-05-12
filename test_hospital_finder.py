@@ -1,4 +1,4 @@
-from utils.hospital_finder import find_hospitals
+from hospital_finder import find_hospitals
 
 def test_hospital_finder():
     """

@@ -1,4 +1,4 @@
-from utils.hospital_finder import find_hospitals, _get_city_coordinates, _find_nearby_hospitals
+from hospital_finder import find_hospitals, _get_city_coordinates, _find_nearby_hospitals
 import time
 import json
 

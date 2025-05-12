@@ -12,7 +12,7 @@ htmlcov/
 .nox/
 
 # Logs
-logs/
+results/
 *.log
 
 # Virtual environment
