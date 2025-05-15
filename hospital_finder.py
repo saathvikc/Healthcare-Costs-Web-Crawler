@@ -1,32 +1,30 @@
-import requests
-import json
-from typing import List, Dict, Any, Optional
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin, urlparse
-from collections import deque
-import time
 import argparse
 import logging
-from datetime import datetime
 import os
-import re
-import random
-from urllib3.util.retry import Retry
-from requests.adapters import HTTPAdapter
+from datetime import datetime
+import json
 
+from hospital_crawler import find_hospitals, find_procedure_pricing, setup_logging, crawl_hospital_website
+from hospital_analysis import (
+    calculate_search_metrics, 
+    analyze_transparency_compliance,
+    analyze_website_structure, 
+    analyze_geographic_distribution,
+    analyze_hospital_metadata,
+    analyze_website_content
+)
 
-def setup_logging(log_file="hospital_finder.log"):
-    """Setup logging configuration"""
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()  # Also output to console
-        ]
-    )
-    return logging.getLogger(__name__)
-
+def setup_output_directories(city: str, state: str, cpt_code: str, output_dir: str = "results"):
+    """Create output directory structure based on search parameters and return file paths."""
+    folder_name = f"{city.replace(' ', '_')}_{state.upper()}_{cpt_code}"
+    folder_path = os.path.join(output_dir, folder_name)
+    os.makedirs(folder_path, exist_ok=True)
+    
+    return {
+        "log_file": os.path.join(folder_path, "search.log"),
+        "results_file": os.path.join(folder_path, "results.txt"),
+        "folder_path": folder_path
+    }
 
 def save_results_to_file(results, output_file="price_results.txt"):
     """Save the pricing results to a formatted text file"""
@@ -70,613 +68,8 @@ def save_results_to_file(results, output_file="price_results.txt"):
             f.write("No pricing information was found for this procedure.\n")
             f.write("Try searching with a different CPT code or procedure name.\n")
 
-
-def find_hospitals(city: str, state: str, limit: int = 10) -> List[Dict[str, Any]]:
-    """
-    Find hospitals in a specified city and state.
-    
-    Args:
-        city: Name of the city
-        state: Name of the state or state abbreviation
-        limit: Maximum number of results to return (default: 10)
-        
-    Returns:
-        A list of dictionaries containing hospital information, each with:
-        - name: Name of the hospital
-        - address: Full address
-        - latitude: Latitude coordinate
-        - longitude: Longitude coordinate
-        - phone: Phone number (if available)
-        - website: Website URL (if available)
-        - distance: Distance from city center in kilometers (if available)
-    """
-    # Step 1: Get coordinates for the city
-    city_coordinates = _get_city_coordinates(city, state)
-    if not city_coordinates:
-        return []
-    
-    # Step 2: Search for hospitals near these coordinates
-    hospitals = _find_nearby_hospitals(
-        city_coordinates["lat"],
-        city_coordinates["lng"],
-        limit
-    )
-    
-    return hospitals
-
-
-def _get_city_coordinates(city: str, state: str) -> Optional[Dict[str, float]]:
-    """
-    Get the latitude and longitude coordinates for a city.
-    
-    Args:
-        city: Name of the city
-        state: Name of the state
-        
-    Returns:
-        Dictionary with 'lat' and 'lng' keys or None if geocoding failed
-    """
-
-    try:
-        base_url = "https://nominatim.openstreetmap.org/search"
-        params = {
-            "city": city,
-            "state": state,
-            "country": "USA",
-            "format": "json",
-            "limit": 1
-        }
-        
-        headers = {
-            "User-Agent": "HospitalFinderApp/1.0"  # Required by Nominatim ToS
-        }
-        
-        response = requests.get(base_url, params=params, headers=headers)
-        response.raise_for_status()
-        
-        results = response.json()
-        if results:
-            return {
-                "lat": float(results[0]["lat"]),
-                "lng": float(results[0]["lon"])
-            }
-        return None
-    
-    except Exception as e:
-        print(f"Error getting coordinates for {city}, {state}: {e}")
-        return None
-
-
-def _find_nearby_hospitals(lat: float, lng: float, limit: int = 10) -> List[Dict[str, Any]]:
-    """
-    Find hospitals near the specified coordinates.
-    
-    Args:
-        lat: Latitude coordinate
-        lng: Longitude coordinate
-        limit: Maximum number of results to return
-        
-    Returns:
-        List of hospital information dictionaries
-    """
-    # Using Overpass API (OpenStreetMap data)
-    
-    try:
-        # Overpass query to find hospitals within approximately 30km radius (increased from 15km)
-        # This larger radius works better for larger cities like Chicago
-        query = f"""
-        [out:json];
-        node["amenity"="hospital"](around:30000,{lat},{lng});
-        out body {limit};
-        """
-        
-        overpass_url = "https://overpass-api.de/api/interpreter"
-        response = requests.post(overpass_url, data={"data": query})
-        response.raise_for_status()
-        
-        results = response.json()
-        hospitals = []
-        
-        # If no hospitals found, try with additional tags that might be used for hospitals
-        if not results.get("elements", []):
-            query = f"""
-            [out:json];
-            (
-              node["amenity"="hospital"](around:30000,{lat},{lng});
-              node["healthcare"="hospital"](around:30000,{lat},{lng});
-              node["building"="hospital"](around:30000,{lat},{lng});
-            );
-            out body {limit};
-            """
-            response = requests.post(overpass_url, data={"data": query})
-            response.raise_for_status()
-            results = response.json()
-        
-        for element in results.get("elements", []):
-            if element["type"] == "node":
-                tags = element.get("tags", {})
-                hospital_name = tags.get("name", "Unknown Hospital")
-                
-                # Format address from available fields
-                address_parts = []
-                if "addr:housenumber" in tags and "addr:street" in tags:
-                    address_parts.append(f"{tags['addr:housenumber']} {tags['addr:street']}")
-                elif "addr:street" in tags:
-                    address_parts.append(tags["addr:street"])
-                
-                if "addr:city" in tags:
-                    address_parts.append(tags["addr:city"])
-                
-                if "addr:postcode" in tags:
-                    address_parts.append(tags["addr:postcode"])
-                
-                address = ", ".join(address_parts) if address_parts else "Address unknown"
-                
-                hospitals.append({
-                    "name": hospital_name,
-                    "address": address,
-                    "latitude": element["lat"],
-                    "longitude": element["lon"],
-                    "phone": tags.get("phone", None),
-                    "website": tags.get("website", None),
-                })
-                
-        return hospitals[:limit]
-    
-    except Exception as e:
-        print(f"Error finding hospitals: {e}")
-        return []
-
-
-def crawl_hospital_website(url: str, max_depth: int = 3, max_pages: int = 100) -> List[Dict[str, Any]]:
-    """
-    Crawl a hospital website using BFS up to a specified depth.
-    
-    Args:
-        url: The starting URL (hospital website)
-        max_depth: Maximum depth to crawl (default: 3)
-        max_pages: Maximum number of pages to crawl (default: 100)
-        
-    Returns:
-        A list of dictionaries containing information about crawled pages
-    """
-    if not url:
-        return []
-    
-    logger = logging.getLogger(__name__)
-    
-    # Normalize the starting URL
-    if not url.startswith(('http://', 'https://')):
-        url = 'https://' + url
-    
-    try:
-        # Parse the domain from the URL to stay within the same website
-        domain = urlparse(url).netloc
-        
-        # Initialize data structures
-        queue = deque([(url, 0)])  # (url, depth)
-        visited = set([url])
-        results = []
-        page_count = 0
-        
-        # Create a session with retry capability
-        session = requests.Session()
-        retries = Retry(
-            total=3,
-            backoff_factor=0.5,
-            status_forcelist=[429, 500, 502, 503, 504],
-            allowed_methods=["GET", "HEAD"]
-        )
-        session.mount("http://", HTTPAdapter(max_retries=retries))
-        session.mount("https://", HTTPAdapter(max_retries=retries))
-        
-        headers = {
-            "User-Agent": random.choice([
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"
-            ]),
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.5"
-        }
-        
-        while queue and page_count < max_pages:
-            current_url, depth = queue.popleft()
-            
-            # Stop if we've reached the maximum depth
-            if depth > max_depth:
-                continue
-            
-            try:
-                # Add random delay to be respectful (0.5-2 seconds)
-                time.sleep(random.uniform(0.5, 2))
-                
-                # Skip non-HTML resources
-                if any(current_url.lower().endswith(ext) for ext in ['.pdf', '.jpg', '.jpeg', '.png', '.gif', '.doc', '.docx', '.ppt', '.pptx', '.xls', '.xlsx']):
-                    continue
-                
-                # Skip certain URL patterns
-                if re.search(r'(calendar|login|signin|signup|contact|feedback|search|404|403|500)', current_url, re.IGNORECASE):
-                    continue
-                
-                # Fetch page content
-                logger.debug(f"Fetching: {current_url}")
-                response = session.get(current_url, headers=headers, timeout=15)
-                response.raise_for_status()
-                
-                # Check if it's actually HTML
-                content_type = response.headers.get('Content-Type', '').lower()
-                if 'text/html' not in content_type:
-                    logger.debug(f"Skipping non-HTML content: {current_url} ({content_type})")
-                    continue
-                
-                # Parse HTML
-                soup = BeautifulSoup(response.text, 'html.parser')
-                
-                # Extract page information
-                title = soup.title.string.strip() if soup.title else "No title"
-                
-                # Remove script, style, and other non-content elements
-                for element in soup.find_all(['script', 'style', 'meta', 'noscript', 'header', 'footer']):
-                    element.decompose()
-                
-                # Extract text content and clean it
-                text_content = soup.get_text(separator=' ', strip=True)
-                # Remove excessive whitespace
-                text_content = ' '.join(text_content.split())
-                
-                # Add page info to results
-                results.append({
-                    'url': current_url,
-                    'title': title,
-                    'text': text_content,
-                    'depth': depth
-                })
-                
-                page_count += 1
-                logger.info(f"Crawled {page_count}/{max_pages} pages: {current_url}")
-                
-                # Only continue to find links if we haven't reached max depth
-                if depth < max_depth:
-                    # Find all links on the page
-                    for link in soup.find_all('a', href=True):
-                        href = link['href']
-                        
-                        # Skip certain links
-                        if href.startswith(('#', 'javascript:', 'mailto:', 'tel:')):
-                            continue
-                        
-                        # Convert relative URLs to absolute URLs
-                        full_url = urljoin(current_url, href)
-                        
-                        # Stay within the same domain
-                        if urlparse(full_url).netloc != domain:
-                            continue
-                        
-                        # Only add unvisited links to the queue
-                        if full_url not in visited:
-                            visited.add(full_url)
-                            queue.append((full_url, depth + 1))
-                
-            except requests.exceptions.RequestException as e:
-                logger.warning(f"Request error for {current_url}: {e}")
-                continue
-            except Exception as e:
-                logger.warning(f"Error crawling {current_url}: {e}")
-                continue
-        
-        logger.info(f"Crawl completed. Visited {len(visited)} URLs, extracted content from {len(results)} pages")
-        return results
-        
-    except Exception as e:
-        logger.error(f"Error starting crawl of {url}: {e}")
-        return []
-
-
-def find_procedure_pricing(url: str, cpt_code: str, procedure_name: str = None, max_depth: int = 3) -> Dict[str, Any]:
-    """
-    Search a hospital website for pricing information related to a specific CPT code.
-    
-    Args:
-        url: The hospital website URL
-        cpt_code: The CPT code for the procedure
-        procedure_name: Optional procedure name to search for
-        max_depth: Maximum depth to crawl
-        
-    Returns:
-        A dictionary containing pricing information
-    """
-    logger = logging.getLogger(__name__)
-    
-    if not url:
-        return {"found": False, "price": None, "currency": "USD", "source_url": None, "context": None}
-    
-    # Enhanced terms to look for that might indicate pricing information
-    price_page_keywords = [
-        "price", "pricing", "cost", "charge", "fee", "rate", 
-        "estimate", "financial", "bill", "payment", "transparency",
-        "patient charges", "service charges", "chargemaster",
-        "standard charges", "price list", "price transparency", "cost estimator"
-    ]
-    
-    # First, check if the website has a dedicated pricing or transparency page
-    # These are common URLs for hospital pricing pages
-    transparency_urls = [
-        "/pricing",
-        "/prices",
-        "/chargemaster",
-        "/charges",
-        "/price-transparency",
-        "/standard-charges",
-        "/patient-financial",
-        "/cost-estimator",
-        "/billing",
-        "/financial-assistance"
-    ]
-    
-    # Normalize the starting URL
-    if not url.startswith(('http://', 'https://')):
-        url = 'https://' + url
-        
-    base_url = f"{urlparse(url).scheme}://{urlparse(url).netloc}"
-    
-    # First try directly accessing common pricing URLs
-    for path in transparency_urls:
-        try:
-            direct_url = urljoin(base_url, path)
-            logger.info(f"Directly checking potential pricing page: {direct_url}")
-            
-            response = requests.get(direct_url, 
-                                   headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}, 
-                                   timeout=10)
-            
-            if response.status_code == 200:
-                soup = BeautifulSoup(response.text, 'html.parser')
-                
-                # Remove script, style, and other non-content elements
-                for element in soup.find_all(['script', 'style', 'meta', 'noscript']):
-                    element.decompose()
-                
-                text = soup.get_text(separator=' ', strip=True).lower()
-                
-                # Check if this page contains pricing info and the CPT code
-                if any(keyword in text for keyword in price_page_keywords):
-                    logger.info(f"Found potential pricing page: {direct_url}")
-                    page_info = {
-                        'url': direct_url,
-                        'title': soup.title.string if soup.title else "No title",
-                        'text': text,
-                        'depth': 0
-                    }
-                    
-                    # Check for pricing on this specific page
-                    price_info = _extract_price_from_page(page_info, cpt_code, procedure_name)
-                    if price_info["found"]:
-                        return price_info
-        except Exception as e:
-            logger.debug(f"Could not check {path}: {e}")
-    
-    # If direct URL checks fail, proceed with crawling
-    logger.info(f"Starting website crawl: {url}")
-    
-    # Crawl the website focusing on pages likely to contain pricing
-    pages = crawl_hospital_website(url, max_depth=max_depth, max_pages=30)  # Increased from 20 to 30
-    relevant_pages = []
-    
-    # First pass: find pages likely to contain pricing information
-    for page in pages:
-        page_text = page['text'].lower()
-        page_title = page['title'].lower()
-        page_url = page['url'].lower()
-        
-        # Check if page has pricing-related terms
-        is_pricing_page = any(keyword in page_text or keyword in page_title or keyword in page_url 
-                              for keyword in price_page_keywords)
-        
-        # Check if page has the CPT code
-        has_cpt_code = cpt_code in page_text
-        
-        # Check if page has the procedure name (if provided)
-        has_procedure_name = True
-        if procedure_name:
-            has_procedure_name = procedure_name.lower() in page_text
-            
-        # Prioritize pages with pricing terms and either CPT code or procedure name
-        if is_pricing_page and (has_cpt_code or has_procedure_name):
-            relevant_pages.append(page)
-        # Also add pages that VERY likely contain pricing even without specific mention
-        elif ("price list" in page_text or "price transparency" in page_text or 
-              "chargemaster" in page_text or "standard charges" in page_text):
-            relevant_pages.append(page)
-    
-    logger.info(f"Found {len(relevant_pages)} pages that might contain pricing information")
-    
-    # Process relevant pages to extract pricing information
-    for page in relevant_pages:
-        price_info = _extract_price_from_page(page, cpt_code, procedure_name)
-        if price_info["found"]:
-            return price_info
-    
-    # If no specific pricing found in relevant pages, look for PDF links
-    pdf_links = _find_pdf_pricing_resources(pages, cpt_code, procedure_name)
-    if pdf_links:
-        return {
-            "found": False,
-            "price": None,
-            "currency": "USD",
-            "source_url": None,
-            "context": f"Pricing information might be available in these documents: {', '.join(pdf_links[:3])}",
-            "pdf_links": pdf_links
-        }
-            
-    return {"found": False, "price": None, "currency": "USD", "source_url": None, "context": None}
-
-
-def _extract_price_from_page(page: Dict[str, Any], cpt_code: str, procedure_name: str = None) -> Dict[str, Any]:
-    """
-    Extract price information from a page for a specific CPT code and procedure.
-    
-    Args:
-        page: Dictionary containing page information
-        cpt_code: The CPT code to search for
-        procedure_name: Optional procedure name to search for
-        
-    Returns:
-        Dictionary with price information
-    """
-    import re
-    
-    # Initialize result
-    result = {
-        "found": False,
-        "price": None,
-        "currency": "USD",
-        "source_url": page['url'],
-        "context": None
-    }
-    
-    text = page['text'].lower()
-    url = page['url'].lower()
-    
-    # Check if this page is likely to contain pricing information
-    pricing_indicators = [
-        'price', 'cost', 'charge', 'fee', 'rate', 'pricing', 'estimate',
-        'transparency', 'financial'
-    ]
-    
-    is_pricing_page = any(indicator in text or indicator in url for indicator in pricing_indicators)
-    if not is_pricing_page:
-        return result
-    
-    # Prepare search terms
-    cpt_code_pattern = re.compile(r'\b' + re.escape(cpt_code) + r'\b')
-    
-    # Create broader windows than before
-    cpt_positions = []
-    for match in cpt_code_pattern.finditer(text):
-        start_pos = max(0, match.start() - 500)  # Increased window size
-        end_pos = min(len(text), match.end() + 500)  # Increased window size
-        window = text[start_pos:end_pos]
-        cpt_positions.append((window, start_pos, end_pos))
-    
-    # If procedure name is provided, also look for windows around it
-    if procedure_name:
-        proc_name_pattern = re.compile(r'\b' + re.escape(procedure_name.lower()) + r'\b')
-        for match in proc_name_pattern.finditer(text):
-            start_pos = max(0, match.start() - 500)  # Increased window size
-            end_pos = min(len(text), match.end() + 500)  # Increased window size
-            window = text[start_pos:end_pos]
-            cpt_positions.append((window, start_pos, end_pos))
-    
-    # Enhanced price pattern detection
-    for window, _, _ in cpt_positions:
-        # Pattern for currency amounts (multiple patterns to catch different formats)
-        patterns = [
-            r'[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',  # Basic price pattern
-            r'cost[\s:]*[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',  # Cost: $XXX
-            r'price[\s:]*[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',  # Price: $XXX
-            r'charge[\s:]*[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',  # Charge: $XXX
-            r'fee[\s:]*[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',     # Fee: $XXX
-            r'rate[\s:]*[\$]?\s?([0-9,]+(?:\.[0-9]{2})?)',    # Rate: $XXX
-        ]
-        
-        for pattern in patterns:
-            price_matches = re.findall(pattern, window)
-            
-            # If we find prices, extract and filter them
-            if price_matches:
-                valid_prices = []
-                for price_str in price_matches:
-                    # Clean up the price and convert to float
-                    price_str = price_str.replace(',', '')
-                    try:
-                        price = float(price_str)
-                        # Filter out unreasonable prices (too low or too high)
-                        if 10 <= price <= 50000:  # Most medical procedures cost between $10 and $50,000
-                            valid_prices.append((price, window))
-                    except ValueError:
-                        # Not a valid price
-                        pass
-                
-                # If we found valid prices, return the most reasonable one
-                if valid_prices:
-                    # Sort by price (choose middle price to avoid extremes)
-                    valid_prices.sort(key=lambda x: x[0])
-                    if len(valid_prices) > 2:
-                        # Choose the middle price
-                        chosen_price, context = valid_prices[len(valid_prices)//2]
-                    else:
-                        # For 1-2 prices, choose the first (lowest)
-                        chosen_price, context = valid_prices[0]
-                        
-                    result["found"] = True
-                    result["price"] = chosen_price
-                    result["context"] = context
-                    return result
-    
-    return result
-
-
-def _find_pdf_pricing_resources(pages: List[Dict[str, Any]], cpt_code: str, procedure_name: str = None) -> List[str]:
-    """
-    Find URLs to PDF resources that might contain pricing information.
-    
-    Args:
-        pages: List of pages from website crawl
-        cpt_code: The CPT code being searched
-        procedure_name: Optional procedure name
-        
-    Returns:
-        List of URLs to potential pricing PDFs
-    """
-    pdf_urls = []
-    
-    # Keywords that suggest a PDF might contain pricing information
-    pricing_keywords = ["price", "charge", "cost", "rate", "fee", "financial", "transparency"]
-    
-    for page in pages:
-        try:
-            # Re-download the page to parse links specifically (faster than re-crawling)
-            response = requests.get(page['url'], headers={"User-Agent": "HospitalInfoCrawler/1.0"}, timeout=5)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            # Find all links
-            for link in soup.find_all('a', href=True):
-                href = link.get('href', '')
-                link_text = link.get_text().lower()
-                
-                # Check if it's a PDF link
-                is_pdf = href.endswith('.pdf') or 'pdf' in href.lower()
-                
-                # Check if link text suggests pricing information
-                has_price_keyword = any(keyword in link_text for keyword in pricing_keywords)
-                
-                if is_pdf and has_price_keyword:
-                    full_url = urljoin(page['url'], href)
-                    if full_url not in pdf_urls:
-                        pdf_urls.append(full_url)
-                        
-        except Exception as e:
-            print(f"Error checking for PDFs on {page['url']}: {e}")
-            continue
-    
-    return pdf_urls
-
-
-def find_best_procedure_price(city: str, state: str, cpt_code: str, procedure_name: str = None, max_depth: int = 3) -> Dict[str, Any]:
-    """
-    Finds the best (lowest) price for a medical procedure across hospitals in a given location.
-    
-    Args:
-        city: Name of the city
-        state: Name of the state or abbreviation
-        cpt_code: CPT code for the procedure
-        procedure_name: Optional name of the procedure (improves search accuracy)
-        max_depth: Maximum depth for website crawling
-        
-    Returns:
-        Dictionary containing pricing information
-    """
+def find_best_procedure_price(city, state, cpt_code, procedure_name=None, max_depth=3):
+    """Finds the best (lowest) price for a medical procedure across hospitals in a given location."""
     logger = logging.getLogger(__name__)
     
     hospitals = find_hospitals(city, state)
@@ -741,10 +134,8 @@ def find_best_procedure_price(city: str, state: str, cpt_code: str, procedure_na
         
         search_attempts.append(search_result)
     
-    # Calculate search metrics
     metrics = calculate_search_metrics(hospitals, all_prices)
     
-    # Create detailed report for hospitals with unsuccessful searches
     unsuccessful_hospitals = [
         {
             "name": attempt["hospital_name"], 
@@ -755,7 +146,6 @@ def find_best_procedure_price(city: str, state: str, cpt_code: str, procedure_na
         for attempt in search_attempts if not attempt["success"]
     ]
     
-    # Find the best price
     if all_prices:
         best_price_info = min(all_prices, key=lambda x: x["price"])
         
@@ -782,80 +172,260 @@ def find_best_procedure_price(city: str, state: str, cpt_code: str, procedure_na
             "unsuccessful_hospitals": unsuccessful_hospitals
         }
 
+def run_comprehensive_analysis():
+    """Run multiple types of analyses across different regions"""
+    cities_states = [
+        ("Los Angeles", "CA"), 
+        ("Chicago", "IL"),
+        ("Boston", "MA")
+    ]
+    
+    # 1. Analyze website structure
+    structure_results = {}
+    for city, state in cities_states:
+        structure_results[f"{city}, {state}"] = analyze_website_structure(city, state, "99213")
+    
+    # 2. Analyze compliance
+    compliance_results = analyze_transparency_compliance(cities_states)
+    
+    # 3. Analyze hospital distribution
+    distribution_results = {}
+    for city, state in cities_states:
+        distribution_results[f"{city}, {state}"] = analyze_geographic_distribution(city, state)
+    
+    # 4. Analyze metadata
+    metadata_results = analyze_hospital_metadata(cities_states)
+    
+    # 5. Analyze website content
+    content_results = {}
+    for city, state in cities_states:
+        content_results[f"{city}, {state}"] = analyze_website_content(city, state)
+    
+    # Save all results
+    with open("comprehensive_analysis.json", "w") as f:
+        json.dump({
+            "structure": structure_results,
+            "compliance": compliance_results,
+            "distribution": distribution_results,
+            "metadata": metadata_results,
+            "content": content_results
+        }, f, indent=2)
 
-def calculate_search_metrics(hospitals: List[Dict[str, Any]], all_prices: List[Dict[str, Any]]) -> Dict[str, Any]:
+def run_pricing_term_analysis():
     """
-    Calculate success metrics for the hospital price search.
+    Analyze hospital websites to discover pricing terms and navigation depth in a single crawl
+    """
+    import logging
+    import json
+    import re
+    from collections import Counter
     
-    Args:
-        hospitals: List of hospitals searched
-        all_prices: List of prices found
+    # Set up logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler("pricing_term_analysis.log"),
+            logging.StreamHandler()  # Also output to console
+        ]
+    )
+    logger = logging.getLogger(__name__)
+    
+    # Cities to analyze
+    cities_states = [
+        ("Los Angeles", "CA"), 
+        ("Chicago", "IL"),
+        ("Boston", "MA")
+    ]
+    
+    # Known pricing terms to start with
+    known_pricing_terms = [
+        "price", "pricing", "cost", "charge", "fee", "rate", 
+        "estimate", "financial", "bill", "payment", "transparency",
+        "chargemaster", "standard charges"
+    ]
+    
+    # Initialize results
+    results = {
+        "by_region": {},
+        "term_frequency": Counter(),
+        "new_terms_discovered": [],
+        "navigation_depth": {},
+        "overall_stats": {}
+    }
+    
+    # Words that often appear near pricing terms
+    context_words = set()
+    total_hospitals = 0
+    hospitals_with_websites = 0
+    hospitals_with_pricing_pages = 0
+    
+    logger.info("Starting pricing term analysis across hospital websites")
+    
+    for city, state in cities_states:
+        region_key = f"{city}, {state}"
+        logger.info(f"Analyzing hospitals in {region_key}")
         
-    Returns:
-        Dictionary with search metrics
-    """
-    # Count hospitals with websites
-    hospitals_with_websites = sum(1 for hospital in hospitals if hospital.get('website'))
+        # Find hospitals in this region
+        hospitals = find_hospitals(city, state)
+        total_hospitals += len(hospitals)
+        
+        region_results = {
+            "total_hospitals": len(hospitals),
+            "hospitals_with_websites": 0,
+            "hospitals_with_pricing": 0,
+            "avg_navigation_depth": None,
+            "term_frequency": Counter(),
+            "hospital_details": []
+        }
+        
+        navigation_depths = []
+        
+        # Process each hospital
+        for hospital in hospitals:
+            hospital_detail = {
+                "name": hospital["name"],
+                "has_website": False,
+                "pricing_page_depth": None,
+                "pricing_terms_found": [],
+                "potential_new_terms": []
+            }
+            
+            if not hospital.get('website'):
+                region_results["hospital_details"].append(hospital_detail)
+                continue
+                
+            hospitals_with_websites += 1
+            region_results["hospitals_with_websites"] += 1
+            hospital_detail["has_website"] = True
+            
+            logger.info(f"Crawling website for {hospital['name']}: {hospital['website']}")
+            
+            try:
+                # Single crawl of the website
+                pages = crawl_hospital_website(hospital['website'], max_depth=4, max_pages=30)
+                
+                # Track pricing terms and their context
+                found_pricing_page = False
+                min_pricing_depth = float('inf')
+                term_counts = Counter()
+                
+                # Analyze each page
+                for page in pages:
+                    text = page['text'].lower()
+                    url = page['url'].lower()
+                    depth = page['depth']
+                    
+                    # Check for known pricing terms
+                    for term in known_pricing_terms:
+                        if term in text or term in url:
+                            # Found a pricing term
+                            term_counts[term] += 1
+                            
+                            # If this is our first pricing term on this site, mark as pricing page
+                            if not found_pricing_page:
+                                found_pricing_page = True
+                                min_pricing_depth = depth
+                                hospitals_with_pricing_pages += 1
+                                region_results["hospitals_with_pricing"] += 1
+                            else:
+                                min_pricing_depth = min(min_pricing_depth, depth)
+                            
+                            # Find words surrounding the pricing terms for context
+                            for match in re.finditer(r'\b' + re.escape(term) + r'\b', text):
+                                start = max(0, match.start() - 30)
+                                end = min(len(text), match.end() + 30)
+                                context = text[start:end]
+                                
+                                # Find potential new pricing terms in the context
+                                context_words_list = [w for w in re.findall(r'\b[a-z]{4,15}\b', context) 
+                                                    if w not in known_pricing_terms and len(w) > 3]
+                                context_words.update(context_words_list)
+                                
+                                # Add potential new terms to this hospital's results
+                                hospital_detail["potential_new_terms"].extend(context_words_list)
+                
+                # Record the findings for this hospital
+                if found_pricing_page:
+                    hospital_detail["pricing_page_depth"] = min_pricing_depth
+                    navigation_depths.append(min_pricing_depth)
+                    region_results["term_frequency"].update(term_counts)
+                    results["term_frequency"].update(term_counts)
+                    
+                    # Record found terms
+                    hospital_detail["pricing_terms_found"] = [term for term, count in term_counts.items() if count > 0]
+            
+            except Exception as e:
+                logger.error(f"Error analyzing {hospital['name']}: {e}")
+            
+            # Add this hospital's details to the region results
+            region_results["hospital_details"].append(hospital_detail)
+        
+        # Calculate average navigation depth for this region
+        if navigation_depths:
+            region_results["avg_navigation_depth"] = sum(navigation_depths) / len(navigation_depths)
+            results["navigation_depth"][region_key] = {
+                "average": region_results["avg_navigation_depth"],
+                "min": min(navigation_depths),
+                "max": max(navigation_depths),
+                "distribution": {
+                    "0": sum(1 for d in navigation_depths if d == 0),
+                    "1": sum(1 for d in navigation_depths if d == 1),
+                    "2": sum(1 for d in navigation_depths if d == 2),
+                    "3": sum(1 for d in navigation_depths if d == 3),
+                    "4+": sum(1 for d in navigation_depths if d >= 4)
+                }
+            }
+        
+        # Save this region's results
+        results["by_region"][region_key] = region_results
     
-    # Count successful price discoveries
-    successful_hospitals = len(all_prices)
+    # Discover potential new pricing terms
+    # First, count all context words
+    context_word_counts = Counter(context_words)
     
-    # Calculate success rates
-    metrics = {
-        "total_hospitals": len(hospitals),
+    # Filter to find words that appear frequently near pricing terms but aren't in our known list
+    potential_new_terms = [word for word, count in context_word_counts.most_common(50) 
+                          if count > 3 and word not in known_pricing_terms]
+    
+    results["new_terms_discovered"] = potential_new_terms
+    
+    # Calculate overall statistics
+    results["overall_stats"] = {
+        "total_hospitals": total_hospitals,
         "hospitals_with_websites": hospitals_with_websites,
-        "hospitals_with_prices": successful_hospitals,
-        "overall_success_rate": round(successful_hospitals / len(hospitals) * 100, 1) if hospitals else 0,
-        "website_success_rate": round(successful_hospitals / hospitals_with_websites * 100, 1) if hospitals_with_websites else 0,
-        "price_ranges": {}
+        "hospitals_with_pricing_pages": hospitals_with_pricing_pages,
+        "pricing_information_rate": (hospitals_with_pricing_pages / total_hospitals * 100) if total_hospitals else 0,
+        "most_common_terms": results["term_frequency"].most_common(10),
     }
     
-    # Calculate price statistics if any prices were found
-    if all_prices:
-        prices = [p["price"] for p in all_prices]
-        metrics["price_min"] = min(prices)
-        metrics["price_max"] = max(prices)
-        metrics["price_avg"] = sum(prices) / len(prices)
-        metrics["price_median"] = sorted(prices)[len(prices) // 2]
-        metrics["price_range"] = metrics["price_max"] - metrics["price_min"]
-        metrics["price_variance"] = round(sum((p - metrics["price_avg"])**2 for p in prices) / len(prices), 2)
+    # Save the results
+    with open("pricing_term_analysis.json", "w") as f:
+        # Counter objects need to be converted to dict for JSON serialization
+        serializable_results = json.loads(json.dumps(results, default=lambda obj: obj if not isinstance(obj, Counter) else dict(obj)))
+        json.dump(serializable_results, f, indent=2)
     
-    return metrics
-
-
-def setup_output_directories(city: str, state: str, cpt_code: str, output_dir: str = "results") -> Dict[str, str]:
-    """
-    Create output directory structure based on search parameters and return file paths.
+    logger.info(f"Analysis complete. Found pricing information on {hospitals_with_pricing_pages} out of {total_hospitals} hospitals.")
+    logger.info(f"Most common pricing terms: {results['term_frequency'].most_common(5)}")
+    logger.info(f"Potential new pricing terms discovered: {', '.join(potential_new_terms[:10])}")
     
-    Args:
-        city: City name
-        state: State name
-        cpt_code: CPT code
-        output_dir: Base output directory
-        
-    Returns:
-        Dictionary with file paths for logs and results
-    """
-    # Create sanitized folder name from parameters
-    folder_name = f"{city.replace(' ', '_')}_{state.upper()}_{cpt_code}"
-    folder_path = os.path.join(output_dir, folder_name)
-    
-    # Create directory if it doesn't exist
-    os.makedirs(folder_path, exist_ok=True)
-    
-    # Define file paths
-    log_file = os.path.join(folder_path, "search.log")
-    results_file = os.path.join(folder_path, "results.txt")
-    
-    return {
-        "log_file": log_file,
-        "results_file": results_file,
-        "folder_path": folder_path
-    }
-
+    return results
 
 def main():
-    # Set up command line argument parser
+    import sys
+    
+    # Check if analysis flag is present before parsing arguments
+    if '--analysis' in sys.argv:
+        # Create a simplified parser just for the analysis command
+        parser = argparse.ArgumentParser(
+            description="Run pricing term analysis across hospital websites."
+        )
+        parser.add_argument("--analysis", action="store_true", help="Run pricing term analysis")
+        args = parser.parse_args()
+        run_pricing_term_analysis()
+        return
+    
+    # Regular parser for the search command with required arguments
     parser = argparse.ArgumentParser(
         description="Find the best price for a medical procedure across hospitals in a specified location."
     )
@@ -865,6 +435,7 @@ def main():
     parser.add_argument("--procedure-name", help="Name of the procedure (optional, improves search accuracy)")
     parser.add_argument("--output-dir", default="results", help="Base output directory")
     parser.add_argument("--max-depth", type=int, default=3, help="Maximum crawl depth")
+    parser.add_argument("--analysis", action="store_true", help="Run comprehensive analysis instead of price search")
     
     args = parser.parse_args()
     
@@ -937,7 +508,6 @@ def main():
             
     except Exception as e:
         logger.error(f"An error occurred: {e}")
-
 
 if __name__ == "__main__":
     main()
