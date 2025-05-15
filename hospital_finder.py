@@ -1,8 +1,11 @@
 import argparse
 import logging
 import os
-from datetime import datetime
+import re
 import json
+import sys
+from datetime import datetime
+from collections import Counter
 
 from hospital_crawler import find_hospitals, find_procedure_pricing, setup_logging, crawl_hospital_website
 from hospital_analysis import (
@@ -211,303 +214,230 @@ def run_comprehensive_analysis():
             "content": content_results
         }, f, indent=2)
 
-def run_pricing_term_analysis():
+def analyze_hospital_pricing_terms(cities_states=None):
     """
-    Analyze hospital websites to discover pricing terms and navigation depth in a single crawl
+    Analyze hospital websites for pricing terms and navigation depth in a single crawl
     """
-    import logging
-    import json
-    import re
-    from collections import Counter
-    
     # Set up logging
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
         handlers=[
             logging.FileHandler("pricing_term_analysis.log"),
-            logging.StreamHandler()  # Also output to console
+            logging.StreamHandler()
         ]
     )
     logger = logging.getLogger(__name__)
     
-    # Cities to analyze
-    cities_states = [
-        ("Los Angeles", "CA"), 
-        ("Chicago", "IL"),
-        ("Boston", "MA")
+    # Default cities to analyze if none provided
+    if not cities_states:
+        cities_states = [
+            ("Los Angeles", "CA"), 
+            ("Chicago", "IL"),
+            ("Boston", "MA"),
+            ("New York", "NY"), 
+            ("Houston", "TX"),
+            ("Phoenix", "AZ"), 
+            ("Philadelphia", "PA"),
+            ("San Antonio", "TX"), 
+            ("San Diego", "CA"),
+            ("Dallas", "TX"), 
+            ("San Jose", "CA")
+        ]
+    
+    # Known pricing terms to look for
+    pricing_terms = [
+        "price", "cost", "charge", "fee", "bill", 
+        "payment", "estimate", "transparency",
+        "chargemaster", "financial"
     ]
     
-    # Known pricing terms to start with
-    known_pricing_terms = [
-        "price", "pricing", "cost", "charge", "fee", "rate", 
-        "estimate", "financial", "bill", "payment", "transparency",
-        "chargemaster", "standard charges"
-    ]
-    
-    # Initialize results
+    # Track overall results
     results = {
-        "by_region": {},
+        "regions": {},
         "term_frequency": Counter(),
-        "new_terms_discovered": [],
+        "new_terms": [],
         "navigation_depth": {},
         "overall_stats": {}
     }
     
-    # Words that often appear near pricing terms
-    context_words = set()
+    # Overall counters
     total_hospitals = 0
     hospitals_with_websites = 0
-    hospitals_with_pricing_pages = 0
+    hospitals_with_pricing = 0
+    context_words = set()
     
-    logger.info("Starting pricing term analysis across hospital websites")
+    logger.info(f"Starting analysis for {len(cities_states)} regions")
     
+    # Analyze each region
     for city, state in cities_states:
-        region_key = f"{city}, {state}"
-        logger.info(f"Analyzing hospitals in {region_key}")
+        region_name = f"{city}, {state}"
+        logger.info(f"Analyzing hospitals in {region_name}")
         
-        # Find hospitals in this region
+        # Get hospitals in this region
         hospitals = find_hospitals(city, state)
         total_hospitals += len(hospitals)
         
-        region_results = {
-            "total_hospitals": len(hospitals),
-            "hospitals_with_websites": 0,
-            "hospitals_with_pricing": 0,
-            "avg_navigation_depth": None,
-            "term_frequency": Counter(),
-            "hospital_details": []
+        # Initialize region results
+        region_data = {
+            "total": len(hospitals),
+            "with_website": 0,
+            "with_pricing": 0,
+            "terms": Counter(),
+            "hospitals": []
         }
         
-        navigation_depths = []
+        depths = []
         
         # Process each hospital
         for hospital in hospitals:
-            hospital_detail = {
+            # Basic hospital info
+            hospital_data = {
                 "name": hospital["name"],
                 "has_website": False,
-                "pricing_page_depth": None,
-                "pricing_terms_found": [],
-                "potential_new_terms": []
+                "pricing_depth": None,
+                "terms_found": []
             }
             
+            # Skip if no website
             if not hospital.get('website'):
-                region_results["hospital_details"].append(hospital_detail)
+                region_data["hospitals"].append(hospital_data)
                 continue
-                
-            hospitals_with_websites += 1
-            region_results["hospitals_with_websites"] += 1
-            hospital_detail["has_website"] = True
             
-            logger.info(f"Crawling website for {hospital['name']}: {hospital['website']}")
+            # Count hospitals with websites
+            hospitals_with_websites += 1
+            region_data["with_website"] += 1
+            hospital_data["has_website"] = True
             
             try:
-                # Single crawl of the website
-                pages = crawl_hospital_website(hospital['website'], max_depth=4, max_pages=30)
+                # Crawl the website (single pass)
+                logger.info(f"Crawling {hospital['name']}: {hospital['website']}")
+                pages = crawl_hospital_website(hospital['website'], max_depth=3, max_pages=25)
                 
-                # Track pricing terms and their context
-                found_pricing_page = False
-                min_pricing_depth = float('inf')
-                term_counts = Counter()
+                # Track pricing info
+                found_pricing = False
+                min_depth = float('inf')
+                found_terms = Counter()
                 
-                # Analyze each page
+                # Check each page
                 for page in pages:
                     text = page['text'].lower()
                     url = page['url'].lower()
                     depth = page['depth']
                     
-                    # Check for known pricing terms
-                    for term in known_pricing_terms:
+                    # Look for pricing terms
+                    for term in pricing_terms:
                         if term in text or term in url:
-                            # Found a pricing term
-                            term_counts[term] += 1
+                            # Count this term
+                            found_terms[term] += 1
                             
-                            # If this is our first pricing term on this site, mark as pricing page
-                            if not found_pricing_page:
-                                found_pricing_page = True
-                                min_pricing_depth = depth
-                                hospitals_with_pricing_pages += 1
-                                region_results["hospitals_with_pricing"] += 1
+                            # Mark as pricing page if first occurrence
+                            if not found_pricing:
+                                found_pricing = True
+                                min_depth = depth
+                                hospitals_with_pricing += 1
+                                region_data["with_pricing"] += 1
                             else:
-                                min_pricing_depth = min(min_pricing_depth, depth)
+                                min_depth = min(min_depth, depth)
                             
-                            # Find words surrounding the pricing terms for context
+                            # Find context around term for new term discovery
                             for match in re.finditer(r'\b' + re.escape(term) + r'\b', text):
                                 start = max(0, match.start() - 30)
                                 end = min(len(text), match.end() + 30)
                                 context = text[start:end]
                                 
-                                # Find potential new pricing terms in the context
-                                context_words_list = [w for w in re.findall(r'\b[a-z]{4,15}\b', context) 
-                                                    if w not in known_pricing_terms and len(w) > 3]
-                                context_words.update(context_words_list)
-                                
-                                # Add potential new terms to this hospital's results
-                                hospital_detail["potential_new_terms"].extend(context_words_list)
+                                # Extract potential new terms
+                                new_words = [w for w in re.findall(r'\b[a-z]{4,15}\b', context) 
+                                           if w not in pricing_terms and len(w) > 3]
+                                context_words.update(new_words)
                 
-                # Record the findings for this hospital
-                if found_pricing_page:
-                    hospital_detail["pricing_page_depth"] = min_pricing_depth
-                    navigation_depths.append(min_pricing_depth)
-                    region_results["term_frequency"].update(term_counts)
-                    results["term_frequency"].update(term_counts)
+                # Record hospital results
+                if found_pricing:
+                    hospital_data["pricing_depth"] = min_depth
+                    depths.append(min_depth)
+                    hospital_data["terms_found"] = list(found_terms.keys())
                     
-                    # Record found terms
-                    hospital_detail["pricing_terms_found"] = [term for term, count in term_counts.items() if count > 0]
+                    # Update term counts
+                    region_data["terms"].update(found_terms)
+                    results["term_frequency"].update(found_terms)
             
             except Exception as e:
                 logger.error(f"Error analyzing {hospital['name']}: {e}")
             
-            # Add this hospital's details to the region results
-            region_results["hospital_details"].append(hospital_detail)
+            # Add this hospital's data
+            region_data["hospitals"].append(hospital_data)
         
-        # Calculate average navigation depth for this region
-        if navigation_depths:
-            region_results["avg_navigation_depth"] = sum(navigation_depths) / len(navigation_depths)
-            results["navigation_depth"][region_key] = {
-                "average": region_results["avg_navigation_depth"],
-                "min": min(navigation_depths),
-                "max": max(navigation_depths),
-                "distribution": {
-                    "0": sum(1 for d in navigation_depths if d == 0),
-                    "1": sum(1 for d in navigation_depths if d == 1),
-                    "2": sum(1 for d in navigation_depths if d == 2),
-                    "3": sum(1 for d in navigation_depths if d == 3),
-                    "4+": sum(1 for d in navigation_depths if d >= 4)
-                }
+        # Calculate depth statistics for this region
+        if depths:
+            results["navigation_depth"][region_name] = {
+                "avg": sum(depths) / len(depths),
+                "min": min(depths),
+                "max": max(depths),
+                "distribution": {str(i): depths.count(i) for i in range(5)}
             }
+            results["navigation_depth"][region_name]["distribution"]["5+"] = sum(1 for d in depths if d >= 5)
         
-        # Save this region's results
-        results["by_region"][region_key] = region_results
+        # Save region results
+        results["regions"][region_name] = region_data
     
-    # Discover potential new pricing terms
-    # First, count all context words
-    context_word_counts = Counter(context_words)
-    
-    # Filter to find words that appear frequently near pricing terms but aren't in our known list
-    potential_new_terms = [word for word, count in context_word_counts.most_common(50) 
-                          if count > 3 and word not in known_pricing_terms]
-    
-    results["new_terms_discovered"] = potential_new_terms
+    # Find potential new pricing terms
+    word_counts = Counter(context_words)
+    results["new_terms"] = [word for word, count in word_counts.most_common(30) if count > 2]
     
     # Calculate overall statistics
     results["overall_stats"] = {
         "total_hospitals": total_hospitals,
         "hospitals_with_websites": hospitals_with_websites,
-        "hospitals_with_pricing_pages": hospitals_with_pricing_pages,
-        "pricing_information_rate": (hospitals_with_pricing_pages / total_hospitals * 100) if total_hospitals else 0,
-        "most_common_terms": results["term_frequency"].most_common(10),
+        "hospitals_with_pricing": hospitals_with_pricing,
+        "pricing_rate": round((hospitals_with_pricing / total_hospitals * 100), 1) if total_hospitals else 0,
+        "top_terms": results["term_frequency"].most_common(10)
     }
     
-    # Save the results
+    # Save results to file
     with open("pricing_term_analysis.json", "w") as f:
-        # Counter objects need to be converted to dict for JSON serialization
-        serializable_results = json.loads(json.dumps(results, default=lambda obj: obj if not isinstance(obj, Counter) else dict(obj)))
-        json.dump(serializable_results, f, indent=2)
+        json.dump(results, f, indent=2, default=lambda obj: dict(obj) if isinstance(obj, Counter) else obj)
     
-    logger.info(f"Analysis complete. Found pricing information on {hospitals_with_pricing_pages} out of {total_hospitals} hospitals.")
-    logger.info(f"Most common pricing terms: {results['term_frequency'].most_common(5)}")
-    logger.info(f"Potential new pricing terms discovered: {', '.join(potential_new_terms[:10])}")
-    
+    logger.info(f"Analysis complete. Found pricing on {hospitals_with_pricing}/{total_hospitals} hospitals")
     return results
 
 def main():
-    import sys
-    
-    # Check if analysis flag is present before parsing arguments
-    if '--analysis' in sys.argv:
-        # Create a simplified parser just for the analysis command
-        parser = argparse.ArgumentParser(
-            description="Run pricing term analysis across hospital websites."
-        )
-        parser.add_argument("--analysis", action="store_true", help="Run pricing term analysis")
-        args = parser.parse_args()
-        run_pricing_term_analysis()
-        return
-    
-    # Regular parser for the search command with required arguments
     parser = argparse.ArgumentParser(
-        description="Find the best price for a medical procedure across hospitals in a specified location."
+        description="Analyze hospital websites for pricing terms and navigation depth."
     )
-    parser.add_argument("city", help="City to search in")
-    parser.add_argument("state", help="State to search in (full name or abbreviation)")
-    parser.add_argument("cpt_code", help="CPT code for the medical procedure")
-    parser.add_argument("--procedure-name", help="Name of the procedure (optional, improves search accuracy)")
-    parser.add_argument("--output-dir", default="results", help="Base output directory")
-    parser.add_argument("--max-depth", type=int, default=3, help="Maximum crawl depth")
-    parser.add_argument("--analysis", action="store_true", help="Run comprehensive analysis instead of price search")
-    
+    parser.add_argument("--cities", nargs='+', help="Cities to analyze (format: 'City,ST')")
     args = parser.parse_args()
     
-    # Setup output directories and file paths
-    output_paths = setup_output_directories(args.city, args.state, args.cpt_code, args.output_dir)
+    # Parse custom cities if provided
+    cities_states = None
+    if args.cities:
+        cities_states = []
+        for city_state in args.cities:
+            if ',' in city_state:
+                city, state = city_state.split(',', 1)
+                cities_states.append((city.strip(), state.strip()))
     
-    # Setup logging with the parameter-specific log file
-    logger = setup_logging(output_paths["log_file"])
+    # Run analysis
+    results = analyze_hospital_pricing_terms(cities_states)
     
-    try:
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        logger.info(f"Starting search at {timestamp}")
-        logger.info(f"Parameters: City={args.city}, State={args.state}, CPT Code={args.cpt_code}, "
-                   f"Procedure Name={args.procedure_name or 'not specified'}")
-        
-        # Find the best price
-        best_price_info = find_best_procedure_price(
-            args.city, 
-            args.state, 
-            args.cpt_code, 
-            args.procedure_name,
-            max_depth=args.max_depth
-        )
-        
-        # Save search metadata to a summary file
-        with open(os.path.join(output_paths["folder_path"], "search_info.txt"), "w") as f:
-            f.write(f"Search performed: {timestamp}\n")
-            f.write(f"City: {args.city}\n")
-            f.write(f"State: {args.state}\n")
-            f.write(f"CPT Code: {args.cpt_code}\n")
-            f.write(f"Procedure Name: {args.procedure_name or 'Not specified'}\n")
-            f.write(f"Crawl Depth: {args.max_depth}\n")
-            
-            # Add metrics to the search info file
-            if "metrics" in best_price_info:
-                metrics = best_price_info["metrics"]
-                f.write("\nSearch Metrics:\n")
-                f.write(f"  Total hospitals: {metrics['total_hospitals']}\n")
-                f.write(f"  Success rate: {metrics['overall_success_rate']}%\n")
-                
-                if "price_min" in metrics and "price_max" in metrics:
-                    f.write(f"  Price range: ${metrics['price_min']:.2f} - ${metrics['price_max']:.2f}\n")
-        
-        # Save results to file
-        save_results_to_file(best_price_info, output_paths["results_file"])
-        
-        # Save detailed report about unsuccessful hospitals
-        with open(os.path.join(output_paths["folder_path"], "unsuccessful_hospitals.txt"), "w") as f:
-            f.write("=== HOSPITALS WHERE PRICE SEARCH FAILED ===\n\n")
-            if "unsuccessful_hospitals" in best_price_info and best_price_info["unsuccessful_hospitals"]:
-                for i, hospital in enumerate(best_price_info["unsuccessful_hospitals"], 1):
-                    f.write(f"{i}. {hospital['name']}\n")
-                    f.write(f"   Has website: {'Yes' if hospital['has_website'] else 'No'}\n")
-                    if hospital['has_website']:
-                        f.write(f"   Has PDF resources: {'Yes' if hospital['has_pdfs'] else 'No'}\n")
-                    if hospital.get('error'):
-                        f.write(f"   Error: {hospital['error']}\n")
-                    f.write("\n")
-            else:
-                f.write("No unsuccessful searches - all hospitals provided pricing information.\n")
-        
-        if best_price_info["best_price"] is not None:
-            logger.info(f"Best price found: ${best_price_info['best_price']:.2f} at {best_price_info['hospital_name']}")
-            logger.info(f"Success rate: {best_price_info['metrics']['overall_success_rate']}%")
-            logger.info(f"Results saved to {output_paths['results_file']}")
-        else:
-            logger.info("No pricing information found for this procedure.")
-            logger.info(f"Overall success rate: 0%")
-            logger.info(f"Empty results saved to {output_paths['results_file']}")
-            
-    except Exception as e:
-        logger.error(f"An error occurred: {e}")
+    # Display summary
+    print("\n=== HOSPITAL PRICING ANALYSIS ===")
+    print(f"Total hospitals: {results['overall_stats']['total_hospitals']}")
+    print(f"Hospitals with pricing: {results['overall_stats']['hospitals_with_pricing']}")
+    print(f"Pricing information rate: {results['overall_stats']['pricing_rate']}%")
+    
+    print("\nTop pricing terms:")
+    for term, count in results["overall_stats"]["top_terms"]:
+        print(f"  - {term}: {count}")
+    
+    print("\nPotential new pricing terms:")
+    for term in results["new_terms"][:10]:
+        print(f"  - {term}")
+    
+    print("\nNavigation depth by region:")
+    for region, depth in results["navigation_depth"].items():
+        print(f"  {region}: {depth['avg']:.1f} clicks (range: {depth['min']}-{depth['max']})")
+    
+    print("\nDetailed results saved to pricing_term_analysis.json")
 
 if __name__ == "__main__":
     main()

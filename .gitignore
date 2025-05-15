@@ -11,10 +11,6 @@ htmlcov/
 .tox/
 .nox/
 
-# Logs
-results/
-*.log
-
 # Virtual environment
 venv/
 env/

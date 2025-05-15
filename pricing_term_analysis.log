@@ -1,0 +1,1079 @@
+2025-05-15 02:15:29,851 - INFO - Starting analysis for 11 regions
+2025-05-15 02:15:29,851 - INFO - Analyzing hospitals in Los Angeles, CA
+2025-05-15 02:15:33,496 - INFO - Crawling Tarzana Treatment Centers Long Beach: https://www.tarzanatc.org/location-detail/long-beach/2101-magnolia-avenue/
+2025-05-15 02:15:36,406 - INFO - Crawled 1/25 pages: https://www.tarzanatc.org/location-detail/long-beach/2101-magnolia-avenue/
+2025-05-15 02:15:38,041 - INFO - Crawl completed. Visited 2 URLs, extracted content from 1 pages
+2025-05-15 02:15:38,043 - INFO - Crawling Los Angeles Community Hospital: https://www.lach-la.com/
+2025-05-15 02:15:40,038 - INFO - Crawled 1/25 pages: https://www.lach-la.com/
+2025-05-15 02:15:41,749 - INFO - Crawled 2/25 pages: https://www.lach-la.com/about-us/
+2025-05-15 02:15:42,656 - INFO - Crawled 3/25 pages: https://www.lach-la.com/programs-and-services/
+2025-05-15 02:15:44,773 - INFO - Crawled 4/25 pages: https://www.lach-la.com/link/dea8033d1ba74d3da7db4faf7acbed85.aspx
+2025-05-15 02:15:46,882 - INFO - Crawled 5/25 pages: https://www.lach-la.com/link/96ef0292b3ee4c2d8e39c278d21a8ada.aspx
+2025-05-15 02:15:48,820 - INFO - Crawled 6/25 pages: https://www.lach-la.com/link/f1cbb780d6c6420fbaefaaf7be11f490.aspx
+2025-05-15 02:15:50,787 - INFO - Crawled 7/25 pages: https://www.lach-la.com/link/a80013abde9842618bc643a52d36a1a3.aspx
+2025-05-15 02:15:51,766 - INFO - Crawled 8/25 pages: https://www.lach-la.com/link/308c8b0f50b34ead8de07536f6eb52e4.aspx
+2025-05-15 02:15:53,403 - INFO - Crawled 9/25 pages: https://www.lach-la.com/news/2022/los-angeles-community-hospital-receives-4-stars-in-cmss-overall-hospital-quality-star-ratings/
+2025-05-15 02:15:54,665 - INFO - Crawled 10/25 pages: https://www.lach-la.com/find-a-doctor/
+2025-05-15 02:15:56,575 - INFO - Crawled 11/25 pages: https://www.lach-la.com/news/
+2025-05-15 02:15:56,576 - INFO - Crawl completed. Visited 11 URLs, extracted content from 11 pages
+2025-05-15 02:15:56,579 - INFO - Crawling Jonathan Jaques Children's Cancer Center: https://www.millerchildrenshospitallb.org/cancer
+2025-05-15 02:15:57,742 - WARNING - Error processing https://www.millerchildrenshospitallb.org/cancer: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/cancer
+2025-05-15 02:15:57,743 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:15:57,743 - INFO - Crawling Miller Children's & Women's Hospital Long Beach: https://www.millerchildrenshospitallb.org/
+2025-05-15 02:16:03,045 - INFO - Crawled 1/25 pages: https://www.millerchildrenshospitallb.org/
+2025-05-15 02:16:07,008 - WARNING - Error processing https://www.millerchildrenshospitallb.org/specialties: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/specialties
+2025-05-15 02:16:08,875 - WARNING - Error processing https://www.millerchildrenshospitallb.org/schedule-appointment: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/schedule-appointment
+2025-05-15 02:16:10,106 - WARNING - Error processing https://www.millerchildrenshospitallb.org/providers?f[0]=audience%3A1112: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/providers?f%5B0%5D=audience%3A1112
+2025-05-15 02:16:14,000 - WARNING - Error processing https://www.millerchildrenshospitallb.org/locations: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/locations
+2025-05-15 02:16:17,751 - WARNING - Error processing https://www.millerchildrenshospitallb.org/specialties/emergency-department-ed: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/specialties/emergency-department-ed
+2025-05-15 02:16:21,885 - WARNING - Error processing https://www.millerchildrenshospitallb.org/families-and-visitors: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/families-and-visitors
+2025-05-15 02:16:23,403 - WARNING - Error processing https://www.millerchildrenshospitallb.org/outpatient-specialty-centers: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/outpatient-specialty-centers
+2025-05-15 02:16:25,461 - WARNING - Error processing https://www.millerchildrenshospitallb.org/specialties/cherese-mari-laulhere-birthcare-center: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/specialties/cherese-mari-laulhere-birthcare-center
+2025-05-15 02:16:29,240 - WARNING - Error processing https://www.millerchildrenshospitallb.org/about-us: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/about-us
+2025-05-15 02:16:34,127 - WARNING - Error processing https://www.millerchildrenshospitallb.org/blog: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/blog
+2025-05-15 02:16:38,281 - WARNING - Error processing https://www.millerchildrenshospitallb.org/events: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/events
+2025-05-15 02:16:43,409 - WARNING - Error processing https://www.millerchildrenshospitallb.org/give/get-involved: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/give/get-involved
+2025-05-15 02:16:44,526 - WARNING - Error processing https://www.millerchildrenshospitallb.org/give: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/give
+2025-05-15 02:16:50,725 - WARNING - Error processing https://www.millerchildrenshospitallb.org/healthcare-professionals/continuing-education: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/healthcare-professionals/continuing-education
+2025-05-15 02:16:52,433 - WARNING - Error processing https://www.millerchildrenshospitallb.org/healthcare-professionals: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/healthcare-professionals
+2025-05-15 02:16:53,800 - WARNING - Error processing https://www.millerchildrenshospitallb.org/press-room: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/press-room
+2025-05-15 02:16:54,826 - WARNING - Error processing https://www.millerchildrenshospitallb.org/healthcare-professionals/refer-patient: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/healthcare-professionals/refer-patient
+2025-05-15 02:16:58,912 - WARNING - Error processing https://www.millerchildrenshospitallb.org/healthcare-professionals/graduate-medical-education: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/healthcare-professionals/graduate-medical-education
+2025-05-15 02:17:03,671 - WARNING - Error processing https://www.millerchildrenshospitallb.org/healthcare-professionals/access-transport-center-referring-physicianshospitals: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/healthcare-professionals/access-transport-center-referring-physicianshospitals
+2025-05-15 02:17:08,443 - WARNING - Error processing https://www.millerchildrenshospitallb.org/providers?f%5B0%5D=audience%3A1112: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/providers?f%5B0%5D=audience%3A1112
+2025-05-15 02:17:13,339 - WARNING - Error processing https://www.millerchildrenshospitallb.org/providers: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/providers
+2025-05-15 02:17:17,022 - WARNING - Error processing https://www.millerchildrenshospitallb.org/locations/cherese-mari-laulhere-childrens-village: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/locations/cherese-mari-laulhere-childrens-village
+2025-05-15 02:17:17,892 - WARNING - Error processing https://www.millerchildrenshospitallb.org/specialties/neonatal-intensive-care-unit-nicu: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/specialties/neonatal-intensive-care-unit-nicu
+2025-05-15 02:17:22,680 - WARNING - Error processing https://www.millerchildrenshospitallb.org/specialties/cherese-mari-laulhere-pediatric-intensive-care-unit: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/specialties/cherese-mari-laulhere-pediatric-intensive-care-unit
+2025-05-15 02:17:23,578 - WARNING - Error processing https://www.millerchildrenshospitallb.org/specialties/childrens-heart-institute: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/specialties/childrens-heart-institute
+2025-05-15 02:17:27,991 - WARNING - Error processing https://www.millerchildrenshospitallb.org/specialties/jonathan-jaques-childrens-cancer-institute: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/specialties/jonathan-jaques-childrens-cancer-institute
+2025-05-15 02:17:32,702 - WARNING - Error processing https://www.millerchildrenshospitallb.org/specialties/childrens-pulmonary-institute: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/specialties/childrens-pulmonary-institute
+2025-05-15 02:17:36,833 - WARNING - Error processing https://www.millerchildrenshospitallb.org/specialties/gastroenterology-nutrition-center: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/specialties/gastroenterology-nutrition-center
+2025-05-15 02:17:37,996 - WARNING - Error processing https://www.millerchildrenshospitallb.org/specialties/orthopedic-center: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/specialties/orthopedic-center
+2025-05-15 02:17:40,254 - WARNING - Error processing https://www.millerchildrenshospitallb.org/specialties/surgical-center: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/specialties/surgical-center
+2025-05-15 02:17:44,224 - WARNING - Error processing https://www.millerchildrenshospitallb.org/blog/why-your-child-might-need-occupational-therapy-and-why-thats-good-thing: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/blog/why-your-child-might-need-occupational-therapy-and-why-thats-good-thing
+2025-05-15 02:17:45,848 - WARNING - Error processing https://www.millerchildrenshospitallb.org/blog/star-wars-characters-bring-galactic-joy-miller-childrens-womens-hospital-patients-may-fourth: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/blog/star-wars-characters-bring-galactic-joy-miller-childrens-womens-hospital-patients-may-fourth
+2025-05-15 02:17:50,632 - WARNING - Error processing https://www.millerchildrenshospitallb.org/blog/navigating-mental-health-digital-world: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/blog/navigating-mental-health-digital-world
+2025-05-15 02:17:51,902 - WARNING - Error processing https://www.millerchildrenshospitallb.org/blog/seas-night-prom-creates-unforgettable-experience-teens-receiving-cancer-treatment-miller: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/blog/seas-night-prom-creates-unforgettable-experience-teens-receiving-cancer-treatment-miller
+2025-05-15 02:17:55,674 - WARNING - Error processing https://www.millerchildrenshospitallb.org/events/miller-childrens-5th-annual-youth-mental-health-forum: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/events/miller-childrens-5th-annual-youth-mental-health-forum
+2025-05-15 02:18:00,645 - WARNING - Error processing https://www.millerchildrenshospitallb.org/events/car-seat-safety-class-english-spanish-sundays-1-pm: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/events/car-seat-safety-class-english-spanish-sundays-1-pm
+2025-05-15 02:18:02,727 - WARNING - Error processing https://www.millerchildrenshospitallb.org/events/car-seat-safety-class-english-spanish-wednesdays-11-am: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/events/car-seat-safety-class-english-spanish-wednesdays-11-am
+2025-05-15 02:18:07,161 - WARNING - Error processing https://www.millerchildrenshospitallb.org/events/sunrise-day-camp: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/events/sunrise-day-camp
+2025-05-15 02:18:11,234 - WARNING - Error processing https://www.millerchildrenshospitallb.org/events/nurturing-new-you: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/events/nurturing-new-you
+2025-05-15 02:18:15,422 - WARNING - Error processing https://www.millerchildrenshospitallb.org/events/grupo-de-apoyo-para-padres-del-jonathan-jaques-childrens-cancer-institute: 404 Client Error: Not Found for url: https://www.millerchildrenshospitallb.org/events/grupo-de-apoyo-para-padres-del-jonathan-jaques-childrens-cancer-institute
+2025-05-15 02:18:15,424 - INFO - Crawl completed. Visited 43 URLs, extracted content from 1 pages
+2025-05-15 02:18:15,425 - INFO - Crawling Mattel Children's Hospital: https://www.uclahealth.org/mattel/
+2025-05-15 02:18:18,179 - INFO - Crawled 1/25 pages: https://www.uclahealth.org/mattel/
+2025-05-15 02:18:20,085 - INFO - Crawled 2/25 pages: https://www.uclahealth.org/
+2025-05-15 02:18:21,017 - INFO - Crawled 3/25 pages: https://www.uclahealth.org/locations
+2025-05-15 02:18:24,368 - INFO - Crawled 4/25 pages: https://www.uclahealth.org/hospitals/mattel/about-our-hospital
+2025-05-15 02:18:26,501 - INFO - Crawled 5/25 pages: https://www.uclahealth.org/hospitals/mattel/clinical-services
+2025-05-15 02:18:29,750 - INFO - Crawled 6/25 pages: https://www.uclahealth.org/hospitals/mattel/patient-family-guide
+2025-05-15 02:18:32,626 - INFO - Crawled 7/25 pages: https://www.uclahealth.org/hospitals/mattel/guide-preparing-surgery
+2025-05-15 02:18:34,758 - INFO - Crawled 8/25 pages: https://www.uclahealth.org/hospitals/mattel/get-involved
+2025-05-15 02:18:37,810 - INFO - Crawled 9/25 pages: https://www.uclahealth.org/hospitals/mattel/pediatric-inclusive-excellence
+2025-05-15 02:18:38,445 - INFO - Crawled 10/25 pages: https://www.uclahealth.org/hospitals/mattel
+2025-05-15 02:18:41,410 - INFO - Crawled 11/25 pages: https://www.uclahealth.org/hospitals/mattel/about-our-hospital/family-centered-care
+2025-05-15 02:18:44,012 - INFO - Crawled 12/25 pages: https://www.uclahealth.org/hospitals/mattel/about-our-hospital/maps-directions
+2025-05-15 02:18:47,987 - INFO - Crawled 13/25 pages: https://www.uclahealth.org/hospitals/mattel/about-our-hospital/photo-gallery
+2025-05-15 02:18:50,659 - INFO - Crawled 14/25 pages: https://www.uclahealth.org/hospitals/mattel/about-our-hospital/video-gallery
+2025-05-15 02:18:52,511 - INFO - Crawled 15/25 pages: https://www.uclahealth.org/hospitals/mattel/patient-family-guide/admissions-information
+2025-05-15 02:18:54,757 - INFO - Crawled 16/25 pages: https://www.uclahealth.org/hospitals/mattel/preparing-surgery/preoperative-preparation
+2025-05-15 02:18:58,198 - INFO - Crawled 17/25 pages: https://www.uclahealth.org/hospitals/mattel/preparing-surgery/preparing-your-childs-surgery
+2025-05-15 02:19:00,178 - INFO - Crawled 18/25 pages: https://www.uclahealth.org/hospitals/mattel/preparing-surgery/day-before-surgery
+2025-05-15 02:19:03,554 - INFO - Crawled 19/25 pages: https://www.uclahealth.org/hospitals/mattel/preparing-surgery/checking-surgery
+2025-05-15 02:19:05,520 - INFO - Crawled 20/25 pages: https://www.uclahealth.org/hospitals/mattel/preparing-surgery/after-your-childs-surgery
+2025-05-15 02:19:07,894 - INFO - Crawled 21/25 pages: https://www.uclahealth.org/hospitals/mattel/get-involved/give-back
+2025-05-15 02:19:10,212 - INFO - Crawled 22/25 pages: https://www.uclahealth.org/hospitals/mattel/get-involved/mattel-party-pier
+2025-05-15 02:19:11,134 - INFO - Crawled 23/25 pages: https://www.uclahealth.org/hospitals/mattel/get-involved/kid-captain
+2025-05-15 02:19:13,539 - INFO - Crawled 24/25 pages: https://www.uclahealth.org/hospitals/mattel/get-involved/todays-and-tomorrows-children-fund-ttcf
+2025-05-15 02:19:17,216 - INFO - Crawled 25/25 pages: https://www.uclahealth.org/cancer/cancer-services/pediatric-hematology-oncology
+2025-05-15 02:19:17,217 - INFO - Crawl completed. Visited 210 URLs, extracted content from 25 pages
+2025-05-15 02:19:17,219 - INFO - Crawling Resnick Neuropsychiatric Hospital: https://www.uclahealth.org/homepage_neuro.cfm
+2025-05-15 02:19:20,072 - WARNING - Error processing https://www.uclahealth.org/homepage_neuro.cfm: 404 Client Error: Not Found for url: https://www.uclahealth.org/homepage_neuro.cfm
+2025-05-15 02:19:20,073 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:19:20,073 - INFO - Crawling Neurological Rehabilitation & Research Unit: http://rehab.ucla.edu/body.cfm?id=29
+2025-05-15 02:19:37,226 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x101fb77c0>, 'Connection to rehab.ucla.edu timed out. (connect timeout=15)')': /body.cfm?id=29
+2025-05-15 02:19:53,317 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x101fb6e90>, 'Connection to rehab.ucla.edu timed out. (connect timeout=15)')': /body.cfm?id=29
+2025-05-15 02:20:10,333 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x101fb7700>, 'Connection to rehab.ucla.edu timed out. (connect timeout=15)')': /body.cfm?id=29
+2025-05-15 02:20:25,341 - WARNING - Error processing http://rehab.ucla.edu/body.cfm?id=29: HTTPConnectionPool(host='rehab.ucla.edu', port=80): Max retries exceeded with url: /body.cfm?id=29 (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x101fb7b20>, 'Connection to rehab.ucla.edu timed out. (connect timeout=15)'))
+2025-05-15 02:20:25,342 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:20:25,342 - INFO - Crawling Kedren Community Health Center: https://kedren.org/
+2025-05-15 02:20:27,510 - INFO - Crawled 1/25 pages: https://kedren.org/
+2025-05-15 02:20:28,953 - INFO - Crawled 2/25 pages: https://kedren.org/services/behavioral-health/
+2025-05-15 02:20:31,389 - INFO - Crawled 3/25 pages: https://kedren.org/services/primary-care/
+2025-05-15 02:20:32,749 - INFO - Crawled 4/25 pages: https://kedren.org/transformlives/
+2025-05-15 02:20:35,176 - INFO - Crawled 5/25 pages: https://kedren.org/services/community-resources/
+2025-05-15 02:20:36,140 - INFO - Crawled 6/25 pages: https://kedren.org/volunteer-registration/
+2025-05-15 02:20:37,953 - INFO - Crawled 7/25 pages: https://kedren.org/kedren-news/
+2025-05-15 02:20:39,079 - INFO - Crawled 8/25 pages: https://kedren.org/about/our-history/
+2025-05-15 02:20:40,954 - INFO - Crawled 9/25 pages: https://kedren.org/in-their-words/
+2025-05-15 02:20:43,152 - INFO - Crawled 10/25 pages: http://kedren.org/donate
+2025-05-15 02:20:43,152 - INFO - Crawl completed. Visited 10 URLs, extracted content from 10 pages
+2025-05-15 02:20:43,153 - INFO - Analyzing hospitals in Chicago, IL
+2025-05-15 02:20:45,325 - INFO - Crawling Advocate Children's Hospital - Oak Lawn: https://www.advocatechildrenshospital.com/
+2025-05-15 02:20:46,672 - INFO - Crawled 1/25 pages: https://www.advocatechildrenshospital.com/
+2025-05-15 02:20:47,899 - WARNING - Error processing https://www.advocatechildrenshospital.com/ https:/www.advocatehealth.org/: 404 Client Error: Not Found for url: https://www.advocatechildrenshospital.com/%20https:/www.advocatehealth.org
+2025-05-15 02:20:49,591 - INFO - Crawled 2/25 pages: https://www.advocatechildrenshospital.com/services/pediatric-primary-care
+2025-05-15 02:20:51,835 - INFO - Crawled 3/25 pages: https://www.advocatechildrenshospital.com/doctors
+2025-05-15 02:20:52,757 - INFO - Crawled 4/25 pages: https://www.advocatechildrenshospital.com/locations
+2025-05-15 02:20:53,839 - INFO - Crawled 5/25 pages: https://www.advocatechildrenshospital.com/your-visit/about-us
+2025-05-15 02:20:55,374 - INFO - Crawled 6/25 pages: https://www.advocatechildrenshospital.com/health-resources/childrens-health-resource-centers
+2025-05-15 02:20:56,285 - INFO - Crawled 7/25 pages: https://www.advocatechildrenshospital.com/health-resources/support-services
+2025-05-15 02:20:58,430 - INFO - Crawled 8/25 pages: https://www.advocatechildrenshospital.com/your-visit/about-us/volunteer-opportunities
+2025-05-15 02:21:00,539 - INFO - Crawled 9/25 pages: https://www.advocatechildrenshospital.com/services/heart
+2025-05-15 02:21:02,499 - INFO - Crawled 10/25 pages: https://www.advocatechildrenshospital.com/services
+2025-05-15 02:21:04,249 - INFO - Crawled 11/25 pages: https://www.advocatechildrenshospital.com/services/sleep-disorders
+2025-05-15 02:21:05,866 - INFO - Crawled 12/25 pages: https://www.advocatechildrenshospital.com/services/behavioral-health
+2025-05-15 02:21:07,852 - INFO - Crawled 13/25 pages: https://www.advocatechildrenshospital.com/services/blood-disorders
+2025-05-15 02:21:10,009 - INFO - Crawled 14/25 pages: https://www.advocatechildrenshospital.com/services/cancer
+2025-05-15 02:21:11,686 - INFO - Crawled 15/25 pages: https://www.advocatechildrenshospital.com/services/celiac-center
+2025-05-15 02:21:13,869 - INFO - Crawled 16/25 pages: https://www.advocatechildrenshospital.com/services/fetal-care
+2025-05-15 02:21:15,812 - INFO - Crawled 17/25 pages: https://www.advocatechildrenshospital.com/services/complex-care
+2025-05-15 02:21:17,678 - INFO - Crawled 18/25 pages: https://www.advocatechildrenshospital.com/services/dermatology
+2025-05-15 02:21:19,266 - INFO - Crawled 19/25 pages: https://www.advocatechildrenshospital.com/services/developmental-pediatrics
+2025-05-15 02:21:20,782 - INFO - Crawled 20/25 pages: https://www.advocatechildrenshospital.com/services/diabetes-and-endocrinology
+2025-05-15 02:21:22,708 - INFO - Crawled 21/25 pages: https://www.advocatechildrenshospital.com/services/pediatric-primary-care/screenings-and-preventive-care/vaccinations
+2025-05-15 02:21:24,537 - INFO - Crawled 22/25 pages: https://www.advocatechildrenshospital.com/services/pediatric-primary-care/screenings-and-preventive-care/school-and-sports-physicals
+2025-05-15 02:21:25,743 - INFO - Crawled 23/25 pages: https://www.advocatechildrenshospital.com/your-visit/insurance
+2025-05-15 02:21:27,661 - INFO - Crawled 24/25 pages: https://www.advocatechildrenshospital.com/services/pediatric-primary-care/pediatric-primary-care-for-every-age/infant-primary-care
+2025-05-15 02:21:29,489 - INFO - Crawled 25/25 pages: https://www.advocatechildrenshospital.com/your-visit
+2025-05-15 02:21:29,490 - INFO - Crawl completed. Visited 165 URLs, extracted content from 25 pages
+2025-05-15 02:21:29,492 - INFO - Crawling Chicago Behavioral Hospital: https://chicagobehavioralhospital.com
+2025-05-15 02:21:31,246 - INFO - Crawled 1/25 pages: https://chicagobehavioralhospital.com
+2025-05-15 02:21:33,541 - WARNING - Error processing https://chicagobehavioralhospital.com/vaccine/: 404 Client Error: Not Found for url: https://chicagobehavioralhospital.com/vaccine/
+2025-05-15 02:21:35,228 - INFO - Crawled 2/25 pages: https://chicagobehavioralhospital.com/inpatient/
+2025-05-15 02:21:37,266 - INFO - Crawled 3/25 pages: https://chicagobehavioralhospital.com/outpatient/
+2025-05-15 02:21:38,212 - INFO - Crawled 4/25 pages: https://chicagobehavioralhospital.com/about-us/
+2025-05-15 02:21:40,361 - INFO - Crawled 5/25 pages: https://chicagobehavioralhospital.com/inpatient/womens-program-adults/
+2025-05-15 02:21:41,958 - INFO - Crawled 6/25 pages: https://chicagobehavioralhospital.com/inpatient/mental-health-program-adults/
+2025-05-15 02:21:43,605 - INFO - Crawled 7/25 pages: https://chicagobehavioralhospital.com/inpatient/monarch-senior-adults-program/
+2025-05-15 02:21:44,611 - INFO - Crawled 8/25 pages: https://chicagobehavioralhospital.com/inpatient/addiction-program/
+2025-05-15 02:21:45,692 - INFO - Crawled 9/25 pages: https://chicagobehavioralhospital.com/outpatient/intensive-outpatient-program/
+2025-05-15 02:21:47,516 - INFO - Crawled 10/25 pages: https://chicagobehavioralhospital.com/intensive-outpatient-program/
+2025-05-15 02:21:49,530 - INFO - Crawled 11/25 pages: https://chicagobehavioralhospital.com/access-intake/
+2025-05-15 02:21:51,493 - INFO - Crawled 12/25 pages: https://chicagobehavioralhospital.com/events/
+2025-05-15 02:21:53,286 - INFO - Crawled 13/25 pages: https://chicagobehavioralhospital.com/may-is-positively-mental-health-month/
+2025-05-15 02:21:54,606 - INFO - Crawled 14/25 pages: https://chicagobehavioralhospital.com/providing-mental-health-support-for-lgbtqia-youth/
+2025-05-15 02:21:56,302 - INFO - Crawled 15/25 pages: https://chicagobehavioralhospital.com/beating-the-holiday-blues/
+2025-05-15 02:21:58,563 - INFO - Crawled 16/25 pages: https://chicagobehavioralhospital.com/chicago-behavioral-hospital-announces-new-chief-medical-officer/
+2025-05-15 02:22:00,387 - INFO - Crawled 17/25 pages: https://chicagobehavioralhospital.com/chicago-behavioral-hospital-announces-2020-employee-of-the-year/
+2025-05-15 02:22:02,354 - INFO - Crawled 18/25 pages: https://chicagobehavioralhospital.com/chicago-behavioral-hospital-celebrates-black-pioneers-in-mental-health/
+2025-05-15 02:22:04,688 - INFO - Crawled 19/25 pages: https://chicagobehavioralhospital.com/thanksgiving-during-a-pandemic-we-can-still-be-grateful/
+2025-05-15 02:22:05,826 - INFO - Crawled 20/25 pages: https://chicagobehavioralhospital.com/managing-health-related-anxiety-during-flu-season-and-covid-19/
+2025-05-15 02:22:08,130 - INFO - Crawled 21/25 pages: https://chicagobehavioralhospital.com/the-opioid-crisis-the-pandemic/
+2025-05-15 02:22:10,374 - INFO - Crawled 22/25 pages: https://chicagobehavioralhospital.com/medicaid-redetermination/
+2025-05-15 02:22:12,039 - INFO - Crawled 23/25 pages: https://chicagobehavioralhospital.com/outpatient/geriatric-intensive-outpatient-program/
+2025-05-15 02:22:14,361 - INFO - Crawled 24/25 pages: https://chicagobehavioralhospital.com/
+2025-05-15 02:22:16,168 - INFO - Crawled 25/25 pages: https://chicagobehavioralhospital.com/inpatient/addiction-program
+2025-05-15 02:22:16,168 - INFO - Crawl completed. Visited 39 URLs, extracted content from 25 pages
+2025-05-15 02:22:16,170 - INFO - Crawling Advocate Children's Hospital - Park Ridge: https://www.advocatechildrenshospital.com/
+2025-05-15 02:22:17,356 - INFO - Crawled 1/25 pages: https://www.advocatechildrenshospital.com/
+2025-05-15 02:22:18,919 - WARNING - Error processing https://www.advocatechildrenshospital.com/ https:/www.advocatehealth.org/: 404 Client Error: Not Found for url: https://www.advocatechildrenshospital.com/%20https:/www.advocatehealth.org
+2025-05-15 02:22:20,370 - INFO - Crawled 2/25 pages: https://www.advocatechildrenshospital.com/services/pediatric-primary-care
+2025-05-15 02:22:22,150 - INFO - Crawled 3/25 pages: https://www.advocatechildrenshospital.com/doctors
+2025-05-15 02:22:24,412 - INFO - Crawled 4/25 pages: https://www.advocatechildrenshospital.com/locations
+2025-05-15 02:22:25,583 - INFO - Crawled 5/25 pages: https://www.advocatechildrenshospital.com/your-visit/about-us
+2025-05-15 02:22:26,821 - INFO - Crawled 6/25 pages: https://www.advocatechildrenshospital.com/health-resources/childrens-health-resource-centers
+2025-05-15 02:22:28,922 - INFO - Crawled 7/25 pages: https://www.advocatechildrenshospital.com/health-resources/support-services
+2025-05-15 02:22:30,824 - INFO - Crawled 8/25 pages: https://www.advocatechildrenshospital.com/your-visit/about-us/volunteer-opportunities
+2025-05-15 02:22:33,157 - INFO - Crawled 9/25 pages: https://www.advocatechildrenshospital.com/services/heart
+2025-05-15 02:22:34,094 - INFO - Crawled 10/25 pages: https://www.advocatechildrenshospital.com/services
+2025-05-15 02:22:35,134 - INFO - Crawled 11/25 pages: https://www.advocatechildrenshospital.com/services/sleep-disorders
+2025-05-15 02:22:37,048 - INFO - Crawled 12/25 pages: https://www.advocatechildrenshospital.com/services/behavioral-health
+2025-05-15 02:22:39,006 - INFO - Crawled 13/25 pages: https://www.advocatechildrenshospital.com/services/blood-disorders
+2025-05-15 02:22:41,280 - INFO - Crawled 14/25 pages: https://www.advocatechildrenshospital.com/services/cancer
+2025-05-15 02:22:42,664 - INFO - Crawled 15/25 pages: https://www.advocatechildrenshospital.com/services/celiac-center
+2025-05-15 02:22:43,896 - INFO - Crawled 16/25 pages: https://www.advocatechildrenshospital.com/services/fetal-care
+2025-05-15 02:22:45,852 - INFO - Crawled 17/25 pages: https://www.advocatechildrenshospital.com/services/complex-care
+2025-05-15 02:22:47,750 - INFO - Crawled 18/25 pages: https://www.advocatechildrenshospital.com/services/dermatology
+2025-05-15 02:22:49,340 - INFO - Crawled 19/25 pages: https://www.advocatechildrenshospital.com/services/developmental-pediatrics
+2025-05-15 02:22:50,522 - INFO - Crawled 20/25 pages: https://www.advocatechildrenshospital.com/services/diabetes-and-endocrinology
+2025-05-15 02:22:51,334 - INFO - Crawled 21/25 pages: https://www.advocatechildrenshospital.com/services/pediatric-primary-care/screenings-and-preventive-care/vaccinations
+2025-05-15 02:22:53,223 - INFO - Crawled 22/25 pages: https://www.advocatechildrenshospital.com/services/pediatric-primary-care/screenings-and-preventive-care/school-and-sports-physicals
+2025-05-15 02:22:54,873 - INFO - Crawled 23/25 pages: https://www.advocatechildrenshospital.com/your-visit/insurance
+2025-05-15 02:22:56,566 - INFO - Crawled 24/25 pages: https://www.advocatechildrenshospital.com/services/pediatric-primary-care/pediatric-primary-care-for-every-age/infant-primary-care
+2025-05-15 02:22:57,847 - INFO - Crawled 25/25 pages: https://www.advocatechildrenshospital.com/your-visit
+2025-05-15 02:22:57,848 - INFO - Crawl completed. Visited 165 URLs, extracted content from 25 pages
+2025-05-15 02:22:57,850 - INFO - Analyzing hospitals in Boston, MA
+2025-05-15 02:22:59,498 - INFO - Crawling Floating Hospital for Children: https://www.floatinghospital.org/
+2025-05-15 02:23:02,057 - INFO - Crawled 1/25 pages: https://www.floatinghospital.org/
+2025-05-15 02:23:04,213 - INFO - Crawled 2/25 pages: https://www.floatinghospital.org/get-care/request-appointment
+2025-05-15 02:23:06,044 - INFO - Crawled 3/25 pages: https://www.floatinghospital.org/find-a-doctor
+2025-05-15 02:23:06,773 - INFO - Crawled 4/25 pages: https://www.floatinghospital.org/get-care/our-locations
+2025-05-15 02:23:07,836 - INFO - Crawled 5/25 pages: https://www.floatinghospital.org/for-patients/pay-bill
+2025-05-15 02:23:08,831 - INFO - Crawled 6/25 pages: https://www.floatinghospital.org/giving
+2025-05-15 02:23:09,839 - INFO - Crawled 7/25 pages: https://www.floatinghospital.org/about-us
+2025-05-15 02:23:11,826 - INFO - Crawled 8/25 pages: https://www.floatinghospital.org/services-treatments
+2025-05-15 02:23:14,266 - INFO - Crawled 9/25 pages: https://www.floatinghospital.org/get-care
+2025-05-15 02:23:15,439 - INFO - Crawled 10/25 pages: https://www.floatinghospital.org/for-patients/mytuftsmed
+2025-05-15 02:23:17,522 - INFO - Crawled 11/25 pages: https://www.floatinghospital.org/services-treatments/urgent-care
+2025-05-15 02:23:18,487 - INFO - Crawled 12/25 pages: https://www.floatinghospital.org/get-care/our-locations/urgent-care-locations
+2025-05-15 02:23:19,614 - INFO - Crawled 13/25 pages: https://www.floatinghospital.org/services-treatments/radiology-imaging/mammogram
+2025-05-15 02:23:21,359 - INFO - Crawled 14/25 pages: https://www.floatinghospital.org/get-care/symptom-checker
+2025-05-15 02:23:22,295 - INFO - Crawled 15/25 pages: https://www.floatinghospital.org/get-care/request-appointment/arrange-care
+2025-05-15 02:23:25,724 - INFO - Crawled 16/25 pages: https://www.floatinghospital.org/find-a-doctor?yext_retrieveFacets=true&yext_sortBys=%5B%7B%22type%22%3A%22RELEVANCE%22%7D%5D&yext_offset=0&yext_limit=16&yext_facetFilters=%7B%7D
+2025-05-15 02:23:26,917 - INFO - Crawled 17/25 pages: https://www.floatinghospital.org/get-care/our-locations/about-care-home
+2025-05-15 02:23:28,102 - INFO - Crawled 18/25 pages: https://www.floatinghospital.org/giving/give-care-home
+2025-05-15 02:23:28,882 - INFO - Crawled 19/25 pages: https://www.floatinghospital.org/get-care/our-locations/about-lowell-general-hospital
+2025-05-15 02:23:30,205 - INFO - Crawled 20/25 pages: https://www.floatinghospital.org/giving/give-lowell-general-hospital
+2025-05-15 02:23:32,315 - INFO - Crawled 21/25 pages: https://www.floatinghospital.org/get-care/our-locations/about-melrosewakefield-hospital
+2025-05-15 02:23:33,857 - INFO - Crawled 22/25 pages: https://www.floatinghospital.org/giving/give-melrosewakefield-hospital
+2025-05-15 02:23:34,721 - INFO - Crawled 23/25 pages: https://www.floatinghospital.org/get-care/our-locations/about-tufts-medical-center
+2025-05-15 02:23:36,227 - INFO - Crawled 24/25 pages: https://www.floatinghospital.org/giving/give-tufts-medical-center
+2025-05-15 02:23:38,094 - INFO - Crawled 25/25 pages: https://www.floatinghospital.org/for-patients
+2025-05-15 02:23:38,096 - INFO - Crawl completed. Visited 438 URLs, extracted content from 25 pages
+2025-05-15 02:23:38,103 - INFO - Crawling MassGeneral for Children at North Shore Medical Center: https://nsmc.partners.org/locations/nsmc_north_shore_childrens
+2025-05-15 02:23:40,011 - INFO - Crawled 1/25 pages: https://nsmc.partners.org/locations/nsmc_north_shore_childrens
+2025-05-15 02:23:40,977 - INFO - Crawled 2/25 pages: https://nsmc.partners.org/about_us
+2025-05-15 02:23:43,183 - INFO - Crawled 3/25 pages: https://nsmc.partners.org/news_and_events
+2025-05-15 02:23:44,827 - INFO - Crawled 4/25 pages: https://nsmc.partners.org/for_healthcare_professionals
+2025-05-15 02:23:48,013 - INFO - Crawled 5/25 pages: https://nsmc.partners.org/careers
+2025-05-15 02:23:49,095 - INFO - Crawled 6/25 pages: https://nsmc.partners.org/
+2025-05-15 02:23:50,246 - INFO - Crawled 7/25 pages: https://nsmc.partners.org/departments_and_services
+2025-05-15 02:23:50,985 - INFO - Crawled 8/25 pages: https://nsmc.partners.org/maps_and_directions
+2025-05-15 02:23:52,492 - INFO - Crawled 9/25 pages: https://nsmc.partners.org/patients_and_visitors
+2025-05-15 02:23:53,981 - INFO - Crawled 10/25 pages: https://nsmc.partners.org/classes_and_groups
+2025-05-15 02:23:55,651 - INFO - Crawled 11/25 pages: https://nsmc.partners.org/giving
+2025-05-15 02:23:56,548 - INFO - Crawled 12/25 pages: https://nsmc.partners.org/home
+2025-05-15 02:23:57,720 - INFO - Crawled 13/25 pages: https://nsmc.partners.org/locations/birthplace
+2025-05-15 02:23:59,361 - INFO - Crawled 14/25 pages: https://nsmc.partners.org/locations/emergency_department
+2025-05-15 02:24:00,126 - INFO - Crawled 15/25 pages: https://nsmc.partners.org/locations/salem_hospital
+2025-05-15 02:24:01,966 - INFO - Crawled 16/25 pages: https://nsmc.partners.org/locations/cancer_center
+2025-05-15 02:24:03,089 - INFO - Crawled 17/25 pages: https://nsmc.partners.org/locations/outpatient_services
+2025-05-15 02:24:04,907 - INFO - Crawled 18/25 pages: https://nsmc.partners.org/locations/pediatric_services
+2025-05-15 02:24:06,050 - INFO - Crawled 19/25 pages: https://nsmc.partners.org/locations/salem_family_health_center
+2025-05-15 02:24:07,299 - INFO - Crawled 20/25 pages: https://nsmc.partners.org/peabody_family_health_center
+2025-05-15 02:24:09,336 - INFO - Crawled 21/25 pages: https://nsmc.partners.org/locations/lynn_community_health_center
+2025-05-15 02:24:11,024 - INFO - Crawled 22/25 pages: https://nsmc.partners.org/news_and_events/filter/Achievement/Awards
+2025-05-15 02:24:12,302 - INFO - Crawled 23/25 pages: https://nsmc.partners.org/about_us/board_of_trustees
+2025-05-15 02:24:13,638 - INFO - Crawled 24/25 pages: https://nsmc.partners.org/about_us/celebrating-150-years
+2025-05-15 02:24:15,050 - INFO - Crawled 25/25 pages: https://nsmc.partners.org/commitment_to_community
+2025-05-15 02:24:15,051 - INFO - Crawl completed. Visited 240 URLs, extracted content from 25 pages
+2025-05-15 02:24:15,055 - INFO - Crawling Dr. Solomon Carter Fuller Mental Health Center: https://www.mass.gov/locations/metro-boston-mental-health-unit-at-dr-solomon-carter-fuller-mental-health-center
+2025-05-15 02:24:15,861 - WARNING - Error processing https://www.mass.gov/locations/metro-boston-mental-health-unit-at-dr-solomon-carter-fuller-mental-health-center: 403 Client Error: Forbidden for url: https://www.mass.gov/locations/metro-boston-mental-health-unit-at-dr-solomon-carter-fuller-mental-health-center
+2025-05-15 02:24:15,861 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:24:15,862 - INFO - Crawling Encompass Health Rehab Hospital Of New England At Beverly: https://encompasshealth.com/locations/newenglandrehab-beverly
+2025-05-15 02:24:18,099 - INFO - Crawled 1/25 pages: https://encompasshealth.com/locations/newenglandrehab-beverly
+2025-05-15 02:24:19,691 - INFO - Crawled 2/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services
+2025-05-15 02:24:23,564 - INFO - Crawled 3/25 pages: https://encompasshealth.com/locations/new-england-rehab-beverly/referral
+2025-05-15 02:24:24,724 - INFO - Crawled 4/25 pages: https://encompasshealth.com/locations/new-england-rehab
+2025-05-15 02:24:26,888 - INFO - Crawled 5/25 pages: https://encompasshealth.com/locations/new-england-rehab-beverly
+2025-05-15 02:24:29,409 - INFO - Crawled 6/25 pages: https://encompasshealth.com/locations/new-england-rehab-lowell
+2025-05-15 02:24:30,826 - INFO - Crawled 7/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/brain-injury-rehabilitation
+2025-05-15 02:24:33,452 - INFO - Crawled 8/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/polytrauma-rehabilitation
+2025-05-15 02:24:35,314 - INFO - Crawled 9/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/neurological-rehabilitation
+2025-05-15 02:24:36,922 - INFO - Crawled 10/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/spasticity-rehabilitation
+2025-05-15 02:24:38,936 - INFO - Crawled 11/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/spinal-cord-rehabilitation
+2025-05-15 02:24:40,654 - INFO - Crawled 12/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/stroke-rehabilitation
+2025-05-15 02:24:42,369 - INFO - Crawled 13/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/amputation-rehabilitation
+2025-05-15 02:24:45,218 - INFO - Crawled 14/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/chronic-condition-management
+2025-05-15 02:24:46,215 - INFO - Crawled 15/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/hip-rehabilitation
+2025-05-15 02:24:47,830 - INFO - Crawled 16/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/joint-replacement
+2025-05-15 02:24:49,571 - INFO - Crawled 17/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/orthopedic-rehabilitation
+2025-05-15 02:24:50,816 - INFO - Crawled 18/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/activities-daily-living
+2025-05-15 02:24:53,579 - INFO - Crawled 19/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/cardiac-rehabilitation
+2025-05-15 02:24:55,909 - INFO - Crawled 20/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/cancer-rehabilitation
+2025-05-15 02:24:57,658 - INFO - Crawled 21/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/bowel-bladder-training
+2025-05-15 02:24:58,886 - INFO - Crawled 22/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/diabetes-management
+2025-05-15 02:25:00,831 - INFO - Crawled 23/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/dialysis-therapy
+2025-05-15 02:25:03,120 - INFO - Crawled 24/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/medication-management
+2025-05-15 02:25:05,027 - INFO - Crawled 25/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/pain-management
+2025-05-15 02:25:05,028 - INFO - Crawl completed. Visited 42 URLs, extracted content from 25 pages
+2025-05-15 02:25:05,031 - INFO - Crawling Mass General Brigham Urgent Care: https://www.massgeneralbrigham.org/en/patient-care/services-and-specialties/locations/mass-general-brigham-urgent-care-natick
+2025-05-15 02:25:06,546 - INFO - Crawled 1/25 pages: https://www.massgeneralbrigham.org/en/patient-care/services-and-specialties/locations/mass-general-brigham-urgent-care-natick
+2025-05-15 02:25:08,136 - INFO - Crawled 2/25 pages: https://www.massgeneralbrigham.org/en/patient-care
+2025-05-15 02:25:10,114 - INFO - Crawled 3/25 pages: https://www.massgeneralbrigham.org/en/patient-care/services-and-specialties
+2025-05-15 02:25:11,017 - INFO - Crawled 4/25 pages: https://www.massgeneralbrigham.org/en/patient-care/services-and-specialties/locations
+2025-05-15 02:25:11,918 - INFO - Crawled 5/25 pages: https://www.massgeneralbrigham.org/en/patient-care/services-and-specialties/urgent-care/mass-general-brigham-urgent-care
+2025-05-15 02:25:14,194 - INFO - Crawled 6/25 pages: https://www.massgeneralbrigham.org/en/patient-care/services-and-specialties/urgent-care/mass-general-brigham-urgent-care/what-we-treat
+2025-05-15 02:25:15,612 - INFO - Crawled 7/25 pages: https://www.massgeneralbrigham.org/en/patient-care/services-and-specialties/urgent-care/mass-general-brigham-urgent-care/locations
+2025-05-15 02:25:17,768 - INFO - Crawled 8/25 pages: https://www.massgeneralbrigham.org/en/patient-care/virtual-care/virtual-urgent-care
+2025-05-15 02:25:18,488 - INFO - Crawled 9/25 pages: https://www.massgeneralbrigham.org/en
+2025-05-15 02:25:19,770 - INFO - Crawled 10/25 pages: https://www.massgeneralbrigham.org/en/patient-care/services-and-specialties/find-a-location
+2025-05-15 02:25:21,315 - INFO - Crawled 11/25 pages: https://www.massgeneralbrigham.org/en/about/newsroom/articles/brain-cancer-screening
+2025-05-15 02:25:23,188 - INFO - Crawled 12/25 pages: https://www.massgeneralbrigham.org/en/about/newsroom/articles/us-news-2024
+2025-05-15 02:25:24,831 - INFO - Crawled 13/25 pages: https://www.massgeneralbrigham.org/en/about/advancing-care/integrated-healthcare-system
+2025-05-15 02:25:26,945 - INFO - Crawled 14/25 pages: https://www.massgeneralbrigham.org/en/patient-care/services-and-specialties/emergency
+2025-05-15 02:25:28,865 - INFO - Crawled 15/25 pages: https://www.massgeneralbrigham.org/en/patient-care/virtual-care/virtual-visits
+2025-05-15 02:25:30,630 - INFO - Crawled 16/25 pages: https://www.massgeneralbrigham.org/en/patient-care/international
+2025-05-15 02:25:32,581 - INFO - Crawled 17/25 pages: https://www.massgeneralbrigham.org/en/patient-care/patient-visitor-information/appointments
+2025-05-15 02:25:33,390 - INFO - Crawled 18/25 pages: https://www.massgeneralbrigham.org/en/patient-care/patient-visitor-information/planning-your-visit
+2025-05-15 02:25:36,195 - INFO - Crawled 19/25 pages: https://www.massgeneralbrigham.org/en/patient-care/patient-visitor-information/patient-gateway
+2025-05-15 02:25:38,413 - INFO - Crawled 20/25 pages: https://www.massgeneralbrigham.org/en/patient-care/patient-visitor-information/covid-19
+2025-05-15 02:25:40,802 - INFO - Crawled 21/25 pages: https://www.massgeneralbrigham.org/en/patient-care/patient-visitor-information/medical-records
+2025-05-15 02:25:42,729 - INFO - Crawled 22/25 pages: https://www.massgeneralbrigham.org/en/patient-care/virtual-care/online-second-opinions
+2025-05-15 02:25:44,327 - INFO - Crawled 23/25 pages: https://www.massgeneralbrigham.org/en/patient-care/patient-visitor-information/billing
+2025-05-15 02:25:45,370 - INFO - Crawled 24/25 pages: https://www.massgeneralbrigham.org/en/patient-care/patient-visitor-information/financial-assistance
+2025-05-15 02:25:46,566 - INFO - Crawled 25/25 pages: https://www.massgeneralbrigham.org/en/patient-care/patient-visitor-information/health-information
+2025-05-15 02:25:46,567 - INFO - Crawl completed. Visited 337 URLs, extracted content from 25 pages
+2025-05-15 02:25:46,575 - INFO - Analyzing hospitals in New York, NY
+2025-05-15 02:25:48,860 - INFO - Crawling Montefiore Medical Center West Campus Moses Division Hospital: https://www.montefiore.org/west
+2025-05-15 02:25:50,720 - INFO - Crawled 1/25 pages: https://www.montefiore.org/west
+2025-05-15 02:25:51,647 - INFO - Crawled 2/25 pages: https://www.montefiore.org/patient-care
+2025-05-15 02:25:52,998 - INFO - Crawled 3/25 pages: https://www.montefiore.org/patient-care/services/primary-care
+2025-05-15 02:25:54,491 - INFO - Crawled 4/25 pages: https://www.montefiore.org/patient-care/emergency
+2025-05-15 02:25:55,226 - INFO - Crawled 5/25 pages: https://www.montefiore.org/patient-care/services/urgent-care
+2025-05-15 02:25:56,308 - INFO - Crawled 6/25 pages: https://www.montefiore.org/patient-care/services/virtual-urgent-care
+2025-05-15 02:25:57,654 - INFO - Crawled 7/25 pages: https://www.montefiore.org/patient-care/services
+2025-05-15 02:25:59,544 - INFO - Crawled 8/25 pages: https://www.montefiore.org/cancer
+2025-05-15 02:26:01,144 - INFO - Crawled 9/25 pages: https://www.montefiore.org/heart
+2025-05-15 02:26:03,177 - INFO - Crawled 10/25 pages: https://www.montefiore.org/lung
+2025-05-15 02:26:04,573 - INFO - Crawled 11/25 pages: https://www.montefiore.org/neurology
+2025-05-15 02:26:06,034 - INFO - Crawled 12/25 pages: https://www.montefiore.org/patient-care/services/neurosurgery
+2025-05-15 02:26:08,145 - INFO - Crawled 13/25 pages: https://www.montefiore.org/patient-care/services/orthopedics
+2025-05-15 02:26:09,470 - INFO - Crawled 14/25 pages: https://www.montefiore.org/transplant
+2025-05-15 02:26:10,193 - INFO - Crawled 15/25 pages: https://www.montefiore.org/profiles
+2025-05-15 02:26:12,241 - INFO - Crawled 16/25 pages: https://www.montefiore.org/patient-care/virtual-urgent-care
+2025-05-15 02:26:14,637 - INFO - Crawled 17/25 pages: https://www.montefiore.org/patient-care/locations
+2025-05-15 02:26:16,523 - INFO - Crawled 18/25 pages: https://www.montefiore.org/patient-care/mychart
+2025-05-15 02:26:18,465 - INFO - Crawled 19/25 pages: https://www.montefiore.org/neuroscience
+2025-05-15 02:26:20,225 - INFO - Crawled 20/25 pages: https://www.montefiore.org/news
+2025-05-15 02:26:22,674 - INFO - Crawled 21/25 pages: https://www.montefiore.org/news/2024/09/16/montefiore-einstein-comprehensive-cancer-center-establishes-new-immunotherapy-institute
+2025-05-15 02:26:23,505 - INFO - Crawled 22/25 pages: https://www.montefiore.org/stories/guy
+2025-05-15 02:26:25,522 - INFO - Crawled 23/25 pages: https://www.montefiore.org/patient-care/patients-visitors
+2025-05-15 02:26:26,782 - INFO - Crawled 24/25 pages: https://www.montefiore.org/giving
+2025-05-15 02:26:28,159 - INFO - Crawled 25/25 pages: https://www.montefiore.org/community
+2025-05-15 02:26:28,160 - INFO - Crawl completed. Visited 313 URLs, extracted content from 25 pages
+2025-05-15 02:26:28,165 - INFO - Crawling New York City Children's Center Bronx Campus: https://www.omh.ny.gov/omhweb/facilities/nyccc/bcpc/
+2025-05-15 02:26:29,092 - WARNING - Error processing https://www.omh.ny.gov/omhweb/facilities/nyccc/bcpc/: 404 Client Error: Not Found for url: https://omh.ny.gov/omhweb/facilities/nyccc/bcpc/
+2025-05-15 02:26:29,092 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:26:29,093 - INFO - Crawling Kirby Forensic Psychiatric Center: https://www.omh.ny.gov/omhweb/facilities/krpc/
+2025-05-15 02:26:30,003 - INFO - Crawled 1/25 pages: https://www.omh.ny.gov/omhweb/facilities/krpc/
+2025-05-15 02:26:31,721 - INFO - Crawled 2/25 pages: https://www.omh.ny.gov
+2025-05-15 02:26:33,534 - INFO - Crawled 3/25 pages: https://www.omh.ny.gov/omhweb/about/
+2025-05-15 02:26:34,627 - INFO - Crawled 4/25 pages: https://www.omh.ny.gov/omhweb/bootstrap/consumers-families.html
+2025-05-15 02:26:36,061 - INFO - Crawled 5/25 pages: https://www.omh.ny.gov/omhweb/bootstrap/providers.html
+2025-05-15 02:26:38,118 - INFO - Crawled 6/25 pages: https://www.omh.ny.gov/omhweb/employment/
+2025-05-15 02:26:39,139 - INFO - Crawled 7/25 pages: https://www.omh.ny.gov/omhweb/email/compose_mail.php?tid=FS_Facilities_krpc_1
+2025-05-15 02:26:40,081 - INFO - Crawled 8/25 pages: https://www.omh.ny.gov/omhweb/facilities/krpc/directions.htm
+2025-05-15 02:26:41,449 - INFO - Crawled 9/25 pages: https://www.omh.ny.gov/omhweb/facilities/krpc/employment.htm
+2025-05-15 02:26:42,371 - INFO - Crawled 10/25 pages: https://www.omh.ny.gov/omhweb/bh_services_council/
+2025-05-15 02:26:43,200 - INFO - Crawled 11/25 pages: https://www.omh.ny.gov/omhweb/disclaimer.html
+2025-05-15 02:26:46,268 - INFO - Crawled 12/25 pages: https://www.omh.ny.gov/omhweb/rfp/
+2025-05-15 02:26:48,515 - INFO - Crawled 13/25 pages: https://www.omh.ny.gov/omhweb/aboutomh/omh_facility.html
+2025-05-15 02:26:49,705 - INFO - Crawled 14/25 pages: https://www.omh.ny.gov/omhweb/email/compose_mail.php?tid=RAoca
+2025-05-15 02:26:50,802 - INFO - Crawled 15/25 pages: https://www.omh.ny.gov/omhweb/aboutomh/fieldoffices.html
+2025-05-15 02:26:52,460 - INFO - Crawled 16/25 pages: https://www.omh.ny.gov/omhweb/language-access/index.html
+2025-05-15 02:26:53,484 - INFO - Crawled 17/25 pages: https://www.omh.ny.gov/omhweb/accessibility.htm
+2025-05-15 02:26:55,122 - INFO - Crawled 18/25 pages: https://www.omh.ny.gov/omhweb/forms/
+2025-05-15 02:26:55,935 - INFO - Crawled 19/25 pages: https://www.omh.ny.gov/omhweb/foil/index.html
+2025-05-15 02:26:57,163 - INFO - Crawled 20/25 pages: https://www.omh.ny.gov/omhweb/consumer_affairs/medicalrecords/
+2025-05-15 02:26:58,035 - INFO - Crawled 21/25 pages: https://www.omh.ny.gov/omhweb/privacy.htm
+2025-05-15 02:26:59,160 - INFO - Crawled 22/25 pages: https://www.omh.ny.gov/omhweb/map/a_to_z.htm
+2025-05-15 02:27:01,233 - INFO - Crawled 23/25 pages: https://www.omh.ny.gov/omhweb/bootstrap/crisis.html
+2025-05-15 02:27:03,325 - INFO - Crawled 24/25 pages: https://www.omh.ny.gov/omhweb/about/bios.html
+2025-05-15 02:27:04,565 - INFO - Crawled 25/25 pages: https://www.omh.ny.gov/omhweb/planning/
+2025-05-15 02:27:04,566 - INFO - Crawl completed. Visited 283 URLs, extracted content from 25 pages
+2025-05-15 02:27:04,576 - INFO - Crawling North Central Bronx Hospital: https://www.nychealthandhospitals.org/northcentralbronx/
+2025-05-15 02:27:10,245 - INFO - Crawled 1/25 pages: https://www.nychealthandhospitals.org/northcentralbronx/
+2025-05-15 02:27:11,123 - INFO - Crawled 2/25 pages: https://www.nychealthandhospitals.org
+2025-05-15 02:27:13,075 - INFO - Crawled 3/25 pages: https://www.nychealthandhospitals.org/locations/
+2025-05-15 02:27:24,597 - INFO - Crawled 4/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/patients-visitors/directions/
+2025-05-15 02:27:37,508 - INFO - Crawled 5/25 pages: https://www.nychealthandhospitals.org/locations/north-central-bronx/
+2025-05-15 02:27:48,799 - INFO - Crawled 6/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/about/
+2025-05-15 02:27:57,658 - INFO - Crawled 7/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/community-advisory-board/
+2025-05-15 02:28:09,327 - INFO - Crawled 8/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/community-health-centers/
+2025-05-15 02:28:14,081 - INFO - Crawled 9/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/community-health-needs-assessment-report/
+2025-05-15 02:28:26,985 - INFO - Crawled 10/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/leadership/
+2025-05-15 02:28:34,448 - INFO - Crawled 11/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/facts/
+2025-05-15 02:28:39,734 - INFO - Crawled 12/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/history/
+2025-05-15 02:28:41,739 - INFO - Crawled 13/25 pages: https://www.nychealthandhospitals.org/psychology-internship-program/
+2025-05-15 02:28:48,619 - INFO - Crawled 14/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/services/
+2025-05-15 02:28:54,999 - INFO - Crawled 15/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/services/adult-geriatric-care/
+2025-05-15 02:29:02,193 - INFO - Crawled 16/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/services/behavioral-health/
+2025-05-15 02:29:11,418 - INFO - Crawled 17/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/services/childrens-health/
+2025-05-15 02:29:27,033 - INFO - Crawled 18/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/services/emergency-medicine/
+2025-05-15 02:29:33,434 - INFO - Crawled 19/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/services/surgical-specialty-services/
+2025-05-15 02:29:39,402 - INFO - Crawled 20/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/services/womens-health/
+2025-05-15 02:29:45,175 - INFO - Crawled 21/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/services/womens-health/safe-sleep/
+2025-05-15 02:29:55,545 - INFO - Crawled 22/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/patients-visitors/
+2025-05-15 02:30:04,557 - INFO - Crawled 23/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/patients-visitors/financial-aid/
+2025-05-15 02:30:15,114 - INFO - Crawled 24/25 pages: https://www.nychealthandhospitals.org/north-central-bronx/patients-visitors/interpreter-services/
+2025-05-15 02:30:19,487 - INFO - Crawled 25/25 pages: https://www.nychealthandhospitals.org/services/patient-meals/
+2025-05-15 02:30:19,488 - INFO - Crawl completed. Visited 145 URLs, extracted content from 25 pages
+2025-05-15 02:30:19,492 - INFO - Crawling George Rosenfeld Center for Recovery: https://odysseyhousenyc.org/george-rosenfeld-center-for-recovery/
+2025-05-15 02:30:20,866 - INFO - Crawled 1/25 pages: https://odysseyhousenyc.org/george-rosenfeld-center-for-recovery/
+2025-05-15 02:30:21,838 - INFO - Crawled 2/25 pages: http://odysseyhousenyc.org/treatment-programs/for-women-with-children/
+2025-05-15 02:30:23,634 - INFO - Crawled 3/25 pages: http://odysseyhousenyc.org/treatment-programs/for-seniors/
+2025-05-15 02:30:26,000 - INFO - Crawled 4/25 pages: http://odysseyhousenyc.org/nyc-drug-alcohol-rehab/medication-assisted-treatment/
+2025-05-15 02:30:26,710 - INFO - Crawled 5/25 pages: http://odysseyhousenyc.org/recovery-program-services/educational-vocational-training/
+2025-05-15 02:30:28,152 - INFO - Crawled 6/25 pages: http://odysseyhousenyc.org/recovery-program-services/recovery-network/
+2025-05-15 02:30:31,987 - INFO - Crawled 7/25 pages: http://odysseyhousenyc.org/nyc-housing/
+2025-05-15 02:30:32,962 - INFO - Crawled 8/25 pages: http://odysseyhousenyc.org/nyc-drug-alcohol-rehab/inpatient-rehab/
+2025-05-15 02:30:34,115 - INFO - Crawled 9/25 pages: http://odysseyhousenyc.org/nyc-drug-alcohol-rehab/outpatient-rehab/
+2025-05-15 02:30:35,339 - INFO - Crawled 10/25 pages: http://odysseyhousenyc.org/recovery-program-services/medical-dental-care/
+2025-05-15 02:30:36,808 - INFO - Crawled 11/25 pages: http://odysseyhousenyc.org/recovery-program-services/fitness-wellness/
+2025-05-15 02:30:38,955 - INFO - Crawled 12/25 pages: http://odysseyhousenyc.org/evidence-based-practices/
+2025-05-15 02:30:41,418 - INFO - Crawled 13/25 pages: http://odysseyhousenyc.org/nyc-housing/housing-assistance-nyc/
+2025-05-15 02:30:42,121 - INFO - Crawled 14/25 pages: http://odysseyhousenyc.org/nyc-rehab-get-admitted/
+2025-05-15 02:30:43,094 - INFO - Crawled 15/25 pages: http://odysseyhousenyc.org/recovery-program-services/mental-health/
+2025-05-15 02:30:44,744 - INFO - Crawled 16/25 pages: http://odysseyhousenyc.org/recovery-program-services/expressive-arts-studio/
+2025-05-15 02:30:45,934 - INFO - Crawled 17/25 pages: http://odysseyhousenyc.org/where-recovery-gets-real/
+2025-05-15 02:30:46,792 - INFO - Crawled 18/25 pages: http://odysseyhousenyc.org/nyc-drug-alcohol-rehab/real-recovery-stories/crystal/
+2025-05-15 02:30:47,672 - INFO - Crawled 19/25 pages: http://odysseyhousenyc.org/nyc-drug-alcohol-rehab/real-recovery-stories/heaven/
+2025-05-15 02:30:49,467 - INFO - Crawled 20/25 pages: http://odysseyhousenyc.org/other-inquiries/administration-childrens-services/
+2025-05-15 02:30:50,376 - INFO - Crawled 21/25 pages: http://odysseyhousenyc.org/resources-information/
+2025-05-15 02:30:52,380 - INFO - Crawled 22/25 pages: http://odysseyhousenyc.org/donate/
+2025-05-15 02:30:54,395 - INFO - Crawled 23/25 pages: http://odysseyhousenyc.org/nyc-drug-alcohol-rehab/payment-assistance/
+2025-05-15 02:30:55,483 - INFO - Crawled 24/25 pages: http://odysseyhousenyc.org/nyc-drug-alcohol-rehab/real-recovery-stories/anna/
+2025-05-15 02:30:56,417 - INFO - Crawled 25/25 pages: http://odysseyhousenyc.org/nyc-drug-alcohol-rehab/real-recovery-stories/angel/
+2025-05-15 02:30:56,418 - INFO - Crawl completed. Visited 74 URLs, extracted content from 25 pages
+2025-05-15 02:30:56,421 - INFO - Crawling Cohen’s Children’s Medical Center: https://childrenshospital.northwell.edu/
+2025-05-15 02:30:57,888 - INFO - Crawled 1/25 pages: https://childrenshospital.northwell.edu/
+2025-05-15 02:30:59,924 - INFO - Crawled 2/25 pages: https://childrenshospital.northwell.edu/departments-services/pediatric-congenital-heart-surgery/programs-services/heart-failure-and-transplant-program
+2025-05-15 02:31:01,583 - INFO - Crawled 3/25 pages: https://childrenshospital.northwell.edu/your-visit/rsv-resource-center
+2025-05-15 02:31:02,502 - INFO - Crawled 4/25 pages: https://childrenshospital.northwell.edu/get-involved/volunteer-opportunities
+2025-05-15 02:31:03,592 - INFO - Crawled 5/25 pages: https://childrenshospital.northwell.edu/newsroom
+2025-05-15 02:31:04,999 - INFO - Crawled 6/25 pages: https://childrenshospital.northwell.edu/departments-services/pediatric-intensive-care-unit/programs-services/extracorporeal-life-support
+2025-05-15 02:31:05,833 - INFO - Crawled 7/25 pages: https://childrenshospital.northwell.edu/news/the-latest/pediatric-heart-transplant-cohen-children-s-medical-center-nys-approval
+2025-05-15 02:31:07,586 - INFO - Crawled 8/25 pages: https://childrenshospital.northwell.edu/news/the-latest/li-first-pediatric-heart-transplant
+2025-05-15 02:31:09,386 - INFO - Crawled 9/25 pages: https://childrenshospital.northwell.edu/departments-services/pediatric-emergency-medicine
+2025-05-15 02:31:11,196 - INFO - Crawled 10/25 pages: https://childrenshospital.northwell.edu/departments-services/pediatric-emergency-medicine/programs-services/pediatric-urgent-care
+2025-05-15 02:31:14,712 - INFO - Crawled 11/25 pages: https://childrenshospital.northwell.edu/cdn-cgi/l/email-protection#e5a6a6a8a6a49595898c8684918c8a8b96a58b8a97918d92808989cb808190
+2025-05-15 02:31:15,700 - INFO - Crawled 12/25 pages: https://childrenshospital.northwell.edu/cdn-cgi/l/email-protection#7132323c321001011d18121005181e1f02311f1e03051906141d1d5f141504
+2025-05-15 02:31:18,578 - INFO - Crawled 13/25 pages: https://childrenshospital.northwell.edu/newsroom/the-latest
+2025-05-15 02:31:20,410 - INFO - Crawled 14/25 pages: https://childrenshospital.northwell.edu/newsroom/insights
+2025-05-15 02:31:21,812 - INFO - Crawled 15/25 pages: https://childrenshospital.northwell.edu/cdn-cgi/l/email-protection#1e7f7d716d6a7b7272712c5e70716c6a76697b7272307b7a6b
+2025-05-15 02:31:23,403 - INFO - Crawled 16/25 pages: https://childrenshospital.northwell.edu/about-us
+2025-05-15 02:31:25,199 - INFO - Crawled 17/25 pages: https://childrenshospital.northwell.edu/find-care/physicians
+2025-05-15 02:31:26,539 - INFO - Crawled 18/25 pages: https://childrenshospital.northwell.edu/departments-services/pediatric-kidney-transplant-program
+2025-05-15 02:31:28,568 - INFO - Crawled 19/25 pages: https://childrenshospital.northwell.edu/cdn-cgi/l/email-protection#3455575b47405158585b06745a5b46405c435158581a515041
+2025-05-15 02:31:29,717 - INFO - Crawled 20/25 pages: https://childrenshospital.northwell.edu/departments-services/pediatric-cardiology/programs-services/heart-failure-and-transplant-program
+2025-05-15 02:31:30,532 - INFO - Crawled 21/25 pages: https://childrenshospital.northwell.edu/departments-services/pediatric-trauma-center
+2025-05-15 02:31:32,427 - INFO - Crawled 22/25 pages: https://childrenshospital.northwell.edu/departments-services/pediatric-emergency-medicine/programs-services/emergency-behavioral-health-services
+2025-05-15 02:31:34,469 - INFO - Crawled 23/25 pages: https://childrenshospital.northwell.edu/departments-services/pediatric-emergency-medicine/programs-services/pediatric-urgent-care#frequently-asked-questions
+2025-05-15 02:31:35,553 - INFO - Crawled 24/25 pages: https://childrenshospital.northwell.edu/newsroom/the-latest?page=2
+2025-05-15 02:31:36,465 - INFO - Crawled 25/25 pages: https://childrenshospital.northwell.edu/newsroom/the-latest?page=3
+2025-05-15 02:31:36,465 - INFO - Crawl completed. Visited 37 URLs, extracted content from 25 pages
+2025-05-15 02:31:36,475 - INFO - Crawling Lenox Health Greenwich Village: https://www.northwell.edu/lenox-health-greenwich-village
+2025-05-15 02:31:38,597 - INFO - Crawled 1/25 pages: https://www.northwell.edu/lenox-health-greenwich-village
+2025-05-15 02:31:39,576 - INFO - Crawled 2/25 pages: http://www.northwell.edu
+2025-05-15 02:31:42,371 - INFO - Crawled 3/25 pages: https://www.northwell.edu/emergency-wait-times
+2025-05-15 02:31:45,265 - INFO - Crawled 4/25 pages: https://www.northwell.edu/emergency-nyc
+2025-05-15 02:31:47,544 - INFO - Crawled 5/25 pages: https://www.northwell.edu/about-northwell/volunteer
+2025-05-15 02:31:49,465 - INFO - Crawled 6/25 pages: https://www.northwell.edu/help
+2025-05-15 02:31:51,447 - INFO - Crawled 7/25 pages: https://www.northwell.edu/news
+2025-05-15 02:31:53,342 - INFO - Crawled 8/25 pages: https://www.northwell.edu/physician-partners
+2025-05-15 02:31:55,212 - INFO - Crawled 9/25 pages: https://www.northwell.edu/about-northwell/commitment-to-excellence/compliance
+2025-05-15 02:31:56,336 - INFO - Crawled 10/25 pages: https://www.northwell.edu/privacy-policies-disclaimers/notice-non-discrimination-and-accessibility
+2025-05-15 02:31:58,177 - INFO - Crawled 11/25 pages: https://www.northwell.edu/privacy-policies-disclaimers
+2025-05-15 02:31:59,509 - INFO - Crawled 12/25 pages: https://www.northwell.edu/employees
+2025-05-15 02:32:00,366 - INFO - Crawled 13/25 pages: https://www.northwell.edu/find-care
+2025-05-15 02:32:01,586 - INFO - Crawled 14/25 pages: https://www.northwell.edu/manage-your-care/billpay
+2025-05-15 02:32:03,458 - INFO - Crawled 15/25 pages: https://www.northwell.edu/doctors-and-care/locations
+2025-05-15 02:32:04,647 - INFO - Crawled 16/25 pages: https://www.northwell.edu/manage-your-care/patient-portal
+2025-05-15 02:32:05,501 - INFO - Crawled 17/25 pages: https://www.northwell.edu/clinical-services
+2025-05-15 02:32:06,925 - INFO - Crawled 18/25 pages: https://www.northwell.edu/obstetrics-and-gynecology
+2025-05-15 02:32:07,873 - INFO - Crawled 19/25 pages: https://www.northwell.edu/orthopaedic-institute
+2025-05-15 02:32:09,278 - INFO - Crawled 20/25 pages: https://www.northwell.edu/neurosciences
+2025-05-15 02:32:10,819 - INFO - Crawled 21/25 pages: http://www.northwell.edu/wait-times
+2025-05-15 02:32:12,551 - INFO - Crawled 22/25 pages: https://www.northwell.edu/about-northwell
+2025-05-15 02:32:15,338 - INFO - Crawled 23/25 pages: https://www.northwell.edu/news/the-latest/northwell-hospitals-top-10-percent-specialty-care-healthgrades
+2025-05-15 02:32:16,376 - INFO - Crawled 24/25 pages: https://www.northwell.edu/news/the-latest/northwell-rated-nys-most-awarded-health-system
+2025-05-15 02:32:18,111 - INFO - Crawled 25/25 pages: https://www.northwell.edu/news/the-latest/northwell-opens-3-2m-molecular-diagnostics-laboratory
+2025-05-15 02:32:18,112 - INFO - Crawl completed. Visited 270 URLs, extracted content from 25 pages
+2025-05-15 02:32:18,126 - INFO - Crawling Gracie Square Hospital: https://www.nygsh.org/
+2025-05-15 02:32:20,367 - INFO - Crawled 1/25 pages: https://www.nygsh.org/
+2025-05-15 02:32:21,716 - INFO - Crawled 2/25 pages: https://www.nygsh.org/index.html
+2025-05-15 02:32:22,864 - INFO - Crawled 3/25 pages: https://www.nygsh.org/about-us.html
+2025-05-15 02:32:24,894 - INFO - Crawled 4/25 pages: https://www.nygsh.org/healthcare-team.html
+2025-05-15 02:32:26,214 - INFO - Crawled 5/25 pages: https://www.nygsh.org/services.html
+2025-05-15 02:32:28,189 - INFO - Crawled 6/25 pages: https://www.nygsh.org/patients-and-visitors.html
+2025-05-15 02:32:29,475 - INFO - Crawled 7/25 pages: https://www.nygsh.org/giving.html
+2025-05-15 02:32:32,983 - INFO - Crawled 8/25 pages: https://www.nygsh.org/amenities.html
+2025-05-15 02:32:34,996 - INFO - Crawled 9/25 pages: https://www.nygsh.org/newsletters.html
+2025-05-15 02:32:36,390 - INFO - Crawled 10/25 pages: https://www.nygsh.org/magnet.html
+2025-05-15 02:32:37,662 - INFO - Crawled 11/25 pages: https://www.nygsh.org/privacy-notice.html
+2025-05-15 02:32:38,648 - INFO - Crawled 12/25 pages: https://www.nygsh.org/hospital-pricing-transparency.html
+2025-05-15 02:32:39,761 - INFO - Crawled 13/25 pages: https://www.nygsh.org/admissions-and-insurance.html
+2025-05-15 02:32:41,017 - INFO - Crawled 14/25 pages: https://www.nygsh.org/community-health-needs.html
+2025-05-15 02:32:41,843 - INFO - Crawled 15/25 pages: https://www.nygsh.org/events.html
+2025-05-15 02:32:43,190 - INFO - Crawled 16/25 pages: https://www.nygsh.org/governance-and-leadership.html
+2025-05-15 02:32:45,065 - INFO - Crawled 17/25 pages: https://www.nygsh.org/leadership-bios.html
+2025-05-15 02:32:46,812 - INFO - Crawled 18/25 pages: https://www.nygsh.org/lgbtq.html
+2025-05-15 02:32:48,276 - INFO - Crawled 19/25 pages: https://www.nygsh.org/news.html
+2025-05-15 02:32:49,731 - INFO - Crawled 20/25 pages: https://www.nygsh.org/patient-family-caregiver-stories.html
+2025-05-15 02:32:52,032 - INFO - Crawled 21/25 pages: https://www.nygsh.org/early-recovery.html
+2025-05-15 02:32:53,219 - INFO - Crawled 22/25 pages: https://www.nygsh.org/orthodox-jewish-program.html
+2025-05-15 02:32:54,533 - INFO - Crawled 23/25 pages: https://www.nygsh.org/older-adult.html
+2025-05-15 02:32:56,020 - INFO - Crawled 24/25 pages: https://www.nygsh.org/psychotic-disorders.html
+2025-05-15 02:32:57,962 - INFO - Crawled 25/25 pages: https://www.nygsh.org/ketamine-therapy.html
+2025-05-15 02:32:57,963 - INFO - Crawl completed. Visited 120 URLs, extracted content from 25 pages
+2025-05-15 02:32:57,969 - INFO - Crawling Rockefeller University Hospital: https://rucares.org/
+2025-05-15 02:32:58,959 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rucares.org'. (_ssl.c:997)"))': /
+2025-05-15 02:33:00,015 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rucares.org'. (_ssl.c:997)"))': /
+2025-05-15 02:33:02,050 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rucares.org'. (_ssl.c:997)"))': /
+2025-05-15 02:33:02,085 - WARNING - Error processing https://rucares.org/: HTTPSConnectionPool(host='rucares.org', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rucares.org'. (_ssl.c:997)")))
+2025-05-15 02:33:02,085 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:33:02,085 - INFO - Crawling New York Eye and Ear Infirmary of Mount Sinai: http://www.nyee.edu/
+2025-05-15 02:33:03,819 - INFO - Crawled 1/25 pages: http://www.nyee.edu/
+2025-05-15 02:33:08,214 - INFO - Crawled 2/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction
+2025-05-15 02:33:14,857 - INFO - Crawled 3/25 pages: http://www.nyee.edu/education/ophthalmology-residency
+2025-05-15 02:33:19,130 - INFO - Crawled 4/25 pages: http://www.nyee.edu/education/ophthalmology-fellowship
+2025-05-15 02:33:31,159 - INFO - Crawled 5/25 pages: http://www.nyee.edu/care/eye
+2025-05-15 02:33:34,346 - INFO - Crawled 6/25 pages: http://www.nyee.edu/care/ent
+2025-05-15 02:33:37,556 - INFO - Crawled 7/25 pages: http://www.nyee.edu/care/plastic-surgery
+2025-05-15 02:33:40,554 - INFO - Crawled 8/25 pages: http://www.nyee.edu/care/sleep
+2025-05-15 02:33:44,206 - INFO - Crawled 9/25 pages: http://www.nyee.edu/care/ent/ent-clinic
+2025-05-15 02:33:46,999 - INFO - Crawled 10/25 pages: http://www.nyee.edu/care/eye/clinic
+2025-05-15 02:33:48,539 - INFO - Crawled 11/25 pages: http://www.nyee.edu/care
+2025-05-15 02:33:49,976 - INFO - Crawled 12/25 pages: http://www.nyee.edu/find-a-doctor
+2025-05-15 02:33:51,853 - INFO - Crawled 13/25 pages: http://www.nyee.edu/about/locations
+2025-05-15 02:33:55,859 - INFO - Crawled 14/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction/about-us
+2025-05-15 02:34:00,168 - INFO - Crawled 15/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction/services
+2025-05-15 02:34:03,624 - INFO - Crawled 16/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction/cataract-services
+2025-05-15 02:34:07,614 - INFO - Crawled 17/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction/cataract-services/surgery-options
+2025-05-15 02:34:10,533 - INFO - Crawled 18/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction/cataract-services/faq
+2025-05-15 02:34:15,206 - INFO - Crawled 19/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction/refractive-surgery
+2025-05-15 02:34:17,512 - INFO - Crawled 20/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction/refractive-surgery/lasik
+2025-05-15 02:34:21,556 - INFO - Crawled 21/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction/refractive-surgery/prk
+2025-05-15 02:34:25,411 - INFO - Crawled 22/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction/refractive-surgery/icl
+2025-05-15 02:34:28,676 - INFO - Crawled 23/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction/refractive-surgery/rle
+2025-05-15 02:34:29,838 - INFO - Crawled 24/25 pages: http://www.nyee.edu/care/eye/cataract-laser-vision-correction/what-to-expect
+2025-05-15 02:34:34,320 - INFO - Crawled 25/25 pages: http://www.nyee.edu/care/eye/glaucoma
+2025-05-15 02:34:34,321 - INFO - Crawl completed. Visited 201 URLs, extracted content from 25 pages
+2025-05-15 02:34:34,327 - INFO - Analyzing hospitals in Houston, TX
+2025-05-15 02:34:35,986 - INFO - Crawling Cornerstone Hospital Houston – Bellaire: https://www.chghospitals.com/houston-bellaire/
+2025-05-15 02:34:37,543 - WARNING - Error processing https://www.chghospitals.com/houston-bellaire/: 404 Client Error: Not Found for url: https://cornerstonehospitals.com/houston-bellaire
+2025-05-15 02:34:37,543 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:34:37,544 - INFO - Crawling Plaza Specialty Hospital: https://plazaspecialtyhospital.com/
+2025-05-15 02:34:43,159 - INFO - Crawled 1/25 pages: https://plazaspecialtyhospital.com/
+2025-05-15 02:34:43,159 - INFO - Crawl completed. Visited 1 URLs, extracted content from 1 pages
+2025-05-15 02:34:43,160 - INFO - Crawling Texas Heart Institute - Denton A. Cooley Building: https://www.texasheart.org/
+2025-05-15 02:34:44,609 - WARNING - Error processing https://www.texasheart.org/: 403 Client Error: Forbidden for url: https://www.texasheart.org/
+2025-05-15 02:34:44,610 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:34:44,610 - INFO - Crawling Behavioral Hospital of Bellaire: https://bhbhospital.com/
+2025-05-15 02:34:46,613 - INFO - Crawled 1/25 pages: https://bhbhospital.com/
+2025-05-15 02:34:48,831 - INFO - Crawled 2/25 pages: https://bhbhospital.com/blog/
+2025-05-15 02:34:52,221 - INFO - Crawled 3/25 pages: https://bhbhospital.com/programs-services/
+2025-05-15 02:34:53,323 - INFO - Crawled 4/25 pages: https://bhbhospital.com/programs-services/adult-psychiatric-services/
+2025-05-15 02:34:54,832 - INFO - Crawled 5/25 pages: https://bhbhospital.com/programs-services/adult-psychiatric-services/inpatient-services/
+2025-05-15 02:34:56,911 - INFO - Crawled 6/25 pages: https://bhbhospital.com/programs-services/adult-psychiatric-services/inpatient-services/integrated-behavioral-medicine/
+2025-05-15 02:34:58,317 - INFO - Crawled 7/25 pages: https://bhbhospital.com/programs-services/adult-psychiatric-services/inpatient-services/substance-abuse-detox-program/
+2025-05-15 02:34:59,662 - INFO - Crawled 8/25 pages: https://bhbhospital.com/programs-services/adult-psychiatric-services/outpatient-services/
+2025-05-15 02:35:01,625 - INFO - Crawled 9/25 pages: https://bhbhospital.com/programs-services/adolescent-inpatient-treatment/
+2025-05-15 02:35:02,787 - INFO - Crawled 10/25 pages: https://bhbhospital.com/programs-services/adolescent-inpatient-treatment/adolescent-outpatient-services-branches/
+2025-05-15 02:35:04,813 - INFO - Crawled 11/25 pages: https://bhbhospital.com/programs-services/specialty-programs/
+2025-05-15 02:35:06,329 - INFO - Crawled 12/25 pages: https://bhbhospital.com/programs-services/specialty-programs/senior-adult-inpatient/
+2025-05-15 02:35:07,237 - INFO - Crawled 13/25 pages: https://bhbhospital.com/programs-services/specialty-programs/exclusively-womens-wellness-program/
+2025-05-15 02:35:09,265 - INFO - Crawled 14/25 pages: https://bhbhospital.com/professional-referrals/
+2025-05-15 02:35:10,256 - INFO - Crawled 15/25 pages: https://bhbhospital.com/about-us/
+2025-05-15 02:35:11,441 - INFO - Crawled 16/25 pages: https://bhbhospital.com/about-us/message-from-our-ceo/
+2025-05-15 02:35:12,584 - INFO - Crawled 17/25 pages: https://bhbhospital.com/about-us/leadership-team/
+2025-05-15 02:35:13,983 - INFO - Crawled 18/25 pages: https://bhbhospital.com/about-us/licensing-accreditation/
+2025-05-15 02:35:14,907 - INFO - Crawled 19/25 pages: https://bhbhospital.com/about-us/partnerships/
+2025-05-15 02:35:15,750 - INFO - Crawled 20/25 pages: https://bhbhospital.com/about-us/faq/
+2025-05-15 02:35:17,315 - INFO - Crawled 21/25 pages: https://bhbhospital.com/author/eskycity/
+2025-05-15 02:35:19,402 - INFO - Crawled 22/25 pages: https://bhbhospital.com/blog/recognizing-the-early-signs-of-eating-disorders/
+2025-05-15 02:35:22,805 - INFO - Crawled 23/25 pages: https://bhbhospital.com/category/blog/
+2025-05-15 02:35:24,890 - INFO - Crawled 24/25 pages: https://bhbhospital.com/author/uhsbhb/
+2025-05-15 02:35:25,997 - INFO - Crawled 25/25 pages: https://bhbhospital.com/blog/chronic-disease-and-mental-health-in-seniors/
+2025-05-15 02:35:25,999 - INFO - Crawl completed. Visited 68 URLs, extracted content from 25 pages
+2025-05-15 02:35:26,013 - INFO - Crawling CH First Emergency Room: https://www.ch1er.com
+2025-05-15 02:35:27,203 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:997)'))': /
+2025-05-15 02:35:28,346 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:997)'))': /
+2025-05-15 02:35:30,505 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:997)'))': /
+2025-05-15 02:35:30,656 - WARNING - Error processing https://www.ch1er.com: HTTPSConnectionPool(host='www.ch1er.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:997)')))
+2025-05-15 02:35:30,656 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:35:30,657 - INFO - Crawling PS Med Spa: https://www.psmedspa.com
+2025-05-15 02:35:33,484 - INFO - Crawled 1/25 pages: https://www.psmedspa.com
+2025-05-15 02:35:35,646 - INFO - Crawled 2/25 pages: https://www.psmedspa.com/consultation/
+2025-05-15 02:35:38,195 - INFO - Crawled 3/25 pages: https://www.psmedspa.com/patient-resources/vip-rewards-program/
+2025-05-15 02:35:39,751 - INFO - Crawled 4/25 pages: https://www.psmedspa.com/
+2025-05-15 02:35:41,983 - INFO - Crawled 5/25 pages: https://www.psmedspa.com/before-after-photos-houston/
+2025-05-15 02:35:44,323 - INFO - Crawled 6/25 pages: https://www.psmedspa.com/about-houston-plastic-surgeon/testimonials/
+2025-05-15 02:35:46,821 - INFO - Crawled 7/25 pages: https://www.psmedspa.com/face/facelift/
+2025-05-15 02:35:48,448 - INFO - Crawled 8/25 pages: https://www.psmedspa.com/face/deep-plane-facelift/
+2025-05-15 02:35:50,096 - INFO - Crawled 9/25 pages: https://www.psmedspa.com/face/brow-lift/
+2025-05-15 02:35:52,039 - INFO - Crawled 10/25 pages: https://www.psmedspa.com/face/chin-augmentation/
+2025-05-15 02:35:54,468 - INFO - Crawled 11/25 pages: https://www.psmedspa.com/face/lip-lift/
+2025-05-15 02:35:56,199 - INFO - Crawled 12/25 pages: https://www.psmedspa.com/face/ear-surgery/
+2025-05-15 02:35:58,372 - INFO - Crawled 13/25 pages: https://www.psmedspa.com/face/eyelid-surgery/
+2025-05-15 02:36:00,555 - INFO - Crawled 14/25 pages: https://www.psmedspa.com/face/face-neck-liposuction/
+2025-05-15 02:36:02,438 - INFO - Crawled 15/25 pages: https://www.psmedspa.com/face/chin-liposuction/
+2025-05-15 02:36:04,644 - INFO - Crawled 16/25 pages: https://www.psmedspa.com/face/myellevate-neck-lift/
+2025-05-15 02:36:06,812 - INFO - Crawled 17/25 pages: https://www.psmedspa.com/face/fat-transfer/
+2025-05-15 02:36:08,073 - INFO - Crawled 18/25 pages: https://www.psmedspa.com/face/hair-restoration/
+2025-05-15 02:36:09,897 - INFO - Crawled 19/25 pages: https://www.psmedspa.com/face/hair-restoration/neograft/
+2025-05-15 02:36:12,272 - INFO - Crawled 20/25 pages: https://www.psmedspa.com/medical-spa-houston/phenol-peels/
+2025-05-15 02:36:14,441 - INFO - Crawled 21/25 pages: https://www.psmedspa.com/face/upper-blepharoplasty/
+2025-05-15 02:36:15,589 - INFO - Crawled 22/25 pages: https://www.psmedspa.com/breast/breast-augmentation/
+2025-05-15 02:36:18,057 - INFO - Crawled 23/25 pages: https://www.psmedspa.com/breast/breast-augmentation-with-lift/
+2025-05-15 02:36:20,000 - INFO - Crawled 24/25 pages: https://www.psmedspa.com/breast/breast-reduction/
+2025-05-15 02:36:21,189 - INFO - Crawled 25/25 pages: https://www.psmedspa.com/breast/breast-lift/
+2025-05-15 02:36:21,193 - INFO - Crawl completed. Visited 361 URLs, extracted content from 25 pages
+2025-05-15 02:36:21,216 - INFO - Crawling Sacred Oak Medical Center: https://www.sacredoakmedical.com
+2025-05-15 02:36:38,216 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x107c80b20>, 'Connection to www.sacredoakmedical.com timed out. (connect timeout=15)')': /
+2025-05-15 02:36:54,231 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x107c80c70>, 'Connection to www.sacredoakmedical.com timed out. (connect timeout=15)')': /
+2025-05-15 02:37:11,237 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x107c80cd0>, 'Connection to www.sacredoakmedical.com timed out. (connect timeout=15)')': /
+2025-05-15 02:37:26,243 - WARNING - Error processing https://www.sacredoakmedical.com: HTTPSConnectionPool(host='www.sacredoakmedical.com', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x107c83f10>, 'Connection to www.sacredoakmedical.com timed out. (connect timeout=15)'))
+2025-05-15 02:37:26,244 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:37:26,246 - INFO - Crawling Oceans Behavioral Hospital Of Pasadena: https://oceanshealthcare.com/ohc-location/pasadena/
+2025-05-15 02:37:28,300 - INFO - Crawled 1/25 pages: https://oceanshealthcare.com/ohc-location/pasadena/
+2025-05-15 02:37:30,610 - INFO - Crawled 2/25 pages: https://oceanshealthcare.com/ohc-news/oceans-pasadena-opens-adolescent-partial-hospitalization-program/
+2025-05-15 02:37:32,672 - INFO - Crawled 3/25 pages: https://oceanshealthcare.com
+2025-05-15 02:37:34,754 - INFO - Crawled 4/25 pages: https://oceanshealthcare.com/
+2025-05-15 02:37:36,272 - INFO - Crawled 5/25 pages: https://oceanshealthcare.com/about/
+2025-05-15 02:37:38,569 - INFO - Crawled 6/25 pages: https://oceanshealthcare.com/about/leadership/
+2025-05-15 02:37:40,328 - INFO - Crawled 7/25 pages: https://oceanshealthcare.com/about/newsroom/
+2025-05-15 02:37:42,601 - INFO - Crawled 8/25 pages: https://oceanshealthcare.com/about/partnerships/
+2025-05-15 02:37:44,799 - INFO - Crawled 9/25 pages: https://oceanshealthcare.com/treatment-and-services/
+2025-05-15 02:37:46,264 - INFO - Crawled 10/25 pages: https://oceanshealthcare.com/treatment-and-services/inpatient-services/
+2025-05-15 02:37:48,312 - INFO - Crawled 11/25 pages: https://oceanshealthcare.com/treatment-and-services/intensive-outpatient-program/
+2025-05-15 02:37:49,587 - INFO - Crawled 12/25 pages: https://oceanshealthcare.com/treatment-and-services/partial-hospitalization-program/
+2025-05-15 02:37:50,654 - INFO - Crawled 13/25 pages: https://oceanshealthcare.com/treatment-and-services/adolescent-services/
+2025-05-15 02:37:51,977 - INFO - Crawled 14/25 pages: https://oceanshealthcare.com/treatment-and-services/schizophrenia-treatment/
+2025-05-15 02:37:53,181 - INFO - Crawled 15/25 pages: https://oceanshealthcare.com/treatment-and-services/star-military-program/
+2025-05-15 02:37:54,502 - INFO - Crawled 16/25 pages: https://oceanshealthcare.com/treatment-and-services/substance-use-disorder/
+2025-05-15 02:37:55,633 - INFO - Crawled 17/25 pages: https://oceanshealthcare.com/treatment-and-services/mental-health-services/
+2025-05-15 02:37:56,776 - INFO - Crawled 18/25 pages: https://oceanshealthcare.com/treatment-and-services/anxiety-treatment/
+2025-05-15 02:37:58,361 - INFO - Crawled 19/25 pages: https://oceanshealthcare.com/treatment-and-services/bipolar-disorder-treatment/
+2025-05-15 02:38:00,596 - INFO - Crawled 20/25 pages: https://oceanshealthcare.com/treatment-and-services/depression-treatment/
+2025-05-15 02:38:02,484 - INFO - Crawled 21/25 pages: https://oceanshealthcare.com/treatment-and-services/ocd-treatment/
+2025-05-15 02:38:04,779 - INFO - Crawled 22/25 pages: https://oceanshealthcare.com/treatment-and-services/panic-disorder-treatment/
+2025-05-15 02:38:05,770 - INFO - Crawled 23/25 pages: https://oceanshealthcare.com/treatment-and-services/personality-disorder-treatment/
+2025-05-15 02:38:08,137 - INFO - Crawled 24/25 pages: https://oceanshealthcare.com/treatment-and-services/ptsd-treatment/
+2025-05-15 02:38:09,250 - INFO - Crawled 25/25 pages: https://oceanshealthcare.com/treatment-and-services/trauma-therapy/
+2025-05-15 02:38:09,251 - INFO - Crawl completed. Visited 63 URLs, extracted content from 25 pages
+2025-05-15 02:38:09,266 - INFO - Crawling River Oaks Hospitals And Clinics: https://www.rohc.care
+2025-05-15 02:38:11,124 - INFO - Crawled 1/25 pages: https://www.rohc.care
+2025-05-15 02:38:13,085 - INFO - Crawled 2/25 pages: https://www.rohc.care/services-specialties/about-our-covid-19-testing/
+2025-05-15 02:38:13,860 - INFO - Crawled 3/25 pages: https://www.rohc.care/services-specialties/services/emergency-services/
+2025-05-15 02:38:19,813 - INFO - Crawled 4/25 pages: https://www.rohc.care/careers/
+2025-05-15 02:38:21,840 - INFO - Crawled 5/25 pages: https://www.rohc.care/for-patients/schedule/
+2025-05-15 02:38:23,252 - INFO - Crawled 6/25 pages: https://www.rohc.care/services-specialties/
+2025-05-15 02:38:24,212 - INFO - Crawled 7/25 pages: https://www.rohc.care/why-river-oaks/advanced-hospitality/
+2025-05-15 02:38:26,072 - INFO - Crawled 8/25 pages: https://www.rohc.care/services-specialties/services/diffusion-tensor-imaging/
+2025-05-15 02:38:26,869 - INFO - Crawled 9/25 pages: https://www.rohc.care/services-specialties/specialties/subacute-trauma/
+2025-05-15 02:38:27,543 - INFO - Crawled 10/25 pages: https://www.rohc.care/services-specialties/services/diagnostic-imaging/
+2025-05-15 02:38:29,377 - INFO - Crawled 11/25 pages: https://www.rohc.care/
+2025-05-15 02:38:31,288 - INFO - Crawled 12/25 pages: https://www.rohc.care/services-specialties/about-our-covid-19-testing-new/testing-options/
+2025-05-15 02:38:32,756 - INFO - Crawled 13/25 pages: https://www.rohc.care/services-specialties/about-our-covid-19-testing/testing-options/
+2025-05-15 02:38:34,089 - INFO - Crawled 14/25 pages: https://www.rohc.care/services-specialties/about-our-covid-19-testing/frequently-asked-questions/
+2025-05-15 02:38:34,972 - INFO - Crawled 15/25 pages: https://www.rohc.care/services-specialties/services/
+2025-05-15 02:38:36,495 - INFO - Crawled 16/25 pages: https://www.rohc.care/terms-conditions/
+2025-05-15 02:38:37,944 - WARNING - Error processing https://www.rohc.care/careers/Logout.aspx: 404 Client Error: Not Found for url: https://www.rohc.care/careers/Logout.aspx
+2025-05-15 02:38:39,672 - WARNING - Error processing https://www.rohc.care/careers/FindPosition.aspx?browse=Position: 404 Client Error: Not Found for url: https://www.rohc.care/careers/FindPosition.aspx?browse=Position
+2025-05-15 02:38:41,933 - WARNING - Error processing https://www.rohc.care/careers/TermsAndConditions.aspx: 404 Client Error: Not Found for url: https://www.rohc.care/careers/TermsAndConditions.aspx
+2025-05-15 02:38:43,142 - WARNING - Error processing https://www.rohc.care/careers/Privacy.aspx: 404 Client Error: Not Found for url: https://www.rohc.care/careers/Privacy.aspx
+2025-05-15 02:38:44,541 - INFO - Crawled 17/25 pages: https://www.rohc.care/for-patients/
+2025-05-15 02:38:45,402 - INFO - Crawled 18/25 pages: https://www.rohc.care/services-specialties/specialties/primary-care-physicians/
+2025-05-15 02:38:46,266 - INFO - Crawled 19/25 pages: https://www.rohc.care/services-specialties/specialties/gastrointestinal/
+2025-05-15 02:38:47,647 - INFO - Crawled 20/25 pages: https://www.rohc.care/services-specialties/specialties/orthopedic-pain-sports-med/
+2025-05-15 02:38:48,810 - INFO - Crawled 21/25 pages: https://www.rohc.care/services-specialties/specialties/spine-surgery/
+2025-05-15 02:38:50,855 - INFO - Crawled 22/25 pages: https://www.rohc.care/services-specialties/specialties/neurology-neurosurgery/
+2025-05-15 02:38:52,741 - INFO - Crawled 23/25 pages: https://www.rohc.care/services-specialties/specialties/detox/
+2025-05-15 02:38:54,853 - INFO - Crawled 24/25 pages: https://www.rohc.care/services-specialties/specialties/limb-salvage/
+2025-05-15 02:38:55,798 - INFO - Crawled 25/25 pages: https://www.rohc.care/services-specialties/specialties/flow-vascular/
+2025-05-15 02:38:55,800 - INFO - Crawl completed. Visited 53 URLs, extracted content from 25 pages
+2025-05-15 02:38:55,805 - INFO - Analyzing hospitals in Phoenix, AZ
+2025-05-15 02:38:57,496 - INFO - Crawling Banner Children’s at Desert: https://www.bannerhealth.com/locations/mesa/cardon-children-s-medical-center
+2025-05-15 02:38:58,919 - WARNING - Error processing https://www.bannerhealth.com/locations/mesa/cardon-children-s-medical-center: 403 Client Error: Forbidden for url: https://www.bannerhealth.com/locations/mesa/cardon-children-s-medical-center
+2025-05-15 02:38:58,920 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:38:58,921 - INFO - Crawling Select Specialty Hospital - Phoenix: https://phoenix.selectspecialtyhospitals.com/
+2025-05-15 02:39:01,032 - WARNING - Error processing https://phoenix.selectspecialtyhospitals.com/: 403 Client Error: Forbidden for url: https://phoenix.selectspecialtyhospitals.com/
+2025-05-15 02:39:01,033 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:39:01,034 - INFO - Crawling Haven Senior Horizons of Phoenix: https://www.havenofphoenix.com/
+2025-05-15 02:39:02,575 - INFO - Crawled 1/25 pages: https://www.havenofphoenix.com/
+2025-05-15 02:39:04,564 - INFO - Crawled 2/25 pages: https://www.havenofphoenix.com/what-we-treat/
+2025-05-15 02:39:06,363 - INFO - Crawled 3/25 pages: https://www.havenofphoenix.com/what-we-treat/mental-health/
+2025-05-15 02:39:08,603 - INFO - Crawled 4/25 pages: https://www.havenofphoenix.com/what-we-treat/addiction/
+2025-05-15 02:39:09,776 - INFO - Crawled 5/25 pages: https://www.havenofphoenix.com/what-we-treat/co-occurring/
+2025-05-15 02:39:12,077 - INFO - Crawled 6/25 pages: https://www.havenofphoenix.com/programs/
+2025-05-15 02:39:12,979 - INFO - Crawled 7/25 pages: https://www.havenofphoenix.com/programs/inpatient/
+2025-05-15 02:39:14,880 - INFO - Crawled 8/25 pages: https://www.havenofphoenix.com/programs/therapies/
+2025-05-15 02:39:16,791 - INFO - Crawled 9/25 pages: https://www.havenofphoenix.com/about-us/
+2025-05-15 02:39:18,737 - INFO - Crawled 10/25 pages: https://www.havenofphoenix.com/about-us/our-story/
+2025-05-15 02:39:21,237 - INFO - Crawled 11/25 pages: https://www.havenofphoenix.com/about-us/our-location/
+2025-05-15 02:39:24,580 - INFO - Crawled 12/25 pages: https://www.havenofphoenix.com/what-to-expect/
+2025-05-15 02:39:25,886 - INFO - Crawled 13/25 pages: https://www.havenofphoenix.com/what-to-expect/accepted-insurance/
+2025-05-15 02:39:27,303 - INFO - Crawled 14/25 pages: https://www.havenofphoenix.com/what-to-expect/visiting-hours/
+2025-05-15 02:39:29,381 - INFO - Crawled 15/25 pages: https://www.havenofphoenix.com/what-to-expect/payment-options/
+2025-05-15 02:39:31,353 - INFO - Crawled 16/25 pages: https://www.havenofphoenix.com/what-to-expect/preparing-for-your-stay/
+2025-05-15 02:39:33,360 - INFO - Crawled 17/25 pages: https://www.havenofphoenix.com/what-to-expect/during-your-stay/
+2025-05-15 02:39:35,219 - INFO - Crawled 18/25 pages: https://www.havenofphoenix.com/what-to-expect/after-your-stay/
+2025-05-15 02:39:36,557 - INFO - Crawled 19/25 pages: https://www.havenofphoenix.com/what-to-expect/family-involvement/
+2025-05-15 02:39:37,982 - INFO - Crawled 20/25 pages: https://www.havenofphoenix.com/what-to-expect/faqs/
+2025-05-15 02:39:39,844 - INFO - Crawled 21/25 pages: https://www.havenofphoenix.com/for-providers/
+2025-05-15 02:39:40,692 - INFO - Crawled 22/25 pages: https://www.havenofphoenix.com/careers/
+2025-05-15 02:39:42,866 - INFO - Crawled 23/25 pages: https://www.havenofphoenix.com/get-help-now/
+2025-05-15 02:39:44,700 - INFO - Crawled 24/25 pages: https://www.havenofphoenix.com/get-help-now/i-need-help/
+2025-05-15 02:39:46,229 - INFO - Crawled 25/25 pages: https://www.havenofphoenix.com/get-help-now/my-loved-one-needs-help/
+2025-05-15 02:39:46,230 - INFO - Crawl completed. Visited 40 URLs, extracted content from 25 pages
+2025-05-15 02:39:46,234 - INFO - Crawling Barrow Neurological Institute: https://www.barrowneuro.org/wp-content/uploads/Neurosurgery_Flyer_8-2021.pdf
+2025-05-15 02:39:47,161 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:39:47,161 - INFO - Crawling 56th Medical Group: https://luke.tricare.mil
+2025-05-15 02:39:49,307 - INFO - Crawled 1/25 pages: https://luke.tricare.mil
+2025-05-15 02:39:51,636 - INFO - Crawled 2/25 pages: https://luke.tricare.mil/Patient-Resources/Patient-and-Family-Partnership-Council
+2025-05-15 02:39:53,198 - INFO - Crawled 3/25 pages: https://luke.tricare.mil/Patient-Resources/Virtual-Education-Center
+2025-05-15 02:39:55,178 - INFO - Crawled 4/25 pages: https://luke.tricare.mil/Health-Services/Womens-Health-Pregnancy
+2025-05-15 02:39:57,050 - INFO - Crawled 5/25 pages: https://luke.tricare.mil/Getting-Care/Appointments-Referrals/MHS-GENESIS
+2025-05-15 02:39:58,524 - INFO - Crawled 6/25 pages: https://luke.tricare.mil/Getting-Care/Appointments-Referrals/
+2025-05-15 02:39:59,258 - INFO - Crawled 7/25 pages: https://luke.tricare.mil/Health-Services/Case-Management/
+2025-05-15 02:40:01,757 - INFO - Crawled 8/25 pages: https://luke.tricare.mil/News-Gallery/
+2025-05-15 02:40:03,732 - INFO - Crawled 9/25 pages: https://luke.tricare.mil/News-Gallery/Articles/Article/2739473/air-force-installs-system-to-protect-drinking-water-near-luke-afb
+2025-05-15 02:40:04,828 - INFO - Crawled 10/25 pages: https://luke.tricare.mil/News-Gallery/Articles/Article/2721454/efmp-provides-specialized-services-family-support-care
+2025-05-15 02:40:05,666 - INFO - Crawled 11/25 pages: https://luke.tricare.mil/
+2025-05-15 02:40:07,054 - INFO - Crawled 12/25 pages: https://luke.tricare.mil/Patient-Resources/Customer-Service
+2025-05-15 02:40:08,147 - INFO - Crawled 13/25 pages: https://luke.tricare.mil/Patient-Resources/Exceptional-Family-Member-Program-EFMP
+2025-05-15 02:40:09,846 - INFO - Crawled 14/25 pages: https://luke.tricare.mil/Patient-Resources/FAQs
+2025-05-15 02:40:11,262 - INFO - Crawled 15/25 pages: https://luke.tricare.mil/Patient-Resources/Forms
+2025-05-15 02:40:13,353 - INFO - Crawled 16/25 pages: https://luke.tricare.mil/Patient-Resources/Patient-Rights-Responsibilities
+2025-05-15 02:40:15,232 - INFO - Crawled 17/25 pages: https://luke.tricare.mil/Patient-Resources/Policies
+2025-05-15 02:40:16,907 - INFO - Crawled 18/25 pages: https://luke.tricare.mil/Health-Services
+2025-05-15 02:40:17,885 - INFO - Crawled 19/25 pages: https://luke.tricare.mil/Health-Services/Primary-Care
+2025-05-15 02:40:19,656 - INFO - Crawled 20/25 pages: https://luke.tricare.mil/Health-Services/Primary-Care/Family-Health
+2025-05-15 02:40:21,805 - INFO - Crawled 21/25 pages: https://luke.tricare.mil/Health-Services/Primary-Care/Flight-Medicine
+2025-05-15 02:40:23,340 - INFO - Crawled 22/25 pages: https://luke.tricare.mil/Health-Services/Primary-Care/Internal-Medicine-Service
+2025-05-15 02:40:24,845 - INFO - Crawled 23/25 pages: https://luke.tricare.mil/Health-Services/Preventive-Care
+2025-05-15 02:40:25,761 - INFO - Crawled 24/25 pages: https://luke.tricare.mil/Health-Services/Preventive-Care/Immunizations
+2025-05-15 02:40:27,429 - INFO - Crawled 25/25 pages: https://luke.tricare.mil/Health-Services/Preventive-Care/Immunizations/COVID-19-Vaccine
+2025-05-15 02:40:27,431 - INFO - Crawl completed. Visited 69 URLs, extracted content from 25 pages
+2025-05-15 02:40:27,434 - INFO - Crawling Just For Kids Therapy: https://www.justforkidsaz.com
+2025-05-15 02:40:29,592 - INFO - Crawled 1/25 pages: https://www.justforkidsaz.com
+2025-05-15 02:40:31,571 - INFO - Crawled 2/25 pages: https://www.justforkidsaz.com/our-philosophy
+2025-05-15 02:40:32,904 - INFO - Crawled 3/25 pages: https://www.justforkidsaz.com/services
+2025-05-15 02:40:35,835 - INFO - Crawled 4/25 pages: https://www.justforkidsaz.com/about-us
+2025-05-15 02:40:35,835 - INFO - Crawl completed. Visited 5 URLs, extracted content from 4 pages
+2025-05-15 02:40:35,836 - INFO - Crawling Recovery Center For The Arts: https://www.rcfta.com
+2025-05-15 02:40:38,890 - INFO - Crawled 1/25 pages: https://www.rcfta.com
+2025-05-15 02:40:40,626 - INFO - Crawled 2/25 pages: https://www.rcfta.com/insurance-inquiries/
+2025-05-15 02:40:43,084 - INFO - Crawled 3/25 pages: https://www.rcfta.com/addiction-treatment-services/
+2025-05-15 02:40:43,084 - INFO - Crawl completed. Visited 3 URLs, extracted content from 3 pages
+2025-05-15 02:40:43,084 - INFO - Analyzing hospitals in Philadelphia, PA
+2025-05-15 02:40:45,703 - INFO - Crawling Wills Eye Hospital: https://www.willseye.org/
+2025-05-15 02:40:46,856 - INFO - Crawled 1/25 pages: https://www.willseye.org/
+2025-05-15 02:40:47,681 - INFO - Crawled 2/25 pages: https://www.willseye.org/careers/
+2025-05-15 02:40:48,362 - INFO - Crawled 3/25 pages: https://www.willseye.org/appointment-request/
+2025-05-15 02:40:49,180 - INFO - Crawled 4/25 pages: https://www.willseye.org/medical-services/eye-emergency-department/
+2025-05-15 02:40:50,608 - INFO - Crawled 5/25 pages: https://www.willseye.org/medical-services/
+2025-05-15 02:40:52,545 - INFO - Crawled 6/25 pages: https://www.willseye.org/doctors
+2025-05-15 02:40:53,694 - INFO - Crawled 7/25 pages: https://www.willseye.org/reasons-to-choose-wills-eye/
+2025-05-15 02:40:55,304 - INFO - Crawled 8/25 pages: https://www.willseye.org/about-wills-eye/history/
+2025-05-15 02:40:57,585 - INFO - Crawled 9/25 pages: https://www.willseye.org/about-wills-eye/leadership/
+2025-05-15 02:40:59,344 - INFO - Crawled 10/25 pages: https://www.willseye.org/education/
+2025-05-15 02:41:00,515 - INFO - Crawled 11/25 pages: https://www.willseye.org/doctor/douglas-m-wisner-md/
+2025-05-15 02:41:02,063 - INFO - Crawled 12/25 pages: https://www.willseye.org/doctor/su-mae-ang-md/
+2025-05-15 02:41:03,522 - INFO - Crawled 13/25 pages: https://www.willseye.org/doctor/john-c-anhalt-md/
+2025-05-15 02:41:04,626 - INFO - Crawled 14/25 pages: https://www.willseye.org/doctor/mark-h-blecher-md/
+2025-05-15 02:41:05,465 - INFO - Crawled 15/25 pages: https://www.willseye.org/doctor/christine-chung-md/
+2025-05-15 02:41:07,060 - INFO - Crawled 16/25 pages: https://www.willseye.org/doctor/bren-davis-md/
+2025-05-15 02:41:08,396 - INFO - Crawled 17/25 pages: https://www.willseye.org/doctor/elizabeth-derham-md/
+2025-05-15 02:41:10,320 - INFO - Crawled 18/25 pages: https://www.willseye.org/doctor/walter-p-harris-jr-md/
+2025-05-15 02:41:11,606 - INFO - Crawled 19/25 pages: https://www.willseye.org/doctor/christina-mcgowan-md/
+2025-05-15 02:41:13,682 - INFO - Crawled 20/25 pages: https://www.willseye.org/doctor/jeffrey-f-mcmahon-md/
+2025-05-15 02:41:15,646 - INFO - Crawled 21/25 pages: https://www.willseye.org/doctor/danijel-pericic-md/
+2025-05-15 02:41:17,204 - INFO - Crawled 22/25 pages: https://www.willseye.org/doctor/louis-h-sweterlitsch-iii-md/
+2025-05-15 02:41:18,058 - INFO - Crawled 23/25 pages: https://www.willseye.org/doctor/amy-weber-md/
+2025-05-15 02:41:19,114 - INFO - Crawled 24/25 pages: https://www.willseye.org/doctor/michael-d-abendroth-md-mba/
+2025-05-15 02:41:19,777 - INFO - Crawled 25/25 pages: https://www.willseye.org/doctor/robert-s-bailey-jr-md/
+2025-05-15 02:41:19,778 - INFO - Crawl completed. Visited 265 URLs, extracted content from 25 pages
+2025-05-15 02:41:19,779 - INFO - Crawling Montgomery County Emergency Service - Crisis Services: http://www.mces.org/
+2025-05-15 02:41:32,832 - INFO - Crawled 1/25 pages: http://www.mces.org/
+2025-05-15 02:41:35,860 - INFO - Crawled 2/25 pages: http://www.mces.org
+2025-05-15 02:41:35,861 - INFO - Crawl completed. Visited 2 URLs, extracted content from 2 pages
+2025-05-15 02:41:35,863 - INFO - Crawling Kindred Hospital South Philadelphia: https://www.kindredhealthcare.com/locations/transitional-care-hospitals/kindred-hospital-south-philadelphia
+2025-05-15 02:41:36,879 - WARNING - Error processing https://www.kindredhealthcare.com/locations/transitional-care-hospitals/kindred-hospital-south-philadelphia: 404 Client Error: Not Found for url: https://www.kindredhealthcare.com/locations/transitional-care-hospitals/kindred-hospital-south-philadelphia
+2025-05-15 02:41:36,879 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:41:36,880 - INFO - Crawling Weisman Children's Rehabilitation Hospital: https://www.weismanchildrens.com/
+2025-05-15 02:41:39,102 - INFO - Crawled 1/25 pages: https://www.weismanchildrens.com/
+2025-05-15 02:41:40,140 - INFO - Crawled 2/25 pages: https://www.weismanchildrens.com/outpatient-care/
+2025-05-15 02:41:41,422 - INFO - Crawled 3/25 pages: https://www.weismanchildrens.com/inpatient-care/
+2025-05-15 02:41:42,460 - INFO - Crawled 4/25 pages: https://www.weismanchildrens.com/medical-day-care/
+2025-05-15 02:41:46,673 - INFO - Crawled 5/25 pages: https://www.weismanchildrens.com/declan/
+2025-05-15 02:41:47,401 - INFO - Crawled 6/25 pages: https://www.weismanchildrens.com/patient-stories/
+2025-05-15 02:41:48,967 - INFO - Crawled 7/25 pages: https://www.weismanchildrens.com/top-rated-physicians
+2025-05-15 02:41:50,032 - INFO - Crawled 8/25 pages: https://www.weismanchildrens.com/our-leadership/
+2025-05-15 02:41:51,897 - INFO - Crawled 9/25 pages: https://www.weismanchildrens.com/marlton/
+2025-05-15 02:41:53,205 - INFO - Crawled 10/25 pages: https://www.weismanchildrens.com/pennsauken/
+2025-05-15 02:41:54,683 - INFO - Crawled 11/25 pages: https://www.weismanchildrens.com/northfield/
+2025-05-15 02:41:56,051 - INFO - Crawled 12/25 pages: https://www.weismanchildrens.com/washington-township/
+2025-05-15 02:41:57,840 - INFO - Crawled 13/25 pages: https://www.weismanchildrens.com/vineland/
+2025-05-15 02:41:59,219 - INFO - Crawled 14/25 pages: https://www.weismanchildrens.com/resources/
+2025-05-15 02:42:01,519 - INFO - Crawled 15/25 pages: https://www.weismanchildrens.com/telehealth-frequent-asked-questions/
+2025-05-15 02:42:03,716 - INFO - Crawled 16/25 pages: https://www.weismanchildrens.com/seating-and-mobility-clinic-form/
+2025-05-15 02:42:05,412 - INFO - Crawled 17/25 pages: https://www.weismanchildrens.com/pediatric-pain-form/
+2025-05-15 02:42:07,655 - INFO - Crawled 18/25 pages: https://www.weismanchildrens.com/pediatric-pain-faq/
+2025-05-15 02:42:09,360 - INFO - Crawled 19/25 pages: https://www.weismanchildrens.com/why-are-you-in-constant-pain/
+2025-05-15 02:42:13,666 - INFO - Crawled 20/25 pages: https://www.weismanchildrens.com/take-charge-of-your-diabetes/
+2025-05-15 02:42:17,094 - INFO - Crawled 21/25 pages: https://www.weismanchildrens.com/does-asthma-control-your-childs-life/
+2025-05-15 02:42:19,954 - INFO - Crawled 22/25 pages: https://www.weismanchildrens.com/darcie/
+2025-05-15 02:42:21,195 - INFO - Crawled 23/25 pages: https://www.weismanchildrens.com/samantha/
+2025-05-15 02:42:22,058 - INFO - Crawled 24/25 pages: https://www.weismanchildrens.com/lauren/
+2025-05-15 02:42:22,909 - INFO - Crawled 25/25 pages: https://www.weismanchildrens.com/samir/
+2025-05-15 02:42:22,909 - INFO - Crawl completed. Visited 57 URLs, extracted content from 25 pages
+2025-05-15 02:42:22,914 - INFO - Crawling Kensington Hospital: https://kensingtonhospital.org/
+2025-05-15 02:42:24,184 - INFO - Crawled 1/25 pages: https://kensingtonhospital.org/
+2025-05-15 02:42:24,184 - INFO - Crawl completed. Visited 1 URLs, extracted content from 1 pages
+2025-05-15 02:42:24,184 - INFO - Crawling Rite Options: https://www.riteoptions.com/
+2025-05-15 02:42:26,410 - INFO - Crawled 1/25 pages: https://www.riteoptions.com/
+2025-05-15 02:42:29,183 - INFO - Crawled 2/25 pages: https://www.riteoptions.com/donor-process/
+2025-05-15 02:42:31,179 - INFO - Crawled 3/25 pages: https://www.riteoptions.com/donor-compensation/
+2025-05-15 02:42:33,443 - INFO - Crawled 4/25 pages: https://www.riteoptions.com/users/register/donor/
+2025-05-15 02:42:34,414 - INFO - Crawled 5/25 pages: https://www.riteoptions.com/surrogacy-process/
+2025-05-15 02:42:36,132 - INFO - Crawled 6/25 pages: https://www.riteoptions.com/surrogate-mother-compensation/
+2025-05-15 02:42:38,410 - INFO - Crawled 7/25 pages: https://www.riteoptions.com/matching-process-with-donor/
+2025-05-15 02:42:39,430 - INFO - Crawled 8/25 pages: https://www.riteoptions.com/matching-process-with-surrogate/
+2025-05-15 02:42:40,993 - INFO - Crawled 9/25 pages: https://www.riteoptions.com/users/register/pdonor/
+2025-05-15 02:42:43,211 - INFO - Crawled 10/25 pages: https://www.riteoptions.com/users/register/pcarrier/
+2025-05-15 02:42:45,425 - INFO - Crawled 11/25 pages: https://www.riteoptions.com/users/register/bothdc/
+2025-05-15 02:42:47,633 - INFO - Crawled 12/25 pages: https://www.riteoptions.com/consulting-service/
+2025-05-15 02:42:49,882 - INFO - Crawled 13/25 pages: https://www.riteoptions.com/cycle-management/
+2025-05-15 02:42:53,260 - INFO - Crawled 14/25 pages: https://www.riteoptions.com/users/register/clinic/
+2025-05-15 02:42:54,743 - INFO - Crawled 15/25 pages: https://www.riteoptions.com/success-stories/
+2025-05-15 02:42:56,152 - INFO - Crawled 16/25 pages: https://www.riteoptions.com/users/register/carrier/
+2025-05-15 02:42:57,869 - INFO - Crawled 17/25 pages: https://www.riteoptions.com/using-an-egg-donor/
+2025-05-15 02:42:59,868 - INFO - Crawled 18/25 pages: https://www.riteoptions.com/become-an-egg-donor/
+2025-05-15 02:43:00,936 - INFO - Crawled 19/25 pages: https://www.riteoptions.com/users/forgotpassword
+2025-05-15 02:43:02,290 - INFO - Crawled 20/25 pages: https://www.riteoptions.com/refer-a-friend-program/
+2025-05-15 02:43:04,253 - INFO - Crawled 21/25 pages: https://www.riteoptions.com/surrogate-mother-requirements/
+2025-05-15 02:43:06,424 - INFO - Crawled 22/25 pages: https://www.riteoptions.com/becoming-a-surrogate-mother
+2025-05-15 02:43:07,552 - INFO - Crawled 23/25 pages: https://www.riteoptions.com/becoming-a-surrogate-mother/
+2025-05-15 02:43:08,798 - INFO - Crawled 24/25 pages: https://www.riteoptions.com/how-to-find-best-surrogacy-agency/
+2025-05-15 02:43:11,697 - INFO - Crawled 25/25 pages: https://www.riteoptions.com/us-surrogacy-laws-by-state
+2025-05-15 02:43:11,699 - INFO - Crawl completed. Visited 48 URLs, extracted content from 25 pages
+2025-05-15 02:43:11,708 - INFO - Analyzing hospitals in San Antonio, TX
+2025-05-15 02:43:14,281 - INFO - Crawling Methodist Children's Hospital: https://sahealth.com/locations/methodistchildrens/
+2025-05-15 02:43:16,446 - INFO - Crawled 1/25 pages: https://sahealth.com/locations/methodistchildrens/
+2025-05-15 02:43:17,592 - INFO - Crawled 2/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties
+2025-05-15 02:43:18,661 - INFO - Crawled 3/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/physicians
+2025-05-15 02:43:20,412 - INFO - Crawled 4/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/for-patients/make-a-payment
+2025-05-15 02:43:23,057 - INFO - Crawled 5/25 pages: https://sahealth.com/specialties/
+2025-05-15 02:43:24,622 - INFO - Crawled 6/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/about-us
+2025-05-15 02:43:26,945 - INFO - Crawled 7/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/pediatrics/pediatric-emergency-care
+2025-05-15 02:43:28,465 - INFO - Crawled 8/25 pages: https://sahealth.com/patient-resources/patient-financial-resources
+2025-05-15 02:43:29,394 - INFO - Crawled 9/25 pages: https://sahealth.com/patient-resources/register-online
+2025-05-15 02:43:30,289 - INFO - Crawled 10/25 pages: https://sahealth.com/patient-resources/advance-care-planning
+2025-05-15 02:43:32,224 - INFO - Crawled 11/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/for-visitors
+2025-05-15 02:43:34,148 - INFO - Crawled 12/25 pages: https://sahealth.com/patient-resources/patient-sms-updates
+2025-05-15 02:43:36,011 - INFO - Crawled 13/25 pages: https://sahealth.com/locations/methodist-childrens-hospital
+2025-05-15 02:43:37,439 - INFO - Crawled 14/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/burn-care
+2025-05-15 02:43:39,163 - INFO - Crawled 15/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/gastroenterology
+2025-05-15 02:43:40,923 - INFO - Crawled 16/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/nicu
+2025-05-15 02:43:42,085 - INFO - Crawled 17/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/orthopedic-care
+2025-05-15 02:43:44,334 - INFO - Crawled 18/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/pediatrics
+2025-05-15 02:43:46,237 - INFO - Crawled 19/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/pediatrics/pediatric-blood-and-marrow-transplant
+2025-05-15 02:43:47,442 - INFO - Crawled 20/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/pediatrics/pediatric-cardiology
+2025-05-15 02:43:49,805 - INFO - Crawled 21/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/pediatrics/pediatric-craniofacial-and-plastic-surgery
+2025-05-15 02:43:51,225 - INFO - Crawled 22/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/pediatrics/Pediatric-neurological-care
+2025-05-15 02:43:52,370 - INFO - Crawled 23/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/pediatrics/pediatric-oncology
+2025-05-15 02:43:54,733 - INFO - Crawled 24/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/pediatrics/pediatric-pulmonology
+2025-05-15 02:43:56,688 - INFO - Crawled 25/25 pages: https://sahealth.com/locations/methodist-childrens-hospital/specialties/pediatrics/pediatric-rehabilitation
+2025-05-15 02:43:56,689 - INFO - Crawl completed. Visited 179 URLs, extracted content from 25 pages
+2025-05-15 02:43:56,696 - INFO - Crawling Baptist Emergency Hospital: http://www.baptistemergencyhospital.com/thousand-oaks/
+2025-05-15 02:43:57,883 - WARNING - Error processing http://www.baptistemergencyhospital.com/thousand-oaks/: 404 Client Error: Not Found for url: http://www.baptistemergencyhospital.com/thousand-oaks/
+2025-05-15 02:43:57,884 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:43:57,884 - INFO - Crawling Action Behavior Centers - ABA Therapy for Autism: https://www.actionbehavior.com/locations/aba-therapy-westover-hills-tx/
+2025-05-15 02:43:59,179 - WARNING - Error processing https://www.actionbehavior.com/locations/aba-therapy-westover-hills-tx/: 404 Client Error: Not Found for url: https://www.actionbehavior.com/locations/aba-therapy-westover-hills-tx
+2025-05-15 02:43:59,179 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:43:59,180 - INFO - Crawling Baptist Neighborhood Hospital Schertz: https://www.baptistneighborhoodhospital.com/locations/schertz/
+2025-05-15 02:44:01,307 - INFO - Crawled 1/25 pages: https://www.baptistneighborhoodhospital.com/locations/schertz/
+2025-05-15 02:44:02,240 - INFO - Crawled 2/25 pages: https://www.baptistneighborhoodhospital.com/services
+2025-05-15 02:44:04,515 - INFO - Crawled 3/25 pages: https://www.baptistneighborhoodhospital.com/careers/
+2025-05-15 02:44:07,199 - INFO - Crawled 4/25 pages: https://www.baptistneighborhoodhospital.com/locations/
+2025-05-15 02:44:08,298 - INFO - Crawled 5/25 pages: https://www.baptistneighborhoodhospital.com/services/emergency
+2025-05-15 02:44:10,233 - INFO - Crawled 6/25 pages: https://www.baptistneighborhoodhospital.com/services/inpatient
+2025-05-15 02:44:11,432 - INFO - Crawled 7/25 pages: https://www.baptistneighborhoodhospital.com/services/diagnostic
+2025-05-15 02:44:13,336 - INFO - Crawled 8/25 pages: https://www.baptistneighborhoodhospital.com/locations/converse
+2025-05-15 02:44:14,336 - INFO - Crawled 9/25 pages: https://www.baptistneighborhoodhospital.com/locations/hausman
+2025-05-15 02:44:16,526 - INFO - Crawled 10/25 pages: https://www.baptistneighborhoodhospital.com/locations/kelly
+2025-05-15 02:44:17,669 - INFO - Crawled 11/25 pages: https://www.baptistneighborhoodhospital.com/locations/overlook
+2025-05-15 02:44:19,244 - INFO - Crawled 12/25 pages: https://www.baptistneighborhoodhospital.com/locations/schertz
+2025-05-15 02:44:20,800 - INFO - Crawled 13/25 pages: https://www.baptistneighborhoodhospital.com/locations/shavano-park
+2025-05-15 02:44:22,980 - INFO - Crawled 14/25 pages: https://www.baptistneighborhoodhospital.com/locations/thousand-oaks
+2025-05-15 02:44:24,978 - INFO - Crawled 15/25 pages: https://www.baptistneighborhoodhospital.com/locations/westover-hills
+2025-05-15 02:44:27,324 - INFO - Crawled 16/25 pages: https://www.baptistneighborhoodhospital.com/locations/zarzamora
+2025-05-15 02:44:27,324 - INFO - Crawl completed. Visited 16 URLs, extracted content from 16 pages
+2025-05-15 02:44:27,325 - INFO - Crawling Baptist Neighborhood Hospital Zarzamora: https://www.baptisthealthsystem.com/locations/detail/baptist-neighborhood-hospital---zarzamora
+2025-05-15 02:44:28,036 - WARNING - Error processing https://www.baptisthealthsystem.com/locations/detail/baptist-neighborhood-hospital---zarzamora: 403 Client Error: Forbidden for url: https://www.baptisthealthsystem.com/locations/detail/baptist-neighborhood-hospital---zarzamora
+2025-05-15 02:44:28,036 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:44:28,036 - INFO - Crawling Baptist Neighborhood Hospital Kelly: https://www.baptisthealthsystem.com/locations/detail/baptist-emergency-hospital---kelly
+2025-05-15 02:44:29,160 - WARNING - Error processing https://www.baptisthealthsystem.com/locations/detail/baptist-emergency-hospital---kelly: 403 Client Error: Forbidden for url: https://www.baptisthealthsystem.com/locations/detail/baptist-emergency-hospital---kelly
+2025-05-15 02:44:29,161 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:44:29,161 - INFO - Crawling Encompass Health Rehabilitation Hospital Of San Antonio: https://encompasshealth.com/locations/sanantoniorehab
+2025-05-15 02:44:31,078 - INFO - Crawled 1/25 pages: https://encompasshealth.com/locations/sanantoniorehab
+2025-05-15 02:44:33,801 - INFO - Crawled 2/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services
+2025-05-15 02:44:35,189 - INFO - Crawled 3/25 pages: https://encompasshealth.com/locations/san-antonio-rehab/referral
+2025-05-15 02:44:36,990 - INFO - Crawled 4/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/brain-injury-rehabilitation
+2025-05-15 02:44:39,475 - INFO - Crawled 5/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/polytrauma-rehabilitation
+2025-05-15 02:44:40,797 - INFO - Crawled 6/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/neurological-rehabilitation
+2025-05-15 02:44:42,555 - INFO - Crawled 7/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/spasticity-rehabilitation
+2025-05-15 02:44:43,671 - INFO - Crawled 8/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/spinal-cord-rehabilitation
+2025-05-15 02:44:45,649 - INFO - Crawled 9/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/stroke-rehabilitation
+2025-05-15 02:44:47,236 - INFO - Crawled 10/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/amputation-rehabilitation
+2025-05-15 02:44:49,850 - INFO - Crawled 11/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/chronic-condition-management
+2025-05-15 02:44:51,620 - INFO - Crawled 12/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/hip-rehabilitation
+2025-05-15 02:44:53,235 - INFO - Crawled 13/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/joint-replacement
+2025-05-15 02:44:54,866 - INFO - Crawled 14/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/orthopedic-rehabilitation
+2025-05-15 02:44:57,729 - INFO - Crawled 15/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/activities-daily-living
+2025-05-15 02:45:00,095 - INFO - Crawled 16/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/cardiac-rehabilitation
+2025-05-15 02:45:02,078 - INFO - Crawled 17/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/cancer-rehabilitation
+2025-05-15 02:45:04,231 - INFO - Crawled 18/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/bowel-bladder-training
+2025-05-15 02:45:05,975 - INFO - Crawled 19/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/diabetes-management
+2025-05-15 02:45:07,373 - INFO - Crawled 20/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/dialysis-therapy
+2025-05-15 02:45:08,605 - INFO - Crawled 21/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/medication-management
+2025-05-15 02:45:10,519 - INFO - Crawled 22/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/pain-management
+2025-05-15 02:45:11,978 - INFO - Crawled 23/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/pulmonary-rehabilitation
+2025-05-15 02:45:12,949 - INFO - Crawled 24/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/wound-care
+2025-05-15 02:45:14,013 - INFO - Crawled 25/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/additional-therapies
+2025-05-15 02:45:14,013 - INFO - Crawl completed. Visited 35 URLs, extracted content from 25 pages
+2025-05-15 02:45:14,015 - INFO - Analyzing hospitals in San Diego, CA
+2025-05-15 02:45:30,078 - INFO - Analyzing hospitals in Dallas, TX
+2025-05-15 02:45:31,735 - INFO - Crawling Plano Specialty Hospital: http://specialtyhospitalplano.com/
+2025-05-15 02:45:33,505 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPConnection object at 0x102627e80>: Failed to resolve 'specialtyhospitalplano.com' ([Errno 8] nodename nor servname provided, or not known)")': /
+2025-05-15 02:45:34,512 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPConnection object at 0x1025c7100>: Failed to resolve 'specialtyhospitalplano.com' ([Errno 8] nodename nor servname provided, or not known)")': /
+2025-05-15 02:45:36,523 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPConnection object at 0x1025c60e0>: Failed to resolve 'specialtyhospitalplano.com' ([Errno 8] nodename nor servname provided, or not known)")': /
+2025-05-15 02:45:36,529 - WARNING - Error processing http://specialtyhospitalplano.com/: HTTPConnectionPool(host='specialtyhospitalplano.com', port=80): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x1025c6380>: Failed to resolve 'specialtyhospitalplano.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-05-15 02:45:36,529 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:45:36,530 - INFO - Crawling Select Specialty Hospital - Dallas Downtown: https://dallasdowntown.selectspecialtyhospitals.com/
+2025-05-15 02:45:37,343 - WARNING - Error processing https://dallasdowntown.selectspecialtyhospitals.com/: 403 Client Error: Forbidden for url: https://dallasdowntown.selectspecialtyhospitals.com/
+2025-05-15 02:45:37,344 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:45:37,345 - INFO - Crawling The Heart Hospital Baylor Plano: https://www.thehearthospitalbaylor.com/
+2025-05-15 02:45:39,969 - INFO - Crawled 1/25 pages: https://www.thehearthospitalbaylor.com/
+2025-05-15 02:45:41,157 - INFO - Crawled 2/25 pages: https://www.thehearthospitalbaylor.com/about/
+2025-05-15 02:45:42,528 - INFO - Crawled 3/25 pages: https://www.thehearthospitalbaylor.com/cardiovascular-risk-assessment/
+2025-05-15 02:45:43,303 - INFO - Crawled 4/25 pages: https://www.thehearthospitalbaylor.com/bmi-calculator/
+2025-05-15 02:45:45,201 - INFO - Crawled 5/25 pages: https://www.thehearthospitalbaylor.com/blood-pressure-tracker/
+2025-05-15 02:45:47,129 - INFO - Crawled 6/25 pages: https://www.thehearthospitalbaylor.com/heart-friendly-meal-plans/
+2025-05-15 02:45:48,925 - INFO - Crawled 7/25 pages: https://www.thehearthospitalbaylor.com/mitral-valve-prolapse/
+2025-05-15 02:45:50,758 - INFO - Crawled 8/25 pages: https://www.thehearthospitalbaylor.com/author/admin/
+2025-05-15 02:45:52,273 - INFO - Crawled 9/25 pages: https://www.thehearthospitalbaylor.com/cardiac-arrest-symptoms-recognize-respond-and-save-lives/
+2025-05-15 02:45:54,178 - INFO - Crawled 10/25 pages: https://www.thehearthospitalbaylor.com/cardiac-imaging-key-methods-and-their-role-in-heart-disease-diagnosis/
+2025-05-15 02:45:55,114 - INFO - Crawled 11/25 pages: https://www.thehearthospitalbaylor.com/emotional-side-effects-of-heart-surgery-understanding-and-coping-with-the-psychological-journey/
+2025-05-15 02:45:56,467 - INFO - Crawled 12/25 pages: https://www.thehearthospitalbaylor.com/flying-after-a-heart-attack-key-considerations-for-a-safe-and-comfortable-journey/
+2025-05-15 02:45:58,703 - INFO - Crawled 13/25 pages: https://www.thehearthospitalbaylor.com/heart-palpitations-symptoms-causes-warning-signs-and-treatment-options/
+2025-05-15 02:45:59,954 - INFO - Crawled 14/25 pages: https://www.thehearthospitalbaylor.com/3-quick-tips-to-strengthen-your-heart-muscle/
+2025-05-15 02:46:02,142 - INFO - Crawled 15/25 pages: https://www.thehearthospitalbaylor.com/stress-and-anxiety-cause-palpitations/
+2025-05-15 02:46:02,922 - INFO - Crawled 16/25 pages: https://www.thehearthospitalbaylor.com/category/cardiology/
+2025-05-15 02:46:04,118 - INFO - Crawled 17/25 pages: https://www.thehearthospitalbaylor.com/category/cardiovascular-surgery/
+2025-05-15 02:46:06,155 - INFO - Crawled 18/25 pages: https://www.thehearthospitalbaylor.com/category/health-wellness/
+2025-05-15 02:46:08,148 - INFO - Crawled 19/25 pages: https://www.thehearthospitalbaylor.com/category/lifestyle/
+2025-05-15 02:46:09,039 - INFO - Crawled 20/25 pages: https://www.thehearthospitalbaylor.com/category/mental-health/
+2025-05-15 02:46:10,686 - INFO - Crawled 21/25 pages: https://www.thehearthospitalbaylor.com/category/recovery-and-rehabilitation/
+2025-05-15 02:46:12,591 - INFO - Crawled 22/25 pages: https://www.thehearthospitalbaylor.com/heart-valve-disease-management-key-strategies-for-optimal-cardiac-health/
+2025-05-15 02:46:14,141 - INFO - Crawled 23/25 pages: https://www.thehearthospitalbaylor.com/what-is-hypothermia-causes-symptoms-and-prevention/
+2025-05-15 02:46:15,366 - INFO - Crawled 24/25 pages: https://www.thehearthospitalbaylor.com/peripheral-angioplasty-restoring-blood-flow-and-improving-vascular-health/
+2025-05-15 02:46:16,994 - INFO - Crawled 25/25 pages: https://www.thehearthospitalbaylor.com/what-is-diabetic-heart-disease-risks-symptoms-and-prevention/
+2025-05-15 02:46:16,995 - INFO - Crawl completed. Visited 31 URLs, extracted content from 25 pages
+2025-05-15 02:46:17,008 - INFO - Crawling North Central Surgical Center: https://www.northcentralsurgical.com/
+2025-05-15 02:46:17,978 - WARNING - Error processing https://www.northcentralsurgical.com/: 403 Client Error: Forbidden for url: https://www.northcentralsurgical.com/
+2025-05-15 02:46:17,978 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:46:17,979 - INFO - Crawling YAKER Hair Restoration + Med Spa: https://www.yakermd.com/
+2025-05-15 02:46:21,341 - INFO - Crawled 1/25 pages: https://www.yakermd.com/
+2025-05-15 02:46:23,693 - INFO - Crawled 2/25 pages: https://www.yakermd.com/author/dryakeryakermd-com/
+2025-05-15 02:46:27,926 - INFO - Crawled 3/25 pages: https://www.yakermd.com/hair-loss-treatments/
+2025-05-15 02:46:30,087 - INFO - Crawled 4/25 pages: https://www.yakermd.com/hair-loss-treatments/smartgraft-fue/
+2025-05-15 02:46:32,422 - INFO - Crawled 5/25 pages: https://www.yakermd.com/hair-loss-treatments/facial-hair-transplant-surgery/
+2025-05-15 02:46:35,823 - INFO - Crawled 6/25 pages: https://www.yakermd.com/hair-loss-treatments/eyebrow-transplant-surgery/
+2025-05-15 02:46:38,018 - INFO - Crawled 7/25 pages: https://www.yakermd.com/hair-loss-treatments/eyelash-transplant-surgery/
+2025-05-15 02:46:40,035 - INFO - Crawled 8/25 pages: https://www.yakermd.com/hair-scalp-therapy/
+2025-05-15 02:46:42,476 - INFO - Crawled 9/25 pages: https://www.yakermd.com/hair-growth-medications/
+2025-05-15 02:46:45,164 - INFO - Crawled 10/25 pages: https://www.yakermd.com/hair-loss-treatments/nonsurgical-treatments/prp-hair-therapy/
+2025-05-15 02:46:48,058 - INFO - Crawled 11/25 pages: https://www.yakermd.com/low-level-laser-therapy/
+2025-05-15 02:46:51,127 - INFO - Crawled 12/25 pages: https://www.yakermd.com/med-spa-treatments/injectable-treatment/
+2025-05-15 02:46:52,627 - INFO - Crawled 13/25 pages: https://www.yakermd.com/med-spa-treatments/injectable-treatments/
+2025-05-15 02:46:56,153 - INFO - Crawled 14/25 pages: https://www.yakermd.com/med-spa-treatments/skin-treatments/
+2025-05-15 02:46:57,302 - INFO - Crawled 15/25 pages: https://www.yakermd.com/med-spa-treatments/laser-treatments/
+2025-05-15 02:47:00,084 - INFO - Crawled 16/25 pages: https://www.yakermd.com/video-gallery/
+2025-05-15 02:47:04,272 - INFO - Crawled 17/25 pages: https://www.yakermd.com/hair-loss-treatments/fut/
+2025-05-15 02:47:07,270 - INFO - Crawled 18/25 pages: https://www.yakermd.com/hair-loss-treatments/fue-vs-fut/
+2025-05-15 02:47:09,621 - INFO - Crawled 19/25 pages: https://www.yakermd.com/hair-loss-treatments/hair-transplant-surgery/
+2025-05-15 02:47:12,805 - INFO - Crawled 20/25 pages: https://www.yakermd.com/non-surgical-treatments/
+2025-05-15 02:47:15,459 - INFO - Crawled 21/25 pages: https://www.yakermd.com/empower/
+2025-05-15 02:47:17,460 - INFO - Crawled 22/25 pages: https://www.yakermd.com/nourish/
+2025-05-15 02:47:19,887 - INFO - Crawled 23/25 pages: https://www.yakermd.com/topical-finasteride-with-minoxidil/
+2025-05-15 02:47:22,751 - INFO - Crawled 24/25 pages: https://www.yakermd.com/oral-finasteride-nutra-fin/
+2025-05-15 02:47:25,721 - INFO - Crawled 25/25 pages: https://www.yakermd.com/topical-minoxidil-har-lab-no-1/
+2025-05-15 02:47:25,721 - INFO - Crawl completed. Visited 48 URLs, extracted content from 25 pages
+2025-05-15 02:47:25,727 - INFO - Crawling Vibra Specialty Hospital of Desoto: https://vshdesoto.com
+2025-05-15 02:47:30,137 - INFO - Crawled 1/25 pages: https://vshdesoto.com
+2025-05-15 02:47:32,601 - INFO - Crawled 2/25 pages: https://vshdesoto.com/about-us/price-transparency/
+2025-05-15 02:47:32,602 - INFO - Crawl completed. Visited 2 URLs, extracted content from 2 pages
+2025-05-15 02:47:32,603 - INFO - Crawling First Baptist Medical Center: https://www.fbmcdallas.com
+2025-05-15 02:47:34,052 - INFO - Crawled 1/25 pages: https://www.fbmcdallas.com
+2025-05-15 02:47:34,053 - INFO - Crawl completed. Visited 1 URLs, extracted content from 1 pages
+2025-05-15 02:47:34,053 - INFO - Crawling Legent Hospital For Special Surgery: https://www.legenthealth.com/locations/legent-hospital-for-special-surgery
+2025-05-15 02:47:35,503 - INFO - Crawled 1/25 pages: https://www.legenthealth.com/locations/legent-hospital-for-special-surgery
+2025-05-15 02:47:36,663 - INFO - Crawled 2/25 pages: https://www.legenthealth.com/
+2025-05-15 02:47:37,798 - INFO - Crawled 3/25 pages: https://www.legenthealth.com/about
+2025-05-15 02:47:38,817 - INFO - Crawled 4/25 pages: https://www.legenthealth.com/experience
+2025-05-15 02:47:39,568 - INFO - Crawled 5/25 pages: https://www.legenthealth.com/team
+2025-05-15 02:47:40,526 - INFO - Crawled 6/25 pages: https://www.legenthealth.com/coming-soon
+2025-05-15 02:47:41,646 - INFO - Crawled 7/25 pages: https://www.legenthealth.com/careers
+2025-05-15 02:47:43,516 - INFO - Crawled 8/25 pages: https://www.legenthealth.com/locations
+2025-05-15 02:47:44,196 - INFO - Crawled 9/25 pages: https://www.legenthealth.com/locations/coppell-surgery-center
+2025-05-15 02:47:46,248 - INFO - Crawled 10/25 pages: https://www.legenthealth.com/locations/delray-beach-surgical-suites
+2025-05-15 02:47:46,956 - INFO - Crawled 11/25 pages: https://www.legenthealth.com/locations/legent-asc-medical-center
+2025-05-15 02:47:48,817 - INFO - Crawled 12/25 pages: https://www.legenthealth.com/locations/legent-hill-country-asc
+2025-05-15 02:47:49,467 - INFO - Crawled 13/25 pages: https://www.legenthealth.com/locations/legent-north-houston-surgical-hospital
+2025-05-15 02:47:50,169 - INFO - Crawled 14/25 pages: https://www.legenthealth.com/locations/legent-oak-creek-surgery-center
+2025-05-15 02:47:51,920 - INFO - Crawled 15/25 pages: https://www.legenthealth.com/locations/legent-orthopedic-spine-hospital
+2025-05-15 02:47:53,695 - INFO - Crawled 16/25 pages: https://www.legenthealth.com/locations/legent-orthopedic-hospital
+2025-05-15 02:47:54,558 - INFO - Crawled 17/25 pages: https://www.legenthealth.com/locations/legent-outpatient-surgery-austin
+2025-05-15 02:47:55,662 - INFO - Crawled 18/25 pages: https://www.legenthealth.com/locations/legent-outpatient-surgery-corpus-christi
+2025-05-15 02:47:56,551 - INFO - Crawled 19/25 pages: https://www.legenthealth.com/locations/legent-interventional-pain-center
+2025-05-15 02:47:58,351 - INFO - Crawled 20/25 pages: https://www.legenthealth.com/locations/legent-outpatient-surgery-frisco
+2025-05-15 02:48:00,413 - INFO - Crawled 21/25 pages: https://www.legenthealth.com/locations/legent-outpatient-surgery-singing-hills
+2025-05-15 02:48:01,979 - INFO - Crawled 22/25 pages: https://www.legenthealth.com/locations/legent-outpatient-surgery-westover-hills
+2025-05-15 02:48:03,711 - INFO - Crawled 23/25 pages: https://www.legenthealth.com/locations/legent-surgical-hospital-plano
+2025-05-15 02:48:05,353 - INFO - Crawled 24/25 pages: https://www.legenthealth.com/news
+2025-05-15 02:48:06,907 - INFO - Crawled 25/25 pages: https://www.legenthealth.com/categories/in-the-news
+2025-05-15 02:48:06,908 - INFO - Crawl completed. Visited 56 URLs, extracted content from 25 pages
+2025-05-15 02:48:06,916 - INFO - Crawling Texas Surgical Hospital: https://txsurgical.com
+2025-05-15 02:48:07,619 - WARNING - Error processing https://txsurgical.com: 403 Client Error: Forbidden for url: https://txsurgical.com/
+2025-05-15 02:48:07,620 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:48:07,620 - INFO - Crawling Encompass Health Rehabilitation Hospital Of Richardson: https://encompasshealth.com/locations/richardsonrehab
+2025-05-15 02:48:09,790 - INFO - Crawled 1/25 pages: https://encompasshealth.com/locations/richardsonrehab
+2025-05-15 02:48:11,276 - INFO - Crawled 2/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services
+2025-05-15 02:48:12,545 - INFO - Crawled 3/25 pages: https://encompasshealth.com/locations/richardson-rehab/referral
+2025-05-15 02:48:14,377 - INFO - Crawled 4/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/brain-injury-rehabilitation
+2025-05-15 02:48:16,649 - INFO - Crawled 5/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/polytrauma-rehabilitation
+2025-05-15 02:48:19,955 - INFO - Crawled 6/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/neurological-rehabilitation
+2025-05-15 02:48:21,105 - INFO - Crawled 7/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/spasticity-rehabilitation
+2025-05-15 02:48:22,835 - INFO - Crawled 8/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/spinal-cord-rehabilitation
+2025-05-15 02:48:24,485 - INFO - Crawled 9/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/stroke-rehabilitation
+2025-05-15 02:48:25,466 - INFO - Crawled 10/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/amputation-rehabilitation
+2025-05-15 02:48:27,320 - INFO - Crawled 11/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/chronic-condition-management
+2025-05-15 02:48:28,522 - INFO - Crawled 12/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/hip-rehabilitation
+2025-05-15 02:48:29,540 - INFO - Crawled 13/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/joint-replacement
+2025-05-15 02:48:32,471 - INFO - Crawled 14/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/orthopedic-rehabilitation
+2025-05-15 02:48:33,611 - INFO - Crawled 15/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/activities-daily-living
+2025-05-15 02:48:36,550 - INFO - Crawled 16/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/cardiac-rehabilitation
+2025-05-15 02:48:38,780 - INFO - Crawled 17/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/cancer-rehabilitation
+2025-05-15 02:48:40,018 - INFO - Crawled 18/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/bowel-bladder-training
+2025-05-15 02:48:40,951 - INFO - Crawled 19/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/diabetes-management
+2025-05-15 02:48:42,996 - INFO - Crawled 20/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/dialysis-therapy
+2025-05-15 02:48:44,216 - INFO - Crawled 21/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/medication-management
+2025-05-15 02:48:45,932 - INFO - Crawled 22/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/pain-management
+2025-05-15 02:48:47,154 - INFO - Crawled 23/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/pulmonary-rehabilitation
+2025-05-15 02:48:48,584 - INFO - Crawled 24/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/wound-care
+2025-05-15 02:48:49,875 - INFO - Crawled 25/25 pages: https://encompasshealth.com/inpatient-rehabilitation/services/additional-therapies
+2025-05-15 02:48:49,876 - INFO - Crawl completed. Visited 35 URLs, extracted content from 25 pages
+2025-05-15 02:48:49,879 - INFO - Analyzing hospitals in San Jose, CA
+2025-05-15 02:48:51,737 - INFO - Crawling Menlo Park Surgical Hospital: https://www.sutterhealth.org/find-location/facility/menlo-park-surgical-hospital
+2025-05-15 02:48:52,944 - WARNING - Error processing https://www.sutterhealth.org/find-location/facility/menlo-park-surgical-hospital: 404 Client Error: Not Found for url: https://www.sutterhealth.org/find-location/facility/menlo-park-surgical-hospital
+2025-05-15 02:48:52,946 - INFO - Crawl completed. Visited 1 URLs, extracted content from 0 pages
+2025-05-15 02:48:52,952 - INFO - Crawling San Jose Behavioral Health: https://www.sanjosebh.com/
+2025-05-15 02:48:54,571 - INFO - Crawled 1/25 pages: https://www.sanjosebh.com/
+2025-05-15 02:48:56,784 - INFO - Crawled 2/25 pages: https://www.sanjosebh.com/admissions/insurance-payment/
+2025-05-15 02:48:58,217 - INFO - Crawled 3/25 pages: https://www.sanjosebh.com/programs/adolescent/
+2025-05-15 02:48:59,805 - INFO - Crawled 4/25 pages: https://www.sanjosebh.com/programs/inpatient/
+2025-05-15 02:49:01,652 - INFO - Crawled 5/25 pages: https://www.sanjosebh.com/programs/iop/
+2025-05-15 02:49:04,825 - INFO - Crawled 6/25 pages: https://www.sanjosebh.com/admissions/assessment/mental-health/
+2025-05-15 02:49:08,540 - INFO - Crawled 7/25 pages: https://www.sanjosebh.com/admissions/assessment/depression/
+2025-05-15 02:49:11,180 - INFO - Crawled 8/25 pages: https://www.sanjosebh.com/about/quality-care/
+2025-05-15 02:49:14,315 - INFO - Crawled 9/25 pages: https://www.sanjosebh.com/about/privacy-practices/
+2025-05-15 02:49:16,969 - INFO - Crawled 10/25 pages: https://www.sanjosebh.com/about/privacy-practices/online-policy/
+2025-05-15 02:49:17,622 - INFO - Crawled 11/25 pages: https://www.sanjosebh.com/admissions/
+2025-05-15 02:49:21,629 - INFO - Crawled 12/25 pages: https://www.sanjosebh.com/about/blog/mental-health-support-for-adolescents/
+2025-05-15 02:49:24,443 - INFO - Crawled 13/25 pages: https://www.sanjosebh.com/programs/
+2025-05-15 02:49:25,309 - INFO - Crawled 14/25 pages: https://www.sanjosebh.com/programs
+2025-05-15 02:49:29,122 - INFO - Crawled 15/25 pages: https://www.sanjosebh.com/about/blog/2023/10/
+2025-05-15 02:49:32,525 - INFO - Crawled 16/25 pages: https://www.sanjosebh.com/about/blog/2023/10/24/
+2025-05-15 02:49:35,329 - INFO - Crawled 17/25 pages: https://www.sanjosebh.com/about/blog/2023/
+2025-05-15 02:49:39,695 - INFO - Crawled 18/25 pages: https://www.sanjosebh.com/about/blog/author/eric
+2025-05-15 02:49:43,094 - INFO - Crawled 19/25 pages: https://www.sanjosebh.com/about/blog/
+2025-05-15 02:49:45,542 - INFO - Crawled 20/25 pages: https://www.sanjosebh.com/about/blog/category/adolescent/
+2025-05-15 02:49:45,543 - INFO - Crawl completed. Visited 22 URLs, extracted content from 20 pages
+2025-05-15 02:49:45,549 - INFO - Analysis complete. Found pricing on 39/85 hospitals
