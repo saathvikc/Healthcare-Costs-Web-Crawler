@@ -31,12 +31,15 @@ At its core, this project implements a robust and principled breadth-first searc
 We start with a curated list of hospitals from ten major U.S. cities, each mapped to its website. For each hospital, our system initiates a controlled crawl:
 
 Depth-limited to 3 levels to simulate a reasonable user journey (patients don’t click through 10 pages—if pricing isn’t nearby, it’s effectively hidden).
+
 Capped at 25 pages per hospital to ensure fairness across different site sizes and avoid overloading any single domain.
+
 Guided by healthcare-specific search terms, handpicked from real CMS regulations, hospital pricing portals, and published billing statements (e.g., “transparency,” “fee,” “cost estimator,” “chargemaster”).
 
 The crawler executes a goal-directed breadth-first search, meaning it prioritizes breadth across major page types but filters links using keyword relevance to focus on billing- or cost-related content. Each page is evaluated for:
 
 Presence of Pricing Language: Pages are scanned for a curated set of pricing-related keywords derived from CMS transparency guidelines and industry-standard chargemasters—terms like “price,” “fee,” “transparency,” and “cost estimator.”
+
 Navigational Burden: The crawler records the number of clicks from the homepage required to find any pricing-related content. This metric directly mirrors the user effort needed to find cost information in a real-world setting.
 
 
